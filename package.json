@@ -6,7 +6,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
-    "export": "npm run build && next export"
+    "export": "npm run build && next export",
+    "deploy": "now --prod"
   },
   "dependencies": {
     "@now/next": "^2.1.1",
