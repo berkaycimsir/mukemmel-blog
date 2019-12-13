@@ -6,4 +6,8 @@ module.exports = {
   }
 };
 
+module.exports = {
+  exportTrailingSlash: true
+};
+
 module.exports = withCSS();
