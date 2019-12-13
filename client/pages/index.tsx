@@ -2,6 +2,7 @@ import * as React from "react";
 import Head from "next/head";
 import Home from "./Home/Home";
 import "../utils/css/index.css";
+import Navbar from "../components/Navbar/Navbar";
 
 const App: React.FC = () => (
   <div className="wrapper">
@@ -17,6 +18,7 @@ const App: React.FC = () => (
       />
     </Head>
 
+    <Navbar />
     <Home />
   </div>
 );
