@@ -1,13 +1,14 @@
 const withCSS = require("@zeit/next-css");
 
-module.exports = {
+module.exports = withCSS({
   devIndicators: {
     autoPrerender: false
+  },
+  exportTrailingSlash: true,
+
+  exportPathMap: function() {
+    return {
+      "/": { page: "/" }
+    };
   }
-};
-
-module.exports = {
-  exportTrailingSlash: true
-};
-
-module.exports = withCSS();
+});
