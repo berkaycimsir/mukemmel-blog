@@ -3,15 +3,10 @@ import React from "react";
 import { ApolloProvider } from "react-apollo";
 import withApollo from "../lib/withApollo";
 
-class MyApp extends App<any> {
-  render() {
-    const { Component, pageProps, apolloClient } = this.props;
-    return (
-      <ApolloProvider client={apolloClient}>
-        <Component {...pageProps} />
-      </ApolloProvider>
-    );
-  }
-}
+const MyApp: React.FC<any> = ({ Component, pageProps, apolloClient }) => (
+  <ApolloProvider client={apolloClient}>
+    <Component {...pageProps} />
+  </ApolloProvider>
+);
 
 export default withApollo(MyApp);
