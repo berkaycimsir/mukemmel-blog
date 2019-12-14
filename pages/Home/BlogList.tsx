@@ -14,7 +14,7 @@ const BlogList: React.FC = () => {
   return (
     <Grid centered container columns={3} stackable>
       {data.blogs.map(blog => (
-        <BlogCard blog={blog} />
+        <BlogCard key={blog.id} blog={blog} />
       ))}
     </Grid>
   );
