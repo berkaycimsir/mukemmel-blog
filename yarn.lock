@@ -849,7 +849,7 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@babel/runtime@^7.1.2":
+"@babel/runtime@^7.1.2", "@babel/runtime@^7.4.5":
   version "7.7.6"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.6.tgz#d18c511121aff1b4f2cd1d452f1bac9601dd830f"
   integrity sha512-BWAJxpNVa0QlE5gZdWjSxXtemZyZ9RmrmVozxt3NUXeZhVIJ5ANyqmMc0JDrivBZyxUuQvFxlvH4OWWOogGfUw==
@@ -3797,6 +3797,17 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
+next-apollo@^3.1.10:
+  version "3.1.10"
+  resolved "https://registry.yarnpkg.com/next-apollo/-/next-apollo-3.1.10.tgz#0b9820b32262baaa4da42ba27bb52d37f516167e"
+  integrity sha512-VX64IW7h6Rdg+Ma0y8ryAIz7IfyLaz6Nd4VITuhfXFZ3nj51blcjRR6kc4E945SPk2WdrIMlLRZubgPRAgh9Ug==
+  dependencies:
+    "@babel/runtime" "^7.4.5"
+    isomorphic-unfetch "^3.0.0"
+    prop-types "15.7.2"
+    prop-types-exact "1.2.0"
+    url "0.11.0"
+
 next@9.1.4:
   version "9.1.4"
   resolved "https://registry.yarnpkg.com/next/-/next-9.1.4.tgz#32991dd6b49adca4bac302828eb5a1b3654591b6"
@@ -3875,7 +3886,7 @@ next@9.1.4:
     webpack-sources "1.4.3"
     whatwg-fetch "3.0.0"
 
-node-fetch@2.6.0, node-fetch@^2.2.0:
+node-fetch@2.6.0, node-fetch@^2.2.0, node-fetch@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.0.tgz#e633456386d4aa55863f676a7ab0daa8fdecb0fd"
   integrity sha512-8dG4H5ujfvFiqDmVu9fQ5bOHUC15JMjMY/Zumv26oOvvVJjM67KF8koCWIabKQ1GJIa9r2mMZscBq/TbdOcmNA==
