@@ -1,3 +1,7 @@
+export type BlogCardProps = {
+  blog: Blog;
+};
+
 type Blog = {
   id: string;
   owner_id: string;
@@ -9,6 +13,6 @@ type Blog = {
 };
 
 export interface GetBlogsReturnType {
-  blog: [Blog];
+  blogs: [Blog];
   errorMessage: string;
 }
