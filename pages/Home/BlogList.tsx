@@ -11,7 +11,7 @@ const BlogList: React.FC = () => {
     GET_LAST_FOUR_BLOG
   );
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading size={70} />;
 
   return (
     <>
