@@ -4,9 +4,11 @@ import BlogList from "./BlogList";
 
 const Blog: React.FC = () => {
   return (
-    <Container>
-      <BlogList />
-    </Container>
+    <>
+      <Container style={{ width: "65%" }}>
+        <BlogList />
+      </Container>
+    </>
   );
 };
 

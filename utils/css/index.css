@@ -2,22 +2,23 @@
   font-family: "Poppins", sans-serif !important;
 }
 
-.blog-card-img {
-  transition: all ease 0.2s;
-}
-
-.blog-card-img:hover {
-  opacity: 0.9;
-}
-
 .navbar {
   -webkit-box-shadow: 0 5px 5px -5px #999 !important;
   -moz-box-shadow: 0 5px 5px -5px #999 !important;
   box-shadow: 0 5px 5px -3px #999 !important;
 }
 
+.blog-card {
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24) !important;
+  transition: all 0.3s cubic-bezier(.25, .8, .25, 1) !important;
+}
+
+.blog-card:hover {
+  box-shadow: 0 3px 28px rgba(0, 0, 0, 0.25), 0 3px 10px rgba(0, 0, 0, 0.22) !important;
+}
+
 .blog-card-title {
-  font-size: 20px !important;
+  font-size: 17px !important;
 }
 
 @media (max-width: 420px) {

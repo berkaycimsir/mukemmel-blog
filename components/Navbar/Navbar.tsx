@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
-import { Menu, Image } from "semantic-ui-react";
+import { Menu, Image, Dropdown } from "semantic-ui-react";
 
 const Navbar: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>("");
 
   return (
-    <Menu className="navbar" size="small">
+    <Menu stackable className="navbar" size="small">
       <Menu.Item>
         <Image
           size="mini"
