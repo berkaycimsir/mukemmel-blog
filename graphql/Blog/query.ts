@@ -31,3 +31,18 @@ export const GET_LAST_FOUR_BLOG = gql`
     }
   }
 `;
+
+export const GET_TREND_BLOGS = gql`
+  query {
+    getTrendBlogs {
+      id
+      owner_id
+      title
+      content
+      tags
+      likes
+      views
+      createdAt
+    }
+  }
+`;
