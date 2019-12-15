@@ -12,7 +12,7 @@ const BlogList: React.FC = () => {
   if (loading) return <Loading />;
 
   return (
-    <Grid doubling centered columns={4}>
+    <Grid stackable centered columns={4}>
       {data.blogs.map(blog => (
         <BlogCard key={blog.id} blog={blog} />
       ))}

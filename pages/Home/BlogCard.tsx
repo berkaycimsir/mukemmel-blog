@@ -25,7 +25,7 @@ const BlogCard: React.FC<BlogCardProps> = props => {
       <Card color={getRandomColor()} fluid centered>
         <Image as="a" className="blog-card-img" src={img} />
         <Card.Content>
-          <Card.Header>{title}</Card.Header>
+          <Card.Header className="blog-card-title">{title}</Card.Header>
         </Card.Content>
       </Card>
     </Grid.Column>

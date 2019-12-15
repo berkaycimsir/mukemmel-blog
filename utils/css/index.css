@@ -15,3 +15,13 @@
   -moz-box-shadow: 0 5px 5px -5px #999 !important;
   box-shadow: 0 5px 5px -3px #999 !important;
 }
+
+.blog-card-title {
+  font-size: 20px !important;
+}
+
+@media (max-width: 420px) {
+  .blog-card-title {
+    font-size: 13px !important;
+  }
+}
