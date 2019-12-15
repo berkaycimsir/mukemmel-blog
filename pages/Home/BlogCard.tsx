@@ -1,23 +1,31 @@
 import * as React from "react";
 import { Grid, Card, Divider, Image } from "semantic-ui-react";
 import { BlogCardProps } from "../../interfaces/PageInterface/Home/bloglist.interfaces";
+import { SemanticCOLORS } from "semantic-ui-react/dist/commonjs/generic";
 
 const BlogCard: React.FC<BlogCardProps> = props => {
-  const { title, content, tags, likes, createdAt } = props.blog;
-  const img = "https://via.placeholder.com/200";
+  const { title, content, tags, likes, img, createdAt } = props.blog;
+
+  const getRandomColor = (): SemanticCOLORS => {
+    const colors: Array<SemanticCOLORS> = [
+      "teal",
+      "red",
+      "blue",
+      "violet",
+      "purple",
+      "green"
+    ];
+
+    const getRandomIndex = Math.floor(Math.random() * 6);
+    return colors[getRandomIndex];
+  };
 
   return (
-    <Grid.Column>
-      <Card fluid centered>
-        <Image src={img} />
+    <Grid.Column widescreen="8">
+      <Card color={getRandomColor()} fluid centered>
+        <Image as="a" className="blog-card-img" src={img} />
         <Card.Content>
           <Card.Header>{title}</Card.Header>
-          <Card.Meta>{content.slice(0, 100)}...</Card.Meta>
-          <Card.Description>{createdAt}</Card.Description>
-        </Card.Content>
-        <Card.Content extra>
-          <p>{likes}</p>
-          <p>{tags.map(tag => tag)}</p>
         </Card.Content>
       </Card>
     </Grid.Column>

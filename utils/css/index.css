@@ -1,3 +1,17 @@
-html * {
+* {
   font-family: "Poppins", sans-serif !important;
+}
+
+.blog-card-img {
+  transition: all ease 0.2s;
+}
+
+.blog-card-img:hover {
+  opacity: 0.9;
+}
+
+.navbar {
+  -webkit-box-shadow: 0 5px 5px -5px #999 !important;
+  -moz-box-shadow: 0 5px 5px -5px #999 !important;
+  box-shadow: 0 5px 5px -3px #999 !important;
 }

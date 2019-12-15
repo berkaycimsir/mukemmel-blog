@@ -9,6 +9,7 @@ export const GET_BLOGS = gql`
       content
       tags
       likes
+      img
       createdAt
     }
   }

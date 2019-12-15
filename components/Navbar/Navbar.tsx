@@ -1,17 +1,18 @@
 import * as React from "react";
 import { useState } from "react";
-import { Menu } from "semantic-ui-react";
+import { Menu, Image } from "semantic-ui-react";
 
 const Navbar: React.FC = () => {
   const [activeItem, setActiveItem] = useState<string>("");
 
   return (
-    <Menu size="large">
-      <Menu.Item
-        name="home"
-        active={activeItem === "home"}
-        onClick={(e, { name }) => setActiveItem(name)}
-      />
+    <Menu className="navbar" size="small">
+      <Menu.Item>
+        <Image
+          size="mini"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfISJ80aijWwPIjStqGeNBeErlpkaY9Jyo3ykYycFn4h6UkbBf&s"
+        />
+      </Menu.Item>
 
       <Menu.Menu position="right">
         <Menu.Item

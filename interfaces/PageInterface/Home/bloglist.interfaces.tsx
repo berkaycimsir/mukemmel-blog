@@ -9,6 +9,7 @@ type Blog = {
   content: string;
   tags: [string];
   likes: number;
+  img;
   createdAt: Date;
 };
 
