@@ -10,7 +10,7 @@
 
 .blog-card {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24) !important;
-  transition: all 0.3s cubic-bezier(.25, .8, .25, 1) !important;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 .blog-card:hover {
@@ -18,11 +18,20 @@
 }
 
 .blog-card-title {
-  font-size: 17px !important;
+  font-size: 13px !important;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
 }
 
 @media (max-width: 420px) {
   .blog-card-title {
-    font-size: 13px !important;
+    font-size: 10px !important;
+  }
+  .icon {
+    width: 15px;
+    height: 15px;
   }
 }

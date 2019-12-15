@@ -8,6 +8,7 @@ import {
   Card,
   Divider
 } from "semantic-ui-react";
+import AllTrendBlogsPane from "./AllTrendBlogsPane";
 
 const panes: {
   pane?: SemanticShorthandItem<TabPaneProps>;
@@ -15,8 +16,8 @@ const panes: {
   render?: () => React.ReactNode;
 }[] = [
   {
-    menuItem: { key: "users", icon: "users", content: "Users" },
-    render: () => <Tab.Pane attached="top">Tab 1 Content</Tab.Pane>
+    menuItem: { key: "all-trend-blogs", content: "Tümü" },
+    render: () => <AllTrendBlogsPane />
   },
   {
     menuItem: "Tab 3",
@@ -27,11 +28,9 @@ const panes: {
 const TrendBlogs: React.FC = () => (
   <Card style={{ marginTop: "20px" }} fluid color="teal">
     <Card.Content>
-      <Card.Header style={{ padding: "5px" }} className="blog-card-title">
-        Trend İçerikler
-      </Card.Header>
+      <Card.Header style={{ marginTop: "3px" }}>Trend İçerikler</Card.Header>
       <Divider />
-      <Tab panes={panes} />
+      <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
     </Card.Content>
   </Card>
 );

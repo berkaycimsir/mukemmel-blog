@@ -20,7 +20,7 @@ const App: React.FC = () => (
     </Head>
 
     <Navbar />
-    <Container style={{ width: "65%" }}>
+    <Container>
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>
         <Home />
       </div>

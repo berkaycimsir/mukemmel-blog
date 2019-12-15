@@ -42,6 +42,7 @@ export const GET_TREND_BLOGS = gql`
       tags
       likes
       views
+      img
       createdAt
     }
   }
