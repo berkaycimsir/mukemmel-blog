@@ -9,11 +9,15 @@ type Blog = {
   content: string;
   tags: [string];
   likes: number;
-  img;
+  views: number;
+  img: string;
   createdAt: Date;
 };
 
 export interface GetBlogsReturnType {
   blogs: [Blog];
-  errorMessage: string;
+}
+
+export interface GetLastFourBlogReturnType {
+  blogs: [Blog];
 }
