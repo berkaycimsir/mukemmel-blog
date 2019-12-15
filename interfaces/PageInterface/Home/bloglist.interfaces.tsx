@@ -19,5 +19,5 @@ export interface GetBlogsReturnType {
 }
 
 export interface GetLastFourBlogReturnType {
-  blogs: [Blog];
+  getLastFourBlog: [Blog];
 }
