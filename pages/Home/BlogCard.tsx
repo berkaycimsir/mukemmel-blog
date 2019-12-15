@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Grid, Card, Divider, Image } from "semantic-ui-react";
-import { BlogCardProps } from "../../interfaces/PageInterface/Home/bloglist.interfaces";
 import { SemanticCOLORS } from "semantic-ui-react/dist/commonjs/generic";
+import { BlogCardProps } from "../../@types/interfaces/PageInterfaces/Home/blogcard.interfaces";
 
 const BlogCard: React.FC<BlogCardProps> = props => {
   const { title, content, tags, likes, img, createdAt } = props.blog;

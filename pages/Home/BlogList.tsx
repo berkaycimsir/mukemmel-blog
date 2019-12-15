@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
 import { GET_LAST_FOUR_BLOG } from "../../graphql/Blog/query";
-import { GetLastFourBlogReturnType } from "../../interfaces/PageInterface/Home/bloglist.interfaces";
+import { GetLastFourBlogReturnType } from "../../@types/interfaces/PageInterfaces/Home/bloglist.interfaces";
 import Loading from "../../components/Loading/Loading";
 import BlogCard from "./BlogCard";
 import { Grid } from "semantic-ui-react";
