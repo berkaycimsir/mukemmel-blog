@@ -3,6 +3,7 @@ import Head from "next/head";
 import Home from "./Home/Home";
 import "../utils/css/index.css";
 import Navbar from "../components/Navbar/Navbar";
+import { Container } from "semantic-ui-react";
 
 const App: React.FC = () => (
   <div className="wrapper">
@@ -19,7 +20,11 @@ const App: React.FC = () => (
     </Head>
 
     <Navbar />
-    <Home />
+    <Container style={{ width: "65%" }}>
+      <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+        <Home />
+      </div>
+    </Container>
   </div>
 );
 
