@@ -1,8 +1,6 @@
 import * as React from "react";
 import {
   Tab,
-  Menu,
-  Label,
   SemanticShorthandItem,
   TabPaneProps,
   Card,

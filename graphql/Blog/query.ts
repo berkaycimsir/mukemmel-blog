@@ -32,6 +32,25 @@ export const GET_LAST_FOUR_BLOG = gql`
   }
 `;
 
+export const GET_MOST_TREND_BLOG = gql`
+  query {
+    getMostTrendBlog {
+      blog {
+        id
+        owner_id
+        title
+        content
+        tags
+        likes
+        views
+        img
+        createdAt
+      }
+      errorMessage
+    }
+  }
+`;
+
 export const GET_TREND_BLOGS = gql`
   query {
     getTrendBlogs {
