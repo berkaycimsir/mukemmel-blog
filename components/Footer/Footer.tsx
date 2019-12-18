@@ -16,7 +16,7 @@ const Footer: React.FC = () => (
     <Container textAlign="center">
       <Grid centered divided stackable>
         <Grid.Column>
-          <Header textAlign="center" as="h4" content="Footer Header" />
+          <Header textAlign="center" as="h4" content="Berkay'ın Bloğu" />
           <p style={{ textAlign: "center" }}>
             <Button
               as="a"
