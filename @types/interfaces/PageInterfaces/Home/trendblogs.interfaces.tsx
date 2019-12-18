@@ -4,7 +4,11 @@ export interface GetTrendBlogsReturnType {
   getTrendBlogs: [Blog];
 }
 
-export interface GetMostTrendBlogReturnType {
+interface IReturnData {
   blog: Blog;
   errorMessage: string;
+}
+
+export interface GetMostTrendBlogReturnType {
+  getMostTrendBlog: IReturnData;
 }

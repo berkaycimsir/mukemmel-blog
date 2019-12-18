@@ -18,7 +18,6 @@ const App: React.FC = () => (
         rel="stylesheet"
       />
     </Head>
-
     <Navbar />
     <Container>
       <div style={{ marginTop: "20px", marginBottom: "20px" }}>

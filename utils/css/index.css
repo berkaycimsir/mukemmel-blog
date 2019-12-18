@@ -18,20 +18,11 @@
 }
 
 .blog-card-title {
-  font-size: 13px !important;
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
+  font-size: 12px !important;
 }
 
 @media (max-width: 420px) {
   .blog-card-title {
-    font-size: 10px !important;
-  }
-  .icon {
-    width: 15px;
-    height: 15px;
+    font-size: 6px !important;
   }
 }

@@ -25,21 +25,7 @@ const BlogCard: React.FC<BlogCardProps> = props => {
       <Card className="blog-card" color={getRandomColor()} fluid centered>
         <Image as="a" className="blog-card-img" src={img} />
         <Card.Content>
-          <Card.Header className="blog-card-title">
-            {title}
-            <span
-              style={{ float: "right", marginLeft: "4px", fontSize: "13px" }}
-            >
-              {views}
-            </span>
-            <img
-              className="icon"
-              src="https://image.flaticon.com/icons/png/512/13/13924.png"
-              alt="Eye looking up free icon"
-              title="Eye looking up free icon"
-              style={{ float: "right" }}
-            />
-          </Card.Header>
+          <Card.Header className="blog-card-title">{title}</Card.Header>
         </Card.Content>
       </Card>
     </Grid.Column>
