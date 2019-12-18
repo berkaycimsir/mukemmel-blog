@@ -4,6 +4,7 @@ import Home from "./Home/Home";
 import "../utils/css/index.css";
 import Navbar from "../components/Navbar/Navbar";
 import { Container } from "semantic-ui-react";
+import Footer from "../components/Footer/Footer";
 
 const App: React.FC = () => (
   <div className="wrapper">
@@ -24,6 +25,7 @@ const App: React.FC = () => (
         <Home />
       </div>
     </Container>
+    <Footer />
   </div>
 );
 

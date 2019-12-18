@@ -8,6 +8,14 @@
   box-shadow: 0 5px 5px -3px #999 !important;
 }
 
+.footer {
+  margin: 5em 0em 0em !important;
+  padding: 5em 0em !important;
+  -webkit-box-shadow: 0px -2px 5px 0px #999 !important;
+  -moz-box-shadow: 0px -2px 5px 0px #999 !important;
+  box-shadow: 0px -2px 5px 0px #999 !important;
+}
+
 .blog-card {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
@@ -23,6 +31,6 @@
 
 @media (max-width: 420px) {
   .blog-card-title {
-    font-size: 6px !important;
+    font-size: 8px !important;
   }
 }
