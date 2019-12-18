@@ -39,7 +39,7 @@ const AllTrendBlogsPane: React.FC = () => {
           {getTrendBlogsData.getTrendBlogs.map(blog => {
             if (blog.title !== mostTrendBlog.title) {
               return (
-                <Grid.Column widescreen={8}>
+                <Grid.Column key={blog.id} widescreen={8}>
                   <BlogCard key={blog.id} blog={blog} />
                 </Grid.Column>
               );
