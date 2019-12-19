@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon ./server.js",
     "build": "next build",
-    "start": "nodemon ./server.js",
+    "start": "node ./server.js",
     "export": "yarn run build && next export",
     "deploy": "now --prod"
   },
