@@ -3,11 +3,13 @@ import Head from "next/head";
 import Home from "./Home/Home";
 import "../utils/css/index.css";
 import Navbar from "../components/Navbar/Navbar";
-import { Container } from "semantic-ui-react";
+import { Container, Divider } from "semantic-ui-react";
 import Footer from "../components/Footer/Footer";
+import { Route, Switch, Redirect } from "react-router-dom";
+import BlogDetails from "./BlogDetails/BlogDetails";
 
-const App: React.FC = () => (
-  <div className="wrapper">
+const Root: React.FC = () => (
+  <>
     <Head>
       <title>Berkay'ın Bloğu</title>
       <link
@@ -20,13 +22,24 @@ const App: React.FC = () => (
       />
     </Head>
     <Navbar />
-    <Container>
-      <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-        <Home />
-      </div>
-    </Container>
+    <Switch>
+      <Route
+        exact
+        path="/"
+        render={() => (
+          <Container>
+            <div style={{ marginTop: "20px", marginBottom: "20px" }}>
+              <Home />
+            </div>
+          </Container>
+        )}
+      />
+      <Route exact path="/blog" render={() => <BlogDetails />} />
+    </Switch>
     <Footer />
-  </div>
+  </>
 );
+
+const App: React.FC = () => <Root />;
 
 export default App;
