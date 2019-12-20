@@ -66,3 +66,22 @@ export const GET_TREND_BLOGS = gql`
     }
   }
 `;
+
+export const GET_BLOG_BY_ID = gql`
+  query($id: String!) {
+    blog(id: $id) {
+      blog {
+        id
+        owner_id
+        title
+        content
+        tags
+        likes
+        views
+        img
+        createdAt
+      }
+      errorMessage
+    }
+  }
+`;
