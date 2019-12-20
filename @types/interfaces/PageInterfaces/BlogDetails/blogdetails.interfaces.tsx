@@ -7,6 +7,10 @@ interface IReturnData {
   errorMessage: string;
 }
 
+export interface GetBlogByIdVariables {
+  id: string;
+}
+
 export interface GetBlogByIdReturnType {
   blog: IReturnData;
 }

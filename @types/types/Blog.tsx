@@ -1,13 +1,15 @@
 export type User = {
+  id: string;
   name: string;
   surname: string;
   username: string;
   email: string;
-  password?: string;
+  password: string;
   createdAt: Date;
 };
 
 export type Blog = {
+  id: string;
   owner_id: string;
   title: string;
   content: string;
@@ -19,7 +21,7 @@ export type Blog = {
 };
 
 export type Comment = {
-  id?: string;
+  id: string;
   blog_id: string;
   user_id: string;
   content: string;
