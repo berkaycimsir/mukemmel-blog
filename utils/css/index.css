@@ -2,6 +2,10 @@
   font-family: "Poppins", sans-serif !important;
 }
 
+.nav-link {
+  all: none !important;
+}
+
 .navbar {
   -webkit-box-shadow: 0 5px 5px -5px #999 !important;
   -moz-box-shadow: 0 5px 5px -5px #999 !important;
@@ -19,6 +23,10 @@
 .blog-card {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.blog-card-img {
+  border-radius: .28571429rem !important;
 }
 
 .blog-card:hover {

@@ -8,7 +8,7 @@ import Footer from "../components/Footer/Footer";
 import { Route, Switch, Redirect } from "react-router-dom";
 import BlogDetails from "./BlogDetails/BlogDetails";
 
-const Root: React.FC = () => (
+const App: React.FC = () => (
   <>
     <Head>
       <title>Berkay'ın Bloğu</title>
@@ -21,25 +21,15 @@ const Root: React.FC = () => (
         rel="stylesheet"
       />
     </Head>
+
     <Navbar />
     <Switch>
-      <Route
-        exact
-        path="/"
-        render={() => (
-          <Container>
-            <div style={{ marginTop: "20px", marginBottom: "20px" }}>
-              <Home />
-            </div>
-          </Container>
-        )}
-      />
-      <Route exact path="/blog" render={() => <BlogDetails />} />
+      <Route exact path="/" render={() => <Home />} />
+      <Route exact path="/blog/details/:id" render={() => <BlogDetails />} />
+      <Route exact path="*" render={() => <div>No page.</div>} />
     </Switch>
     <Footer />
   </>
 );
-
-const App: React.FC = () => <Root />;
 
 export default App;
