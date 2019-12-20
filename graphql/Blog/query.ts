@@ -77,6 +77,8 @@ export const GET_BLOG_BY_ID = gql`
         content
         tags
         likes
+        views
+        img
         createdAt
         user {
           name
