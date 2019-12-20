@@ -7,18 +7,8 @@ import {
   GetBlogByIdVariables
 } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetails.interfaces";
 import Loading from "../../components/Loading/Loading";
-import {
-  Container,
-  Image,
-  Grid,
-  Header,
-  Form,
-  Segment,
-  Button,
-  Message,
-  Card,
-  Divider
-} from "semantic-ui-react";
+import Login from "../../components/Login/Login";
+import { Container, Image, Grid, Card, Divider } from "semantic-ui-react";
 
 const BlogDetails: React.FC = () => {
   const blogId: string = isBrowser && window.location.pathname.split("/")[3];
@@ -48,34 +38,7 @@ const BlogDetails: React.FC = () => {
           </Card>
         </Grid.Column>
         <Grid.Column width={5}>
-          <Grid>
-            <Grid.Column>
-              <Form>
-                <Segment>
-                  <Form.Input
-                    fluid
-                    icon="user"
-                    iconPosition="left"
-                    placeholder="E-mail address"
-                  />
-                  <Form.Input
-                    fluid
-                    icon="lock"
-                    iconPosition="left"
-                    placeholder="Password"
-                    type="password"
-                  />
-
-                  <Button color="teal" fluid size="large">
-                    Login
-                  </Button>
-                </Segment>
-              </Form>
-              <Message>
-                New to us? <a href="#">Sign Up</a>
-              </Message>
-            </Grid.Column>
-          </Grid>
+          <Login />
         </Grid.Column>
       </Grid>
     </Container>
