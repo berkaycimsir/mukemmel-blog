@@ -30,6 +30,7 @@
 }
 
 .blog-detail-content {
+  font-size: 16px;
   line-height: 1.8;
 }
 
@@ -44,5 +45,10 @@
 @media (max-width: 420px) {
   .blog-card-title {
     font-size: 8px !important;
+  }
+
+  .blog-detail-content {
+    font-size: 14px;
+    line-height: 1.8;
   }
 }
