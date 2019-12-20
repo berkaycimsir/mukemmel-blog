@@ -6,20 +6,20 @@ const LoginPage: React.FC = () => {
   return (
     <Grid container>
       <Grid.Column>
-        <Form>
-          <Segment color="purple">
+        <Form className="blog-card">
+          <Segment color="teal">
             <Form.Input fluid placeholder="E-mail address" />
             <Form.Input fluid placeholder="Password" type="password" />
 
-            <Button basic color="purple" fluid size="large">
-              Login
+            <Button color="teal" fluid size="large">
+              Giriş Yap
             </Button>
           </Segment>
         </Form>
-        <Message color="purple">
-          New to us? &nbsp;
-          <NavLink to="/signup" style={{ color: "purple" }} href="#">
-            Sign Up
+        <Message color="teal">
+          Hesabın yok mu? &nbsp;
+          <NavLink to="/signup" style={{ color: "teal" }}>
+            Kayıt Ol
           </NavLink>
         </Message>
       </Grid.Column>

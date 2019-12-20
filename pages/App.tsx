@@ -2,11 +2,14 @@ import * as React from "react";
 import Head from "next/head";
 import Home from "./Home/Home";
 import "../utils/css/index.css";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
 import { Route, Switch } from "react-router-dom";
+// pages
 import BlogDetails from "./BlogDetails/BlogDetails";
 import LoginPage from "./Login/LoginPage";
+import SignUp from "./SignUp/SignUp";
+// components
+import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 const App: React.FC = () => (
   <>
@@ -26,6 +29,7 @@ const App: React.FC = () => (
     <Switch>
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/login" render={() => <LoginPage />} />
+      <Route exact path="/signup" render={() => <SignUp />} />
       <Route exact path="/blog/details/:id" render={() => <BlogDetails />} />
       <Route exact path="*" render={() => <div>No page.</div>} />
     </Switch>
