@@ -26,10 +26,11 @@
 }
 
 .blog-card-img {
-  border-radius: .28571429rem !important;
+  border-radius: 0.28571429rem !important;
 }
 
-.blog-detail-content {
+.blog-detail-content,
+.blog-detail-content p {
   font-size: 16px;
   line-height: 1.8;
 }
@@ -42,13 +43,24 @@
   font-size: 12px !important;
 }
 
+.blog-details-title {
+  font-size: 25px !important;
+}
+
 @media (max-width: 420px) {
   .blog-card-title {
     font-size: 8px !important;
   }
 
+  h1 {
+    font-size: 20px;
+  }
+
   .blog-detail-content {
     font-size: 14px;
-    line-height: 1.8;
+  }
+
+  .blog-details-title {
+    font-size: 17px !important;
   }
 }
