@@ -3,8 +3,9 @@ import { Card, Divider, Image } from "semantic-ui-react";
 import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
 import Moment from "react-moment";
 
-const BlogDetailsCard: React.FC<Props> = ({ blog }) => {
+const BlogDetailsCard: React.FC<Props> = ({ blog, user }) => {
   const { id, title, content, img, views, tags, likes, createdAt } = blog;
+  const { username } = user;
 
   const sortedTags: Array<string> = tags.slice(0, 2);
 
@@ -12,12 +13,13 @@ const BlogDetailsCard: React.FC<Props> = ({ blog }) => {
     <Card className="blog-card" color="violet" fluid centered>
       <Image src={img} />
       <Card.Content>
-        <h1 className="blog-details-title">
-          {title}{" "}
-          <span style={{ float: "right", fontSize: "13px", opacity: ".7" }}>
+        <h1 className="blog-details-title">{title} </h1>
+        <Card.Meta>
+          <span style={{ fontSize: "13px", opacity: ".7" }}>
             <Moment toNow ago date={createdAt} /> ago
           </span>
-        </h1>
+          <span style={{ float: "right" }}>@{username}</span>
+        </Card.Meta>
 
         <Divider />
         <Card.Description
