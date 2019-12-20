@@ -3,10 +3,10 @@ import Head from "next/head";
 import Home from "./Home/Home";
 import "../utils/css/index.css";
 import Navbar from "../components/Navbar/Navbar";
-import { Container, Divider } from "semantic-ui-react";
 import Footer from "../components/Footer/Footer";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import BlogDetails from "./BlogDetails/BlogDetails";
+import LoginPage from "./Login/LoginPage";
 
 const App: React.FC = () => (
   <>
@@ -25,6 +25,7 @@ const App: React.FC = () => (
     <Navbar />
     <Switch>
       <Route exact path="/" render={() => <Home />} />
+      <Route exact path="/login" render={() => <LoginPage />} />
       <Route exact path="/blog/details/:id" render={() => <BlogDetails />} />
       <Route exact path="*" render={() => <div>No page.</div>} />
     </Switch>

@@ -1,11 +1,8 @@
 import * as React from "react";
-import { useState } from "react";
 import { Menu, Image, Dropdown } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
-  const [activeItem, setActiveItem] = useState<string>("");
-
   return (
     <Menu stackable className="navbar" size="small">
       <NavLink to="/">
@@ -18,20 +15,12 @@ const Navbar: React.FC = () => {
       </NavLink>
 
       <Menu.Menu position="right">
-        <Menu.Item
-          name="sign up"
-          active={activeItem === "sign up"}
-          onClick={(e, { name }) => setActiveItem(name)}
-        >
-          Sign Up
-        </Menu.Item>
-        <Menu.Item
-          name="login"
-          active={activeItem === "login"}
-          onClick={(e, { name }) => setActiveItem(name)}
-        >
-          Login
-        </Menu.Item>
+        <NavLink className="item" to="/signup">
+          <span>Sign Up</span>
+        </NavLink>
+        <NavLink className="item" to="/login">
+          <span>Login</span>
+        </NavLink>
       </Menu.Menu>
     </Menu>
   );
