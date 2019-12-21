@@ -3,6 +3,7 @@ import Head from "next/head";
 import Home from "./Home/Home";
 import "../utils/css/index.css";
 import { Route, Switch } from "react-router-dom";
+import SessionWrapperHOC from "../components/Hoc/SessionWrapperHOC";
 // pages
 import BlogDetails from "./BlogDetails/BlogDetails";
 import LoginPage from "./Login/LoginPage";
@@ -11,7 +12,11 @@ import SignUp from "./SignUp/SignUp";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 
-const App: React.FC = () => (
+type Props = {
+  session: any;
+};
+
+const App: React.FC<Props> = ({ session }) => (
   <>
     <Head>
       <title>Berkay'ın Bloğu</title>
@@ -25,7 +30,7 @@ const App: React.FC = () => (
       />
     </Head>
 
-    <Navbar />
+    <Navbar session={session} />
     <Switch>
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/login" render={() => <LoginPage />} />
@@ -37,4 +42,4 @@ const App: React.FC = () => (
   </>
 );
 
-export default App;
+export default SessionWrapperHOC(App);

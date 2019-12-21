@@ -4,8 +4,12 @@ export interface Props {
   history: any;
 }
 
+type Token = {
+  token: string;
+};
+
 export interface RegisterData {
-  user: User;
+  token: Token;
   errorMessage: string;
 }
 

@@ -2,9 +2,14 @@ import * as React from "react";
 import { Menu, Image, Dropdown } from "semantic-ui-react";
 import { NavLink, Link } from "react-router-dom";
 
-const Navbar: React.FC = () => {
+type Props = {
+  session: any;
+};
+
+const Navbar: React.FC<Props> = ({ session }) => {
   return (
     <Menu stackable className="navbar" size="small">
+      {console.log(session)};
       <NavLink to="/">
         <Menu.Item>
           <Image
@@ -13,7 +18,6 @@ const Navbar: React.FC = () => {
           />
         </Menu.Item>
       </NavLink>
-
       <Menu.Menu position="right">
         <NavLink className="item" to="/signup">
           <span>Sign Up</span>

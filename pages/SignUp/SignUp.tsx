@@ -18,7 +18,7 @@ import {
   ReturnData,
   RegisterVariables
 } from "../../@types/interfaces/PageInterfaces/SignUp/signup.interfaces";
-import { REGISTER } from "../../graphql/SignUp/mutations";
+import { REGISTER } from "../../graphql/User/mutations";
 
 const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const [name, setName] = useState<string>("");
@@ -67,7 +67,16 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
         const canRegister = parseErrorMessage(data);
         setTimeout((): void => setErrorMessage(null), 2000);
         if (canRegister === true) {
+          const getToken = (): string => {
+            if (data && data !== undefined) {
+              return data.register.token.token;
+            } else {
+              return null;
+            }
+          };
+          localStorage.setItem("token", getToken());
           history.push("/");
+          window.location.reload();
         }
       }
     );

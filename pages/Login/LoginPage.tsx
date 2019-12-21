@@ -18,7 +18,7 @@ import {
   ReturnData,
   LoginVariables
 } from "../../@types/interfaces/PageInterfaces/Login/login.interfaces";
-import { LOGIN } from "../../graphql/SignUp/mutations";
+import { LOGIN } from "../../graphql/User/mutations";
 
 const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const [username, setUsername] = useState<string>("");
@@ -59,7 +59,12 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
         const canLogin = parseErrorMessage(data);
         setTimeout((): void => setErrorMessage(null), 2000);
         if (canLogin === true) {
+          const getToken = (): string => {
+            return data && data !== undefined ? data.login.token.token : null;
+          };
+          localStorage.setItem("token", getToken());
           history.push("/");
+          window.location.reload();
         }
       }
     );
