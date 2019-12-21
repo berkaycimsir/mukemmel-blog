@@ -4,17 +4,19 @@ import { useQuery } from "react-apollo";
 import { GET_BLOG_BY_ID } from "../../graphql/Blog/query";
 import {
   GetBlogByIdReturnType,
-  GetBlogByIdVariables
+  GetBlogByIdVariables,
+  Props
 } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetails.interfaces";
 import Loading from "../../components/Loading/Loading";
 import Login from "../../components/Login/Login";
-import { Container, Image, Grid, Card, Divider } from "semantic-ui-react";
+import { Container, Grid } from "semantic-ui-react";
 import BlogDetailsCard from "./BlogDetailsCard";
 import PopularTab from "./PopularTab";
 import { Blog, User } from "../../@types/types/Blog";
 import LastBlogsTab from "./LastBlogsTab";
+import IfThereIsAnActiveUser from "../../components/Login/IfThereIsAnActiveUser";
 
-const BlogDetails: React.FC = () => {
+const BlogDetails: React.FC<Props> = ({ session }) => {
   const blogId: string = isBrowser && window.location.pathname.split("/")[3];
 
   const { data: getBlogByIdData, loading: getBlogByIdLoading } = useQuery<
@@ -34,7 +36,11 @@ const BlogDetails: React.FC = () => {
           <BlogDetailsCard blog={blog} user={user} />
         </Grid.Column>
         <Grid.Column width={5}>
-          <Login />
+          {session && session.activeUser.user !== null ? (
+            <IfThereIsAnActiveUser session={session} />
+          ) : (
+            <Login />
+          )}
           <LastBlogsTab />
           <PopularTab />
         </Grid.Column>

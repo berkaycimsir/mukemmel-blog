@@ -1,30 +1,110 @@
 import * as React from "react";
-import { Grid, Form, Segment, Button, Message } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useMutation } from "@apollo/react-hooks";
+import Error from "../../components/Error/Error";
+import { withRouter, RouteComponentProps } from "react-router-dom";
+import {
+  Input,
+  Button,
+  Form,
+  Segment,
+  Header,
+  Divider
+} from "semantic-ui-react";
+import {
+  Props,
+  ReturnData,
+  LoginVariables
+} from "../../@types/interfaces/PageInterfaces/Login/login.interfaces";
+import { LOGIN } from "../../graphql/User/mutations";
 
-const Login: React.FC = () => {
+const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const [login, { loading }] = useMutation<ReturnData, LoginVariables>(LOGIN);
+
+  const formValidate = (): boolean => {
+    return !username || !password;
+  };
+
+  const resetInputValues = (): void => {
+    setUsername("");
+    setPassword("");
+  };
+
+  const parseErrorMessage = (data: ReturnData | undefined): boolean => {
+    let error: any;
+    if (data !== undefined && data.login.errorMessage !== "No error.") {
+      error = data.login.errorMessage;
+      setErrorMessage(error);
+      return false;
+    } else {
+      error = null;
+      setErrorMessage(error);
+      return true;
+    }
+  };
+
+  const onClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    login({
+      variables: { username, password }
+    }).then(
+      async ({ data }): Promise<void> => {
+        resetInputValues();
+        const canLogin = parseErrorMessage(data);
+        setTimeout((): void => setErrorMessage(null), 2000);
+        if (canLogin === true) {
+          const getToken = (): string => {
+            return data && data !== undefined ? data.login.token.token : null;
+          };
+          localStorage.setItem("token", getToken());
+          window.location.reload();
+        }
+      }
+    );
+  };
+
   return (
-    <Grid>
-      <Grid.Column>
-        <Form>
-          <Segment color="teal">
-            <Form.Input fluid placeholder="E-mail address" />
-            <Form.Input fluid placeholder="Password" type="password" />
-
-            <Button basic color="teal" fluid size="large">
-              Giriş Yap
-            </Button>
-          </Segment>
-        </Form>
-        <Message color="teal">
-          Hesabın yok mu? &nbsp;
-          <NavLink to="/register" style={{ color: "teal" }}>
-            Giriş Yap
-          </NavLink>
-        </Message>
-      </Grid.Column>
-    </Grid>
+    <Segment padded color="purple">
+      <Header textAlign="center" content="Login" />
+      <Divider />
+      <Form>
+        <Input
+          style={{ marginTop: "15px" }}
+          type="text"
+          placeholder="username"
+          value={username}
+          fluid
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <Input
+          style={{ marginTop: "15px" }}
+          type="password"
+          placeholder="password"
+          value={password}
+          fluid
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <Error errorMessage={errorMessage} />
+        <Button
+          style={{ marginTop: "15px" }}
+          content={loading ? "Yükleniyor..." : "Giriş Yap"}
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e)}
+          basic
+          type="button"
+          color="purple"
+          disabled={formValidate()}
+        />
+      </Form>
+    </Segment>
   );
 };
 
-export default Login;
+export default withRouter(Login);

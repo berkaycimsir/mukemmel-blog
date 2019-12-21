@@ -38,7 +38,11 @@ const App: React.FC<Props> = ({ session }) => (
       <Route exact path="/" render={() => <Home />} />
       <Route exact path="/login" render={() => <LoginPage />} />
       <Route exact path="/signup" render={() => <SignUp />} />
-      <Route exact path="/blog/details/:id" render={() => <BlogDetails />} />
+      <Route
+        exact
+        path="/blog/details/:id"
+        render={() => <BlogDetails session={session} />}
+      />
       <Route exact path="/profile" render={() => <Profile />} />
       <Route exact path="*" render={() => <div>No page.</div>} />
     </Switch>

@@ -47,6 +47,11 @@
   font-size: 25px !important;
 }
 
+.if-active-user-meta {
+  margin-top: 3px !important;
+  font-size: 13px !important;
+}
+
 @media (max-width: 420px) {
   .blog-card-title {
     font-size: 10px !important;
@@ -62,5 +67,11 @@
 
   .blog-details-title {
     font-size: 15px !important;
+  }
+}
+
+@media (max-width: 780px) {
+  .if-active-user-title {
+    font-size: 13px !important;
   }
 }

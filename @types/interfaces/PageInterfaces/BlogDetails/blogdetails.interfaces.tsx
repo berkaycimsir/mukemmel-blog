@@ -1,5 +1,9 @@
 import { Blog, User } from "../../../types/Blog";
 
+export type Props = {
+  session: any;
+};
+
 interface IReturnData {
   blog: Blog;
   user: User;

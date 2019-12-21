@@ -3,7 +3,7 @@ const nextJS = require("next");
 
 async function start() {
   const dev = process.env.NODE_ENV !== "production";
-  const port = parseInt(process.env.PORT, 10) || 3000
+  const port = parseInt(process.env.PORT, 10) || 3000;
   const app = nextJS({ dev });
   const server = express();
   await app.prepare();

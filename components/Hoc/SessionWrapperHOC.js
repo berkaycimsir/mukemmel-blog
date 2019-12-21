@@ -5,7 +5,7 @@ import Loading from "../Loading/Loading";
 
 const SessionWrapperHOC = Component => props => (
   <Query query={GET_ACTIVE_USER}>
-    {({ data, loading, refetch }) => {
+    {({ data, loading }) => {
       if (loading) return <Loading size={100} />;
 
       return <Component session={data} {...props} />;
