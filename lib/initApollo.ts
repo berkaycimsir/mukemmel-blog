@@ -32,11 +32,9 @@ function create(initialState: any, { getToken }: Options) {
   });
 
   const authLink = setContext((_, { headers }) => {
-    const token = getToken();
     return {
       headers: {
-        ...headers,
-        cookie: token ? `qid=${token}` : ""
+        authorization: localStorage.getItem("token") || null
       }
     };
   });
