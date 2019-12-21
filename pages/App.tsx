@@ -4,10 +4,13 @@ import Home from "./Home/Home";
 import "../utils/css/index.css";
 import { Route, Switch } from "react-router-dom";
 import SessionWrapperHOC from "../components/Hoc/SessionWrapperHOC";
+
 // pages
 import BlogDetails from "./BlogDetails/BlogDetails";
 import LoginPage from "./Login/LoginPage";
 import SignUp from "./SignUp/SignUp";
+import Profile from "./Profile/Profile";
+
 // components
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
@@ -36,6 +39,7 @@ const App: React.FC<Props> = ({ session }) => (
       <Route exact path="/login" render={() => <LoginPage />} />
       <Route exact path="/signup" render={() => <SignUp />} />
       <Route exact path="/blog/details/:id" render={() => <BlogDetails />} />
+      <Route exact path="/profile" render={() => <Profile />} />
       <Route exact path="*" render={() => <div>No page.</div>} />
     </Switch>
     <Footer />

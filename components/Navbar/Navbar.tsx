@@ -19,12 +19,20 @@ const Navbar: React.FC<Props> = ({ session }) => {
         </Menu.Item>
       </NavLink>
       <Menu.Menu position="right">
-        <NavLink className="item" to="/signup">
-          <span>Sign Up</span>
-        </NavLink>
-        <NavLink className="item" to="/login">
-          <span>Login</span>
-        </NavLink>
+        {session && session.activeUser.user !== null ? (
+          <NavLink className="item" to="/profile">
+            <span>Profile</span>
+          </NavLink>
+        ) : (
+          <>
+            <NavLink className="item" to="/signup">
+              <span>Sign Up</span>
+            </NavLink>
+            <NavLink className="item" to="/login">
+              <span>Login</span>
+            </NavLink>
+          </>
+        )}
       </Menu.Menu>
     </Menu>
   );
