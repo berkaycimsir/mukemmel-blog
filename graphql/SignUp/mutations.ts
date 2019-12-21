@@ -26,3 +26,16 @@ export const REGISTER: any = gql`
     }
   }
 `;
+
+export const LOGIN: any = gql`
+  mutation($username: String!, $password: String!) {
+    login(data: { username: $username, password: $password }) {
+      user {
+        name
+        surname
+        username
+      }
+      errorMessage
+    }
+  }
+`;
