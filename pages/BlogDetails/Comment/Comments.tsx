@@ -54,7 +54,13 @@ const Comments: React.FC<Props & WindowSizeProps> = ({
         )}
         {comments.map(comment => {
           if (comment.user_id !== activeUser.id)
-            return <CommentItem activeUser={activeUser} comment={comment} />;
+            return (
+              <CommentItem
+                key={comment.id}
+                activeUser={activeUser}
+                comment={comment}
+              />
+            );
         })}
       </Comment.Group>
       {activeUser && activeUserComment === null ? (

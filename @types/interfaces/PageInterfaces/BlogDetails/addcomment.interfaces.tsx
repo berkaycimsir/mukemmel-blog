@@ -1,12 +1,12 @@
 import { Comment } from "../../../types/DatabaseTypes";
 
-interface AddCommentData {
+interface ReturnType {
   comment: Comment;
   errorMessage: string;
 }
 
-export interface ReturnData {
-  addComment: AddCommentData;
+export interface AddCommentReturnData {
+  addComment: ReturnType;
 }
 
 export interface AddCommentVariables {
