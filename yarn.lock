@@ -1035,6 +1035,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-window-size@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/react-window-size/-/react-window-size-1.2.0.tgz#76e74a43c3a8b0f139e13f0b66175ccd6feb5233"
+  integrity sha512-HSEJU6IcTn9t/OEUODPTQdJ0ZRWJOS2jeoiMLmwB6kw7OEJK6f2c4yv5DewX8lw0zmFuy8PazKZeExsVukwcRQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.9.15":
   version "16.9.16"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.16.tgz#4f12515707148b1f53a8eaa4341dae5dfefb066d"
@@ -1637,7 +1644,7 @@ babel-plugin-transform-react-remove-prop-types@0.4.24:
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-react-remove-prop-types/-/babel-plugin-transform-react-remove-prop-types-0.4.24.tgz#f2edaf9b4c6a5fbe5c1d678bfb531078c1555f3a"
   integrity sha512-eqj0hVcJUR57/Ug2zE1Yswsw4LhuqqHhD+8v120T1cl3kjg76QwtyBrdIk4WVwK+lAhBJVYCd/v+4nc4y+8JsA==
 
-babel-runtime@^6.26.0:
+babel-runtime@^6.26.0, babel-runtime@^6.6.1:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
@@ -5396,6 +5403,13 @@ react-spinners@^0.6.1:
   integrity sha512-bMCOvwAlzuIDC6Zh69E1EbyKUbvWSl4sMzLXOgnsF4Q/kkAnCNaonWyskMFytbaJSYxBCCOiaeCH2moDJ5y5Pg==
   dependencies:
     "@emotion/core" "^10.0.15"
+
+react-window-size@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/react-window-size/-/react-window-size-1.2.2.tgz#4fd71ba91c512550cf8a4275fadd02480bcdbb14"
+  integrity sha512-eJ906OEbNtEJHXSfZvqyKtrK4+duCHe6b2dECod1ZToXQzab9tgAJZS8x4F/eItYbg4HFp5BgDBtTJ75dMv/MA==
+  dependencies:
+    babel-runtime "^6.6.1"
 
 react@16.12.0:
   version "16.12.0"

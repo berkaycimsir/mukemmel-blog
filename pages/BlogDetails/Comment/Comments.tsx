@@ -1,10 +1,16 @@
 import * as React from "react";
+import windowSize, { WindowSizeProps } from "react-window-size";
 import {
   Props,
   GetCommentByUserIdReturnData,
   GetCommentByUserIdVariables
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/comments.interfaces";
-import { Comment, Divider, Message } from "semantic-ui-react";
+import {
+  Comment,
+  Divider,
+  Message,
+  StrictCommentGroupProps
+} from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
 import Loading from "../../../components/Loading/Loading";
@@ -13,7 +19,11 @@ import CommentItem from "./CommentItem";
 import AddComment from "./AddComment";
 import { NavLink } from "react-router-dom";
 
-const Comments: React.FC<Props> = ({ activeUser, comments }) => {
+const Comments: React.FC<Props & WindowSizeProps> = ({
+  windowWidth,
+  activeUser,
+  comments
+}) => {
   let activeUserComment: CommentType;
 
   if (activeUser) {
@@ -29,9 +39,13 @@ const Comments: React.FC<Props> = ({ activeUser, comments }) => {
     activeUserComment = data.getCommentByUserId.comment;
   }
 
+  const getCommentSize = (): StrictCommentGroupProps["size"] => {
+    if (windowWidth > 766) return "large";
+  };
+
   return (
     <>
-      <Comment.Group>
+      <Comment.Group size={getCommentSize()}>
         {activeUser && activeUserComment !== null && (
           <>
             <CommentItem activeUser={activeUser} comment={activeUserComment} />
@@ -66,4 +80,4 @@ const Comments: React.FC<Props> = ({ activeUser, comments }) => {
   );
 };
 
-export default Comments;
+export default windowSize(Comments);
