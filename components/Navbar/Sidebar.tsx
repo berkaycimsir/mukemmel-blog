@@ -1,13 +1,19 @@
 import * as React from "react";
 import { Sidebar, Menu, Icon, Ref, Image, Button } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
+import { User } from "../../@types/types/Blog";
 
 type Props = {
   isVisible: boolean;
   setIsVisible: any;
+  activeUser: User;
 };
 
-const SidebarMenu: React.FC<Props> = ({ isVisible, setIsVisible }) => {
+const SidebarMenu: React.FC<Props> = ({
+  activeUser,
+  isVisible,
+  setIsVisible
+}) => {
   return (
     <Sidebar
       as={Menu}
@@ -29,16 +35,32 @@ const SidebarMenu: React.FC<Props> = ({ isVisible, setIsVisible }) => {
           Home
         </NavLink>
       </Menu.Item>
-      <NavLink
-        onClick={() => setIsVisible(false)}
-        className="item"
-        to="/signup"
-      >
-        <span>Sign Up</span>
-      </NavLink>
-      <NavLink onClick={() => setIsVisible(false)} className="item" to="/login">
-        <span>Login</span>
-      </NavLink>
+      {activeUser ? (
+        <NavLink
+          onClick={() => setIsVisible(false)}
+          className="item"
+          to="/profile"
+        >
+          <span>Profile</span>
+        </NavLink>
+      ) : (
+        <>
+          <NavLink
+            onClick={() => setIsVisible(false)}
+            className="item"
+            to="/signup"
+          >
+            <span>Sign Up</span>
+          </NavLink>
+          <NavLink
+            onClick={() => setIsVisible(false)}
+            className="item"
+            to="/login"
+          >
+            <span>Login</span>
+          </NavLink>
+        </>
+      )}
     </Sidebar>
   );
 };

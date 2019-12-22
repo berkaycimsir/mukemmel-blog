@@ -34,7 +34,15 @@ const Navbar: React.FC<Props> = ({ session }) => {
               }
               onClick={() => setIsVisible(true)}
             />
-            <SidebarMenu isVisible={isVisible} setIsVisible={setIsVisible} />
+            <SidebarMenu
+              activeUser={
+                session &&
+                session.activeUser !== null &&
+                session.activeUser.user
+              }
+              isVisible={isVisible}
+              setIsVisible={setIsVisible}
+            />
           </>
         ) : (
           <NavLink to="/">
