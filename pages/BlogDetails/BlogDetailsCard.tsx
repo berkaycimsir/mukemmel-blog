@@ -2,8 +2,8 @@ import * as React from "react";
 import { Card, Divider, Image } from "semantic-ui-react";
 import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
 import Moment from "react-moment";
-import Comments from "./Comments";
-import NoCommentsMessage from "./NoCommentsMessage";
+import Comments from "./Comment/Comments";
+import NoCommentsMessage from "./Comment/NoCommentsMessage";
 
 const BlogDetailsCard: React.FC<Props> = ({
   activeUser,

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/commentitem.interfaces";
+import { Props } from "../../../@types/interfaces/PageInterfaces/BlogDetails/commentitem.interfaces";
 import { Comment } from "semantic-ui-react";
 import Moment from "react-moment";
 
