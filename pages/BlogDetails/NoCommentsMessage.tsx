@@ -3,11 +3,11 @@ import { Message } from "semantic-ui-react";
 
 const NoCommentsMessage: React.FC = () => (
   <Message color="red">
-    <Message.Header>No Comments!</Message.Header>
+    <Message.Header>Burada Hiç Yorum Yok!</Message.Header>
     <Message.Content>
-      There are no comments for this blog post.
+      Bu blog için hiç yorum yapılmamış!
       <br />
-      Let's add one!
+      Yorum yapmaya ne dersin?
     </Message.Content>
   </Message>
 );
