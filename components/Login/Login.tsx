@@ -2,14 +2,15 @@ import * as React from "react";
 import { useState } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import Error from "../../components/Error/Error";
-import { withRouter, RouteComponentProps } from "react-router-dom";
+import { withRouter, RouteComponentProps, NavLink } from "react-router-dom";
 import {
   Input,
   Button,
   Form,
   Segment,
   Header,
-  Divider
+  Divider,
+  Message
 } from "semantic-ui-react";
 import {
   Props,
@@ -75,7 +76,7 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
         <Input
           style={{ marginTop: "15px" }}
           type="text"
-          placeholder="username"
+          placeholder="kullanıcı adı (username)"
           value={username}
           fluid
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,7 +86,7 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
         <Input
           style={{ marginTop: "15px" }}
           type="password"
-          placeholder="password"
+          placeholder="şifre (password)"
           value={password}
           fluid
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,6 +103,15 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           color="purple"
           disabled={formValidate()}
         />
+        <Divider />
+        <Message>
+          <Message.Content>
+            Hesabın Yok Mu ?{" "}
+            <NavLink to="/signup">
+              <b>Kayıt Ol</b>
+            </NavLink>
+          </Message.Content>
+        </Message>
       </Form>
     </Segment>
   );

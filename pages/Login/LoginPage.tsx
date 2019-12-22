@@ -73,13 +73,13 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   return (
     <Container centered="true" style={{ marginTop: "50px" }}>
       <Segment padded color="teal">
-        <Header textAlign="center" content="Login" />
+        <Header textAlign="center" content="Giriş Yap" />
         <Divider />
         <Form>
           <Input
             style={{ marginTop: "15px" }}
             type="text"
-            placeholder="username"
+            placeholder="kullanıcı adı (username)"
             value={username}
             fluid
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -89,7 +89,7 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           <Input
             style={{ marginTop: "15px" }}
             type="password"
-            placeholder="password"
+            placeholder="şifre (password)"
             value={password}
             fluid
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {

@@ -105,12 +105,12 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   return (
     <Container centered="true" style={{ marginTop: "50px" }}>
       <Segment padded color="purple">
-        <Header textAlign="center" content="Sign Up" />
+        <Header textAlign="center" content="Kayıt Ol" />
         <Divider />
         <Form>
           <Input
             type="text"
-            placeholder="name"
+            placeholder="ad (name)"
             value={name}
             fluid
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -120,7 +120,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           <Input
             style={{ marginTop: "15px" }}
             type="text"
-            placeholder="surname"
+            placeholder="soyad (surname)"
             value={surname}
             fluid
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,7 +130,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           <Input
             style={{ marginTop: "15px" }}
             type="text"
-            placeholder="Username"
+            placeholder="kullanıcı adı (username)"
             value={username}
             fluid
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -150,7 +150,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           <Input
             style={{ marginTop: "15px" }}
             type="password"
-            placeholder="password"
+            placeholder="şifre (password)"
             value={password}
             fluid
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
@@ -163,7 +163,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
                 setMenGender(!menGender);
                 setWomenGender(false);
               }}
-              label="Men"
+              label="Erkek (men)"
               value="men"
               checked={menGender}
             />{" "}
@@ -173,7 +173,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
                 setWomenGender(!womenGender);
                 setMenGender(false);
               }}
-              label="Women"
+              label="Kadın (women)"
               value="women"
               checked={womenGender}
             />
@@ -181,7 +181,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           <Error errorMessage={errorMessage} />
           <Button
             style={{ marginTop: "15px" }}
-            content={loading ? "Loading..." : "Register"}
+            content={loading ? "Yükleniyor..." : "Kayıt Ol"}
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e)}
             type="button"
             color="purple"
