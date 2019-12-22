@@ -11,7 +11,7 @@ const IfThereIsAnActiveUser: React.FC<Props> = ({ session }) => {
   const { name, surname, username, createdAt } = session.activeUser.user;
 
   return (
-    <Segment color="blue" fluid className="blog-card">
+    <Segment color="blue" className="blog-card">
       <Card.Content>
         <Header textAlign="center" className="if-active-user-title">
           Hoşgeldin, {name} {surname}

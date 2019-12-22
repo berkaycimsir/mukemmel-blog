@@ -1,4 +1,8 @@
-import { Comment } from "../../../types/DatabaseTypes";
+import { Comment, User } from "../../../types/DatabaseTypes";
+
+export type Props = {
+  activeUser: User;
+};
 
 interface ReturnType {
   comment: Comment;
@@ -6,7 +10,7 @@ interface ReturnType {
 }
 
 export interface AddCommentReturnData {
-  addComment: ReturnType;
+  createComment: ReturnType;
 }
 
 export interface AddCommentVariables {

@@ -55,16 +55,15 @@ const Comments: React.FC<Props & WindowSizeProps> = ({
         {comments.map(comment => {
           if (comment.user_id !== activeUser.id)
             return (
-              <CommentItem
-                key={comment.id}
-                activeUser={activeUser}
-                comment={comment}
-              />
+              <React.Fragment key={comment.id}>
+                <CommentItem activeUser={activeUser} comment={comment} />
+                <Divider />
+              </React.Fragment>
             );
         })}
       </Comment.Group>
       {activeUser && activeUserComment === null ? (
-        <AddComment />
+        <AddComment activeUser={activeUser} />
       ) : activeUser && activeUserComment !== null ? null : (
         <Message color="brown">
           <Message.Header>Yorum yapmak için giriş yapınız!</Message.Header>

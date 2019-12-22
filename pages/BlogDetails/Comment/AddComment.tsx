@@ -4,29 +4,43 @@ import { Form, Button } from "semantic-ui-react";
 import { useMutation } from "react-apollo";
 import {
   AddCommentReturnData,
-  AddCommentVariables
+  AddCommentVariables,
+  Props
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/addcomment.interfaces";
 import { ADD_COMMENT } from "../../../graphql/Comment/mutation";
-import { GET_BLOG_BY_ID } from "../../../graphql/Blog/query";
+import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
 
-const AddComment: React.FC = () => {
+const AddComment: React.FC<Props> = ({ activeUser }) => {
   const [content, setContent] = useState<string>("");
+  const blogId: string = window.location.pathname.split("/")[3];
 
-  const [addComment, { loading }] = useMutation<
+  const [createComment, { loading }] = useMutation<
     AddCommentReturnData,
     AddCommentVariables
   >(ADD_COMMENT, {
     refetchQueries: [
       {
-        query: GET_BLOG_BY_ID,
-        variables: { id: window.location.pathname.split("/")[3] }
+        query: GET_COMMENT_BY_USER_ID,
+        variables: { user_id: activeUser.id }
       }
     ]
   });
 
+  const formValidate: Function = (): boolean => !content;
+
+  const resetValues: Function = (): void => setContent("");
+
+  const onSubmit: Function = (e: React.FormEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    createComment({
+      variables: { blog_id: blogId, user_id: activeUser.id, content }
+    }).then(() => resetValues());
+  };
+
   return (
-    <Form reply>
+    <Form onSubmit={(e: React.FormEvent<HTMLFormElement>) => onSubmit(e)} reply>
       <Form.TextArea
+        disabled={loading}
         style={{ minHeight: "15em" }}
         placeholder="Enter your comment here..."
         value={content}
@@ -34,7 +48,13 @@ const AddComment: React.FC = () => {
           setContent(e.target.value);
         }}
       />
-      <Button content="Add Comment" primary />
+      <Button
+        loading={loading}
+        disabled={loading || formValidate()}
+        type="submit"
+        content="Add Comment"
+        primary
+      />
     </Form>
   );
 };
