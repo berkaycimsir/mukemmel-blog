@@ -40,7 +40,7 @@
 }
 
 .blog-card-title {
-  font-size: 15px !important;
+  font-size: 13px !important;
 }
 
 .blog-details-title {
@@ -54,7 +54,7 @@
 
 @media (max-width: 420px) {
   .blog-card-title {
-    font-size: 8px !important;
+    font-size: 10px !important;
   }
 
   h1 {
@@ -72,6 +72,6 @@
 
 @media (max-width: 780px) {
   .if-active-user-title {
-    font-size: 13px !important;
+    font-size: 17px !important;
   }
 }

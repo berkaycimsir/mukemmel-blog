@@ -94,6 +94,7 @@ export const GET_BLOG_BY_ID = gql`
           likes
           createdAt
           user {
+            id
             name
             surname
             username
