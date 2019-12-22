@@ -28,12 +28,13 @@ const BlogDetails: React.FC<Props> = ({ session }) => {
 
   const blog: Blog = getBlogByIdData.blog.blog;
   const user: User = getBlogByIdData.blog.blog.user;
+  const comments: Array<Comment> = getBlogByIdData.blog.comments;
 
   return (
     <Container style={{ maxWidth: "1440px" }}>
       <Grid columns={2} stackable>
         <Grid.Column width={11}>
-          <BlogDetailsCard blog={blog} user={user} />
+          <BlogDetailsCard comments={comments} blog={blog} user={user} />
         </Grid.Column>
         <Grid.Column width={5}>
           {session && session.activeUser.user !== null ? (
