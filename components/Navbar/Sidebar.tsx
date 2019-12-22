@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Sidebar, Menu, Icon, Ref, Image, Button } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
-import { User } from "../../@types/types/Blog";
+import { User } from "../../@types/types/DatabaseTypes";
 
 type Props = {
   isVisible: boolean;

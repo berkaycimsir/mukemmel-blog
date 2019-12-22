@@ -1,4 +1,4 @@
-import { User } from "../../../types/Blog";
+import { User } from "../../../types/DatabaseTypes";
 
 export interface Props {
   history: any;

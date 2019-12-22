@@ -1,4 +1,4 @@
-import { Blog } from "../../../types/Blog";
+import { Blog } from "../../../types/DatabaseTypes";
 
 export type BlogCardProps = {
   blog: Blog;

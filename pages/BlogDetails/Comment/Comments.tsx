@@ -14,7 +14,7 @@ import {
 import { useQuery } from "react-apollo";
 import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
 import Loading from "../../../components/Loading/Loading";
-import { Comment as CommentType } from "../../../@types/types/Blog";
+import { Comment as CommentType } from "../../../@types/types/DatabaseTypes";
 import CommentItem from "./CommentItem";
 import AddComment from "./AddComment";
 import { NavLink } from "react-router-dom";

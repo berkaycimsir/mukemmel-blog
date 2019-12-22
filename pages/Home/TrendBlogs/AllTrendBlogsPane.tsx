@@ -11,7 +11,7 @@ import {
 } from "../../../graphql/Blog/query";
 import Loading from "../../../components/Loading/Loading";
 import BlogCard from "../BlogCard";
-import { Blog } from "../../../@types/types/Blog";
+import { Blog } from "../../../@types/types/DatabaseTypes";
 
 const AllTrendBlogsPane: React.FC = () => {
   const { data: getTrendBlogsData, loading: getTrendBlogsLoading } = useQuery<

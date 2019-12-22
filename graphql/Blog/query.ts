@@ -89,7 +89,6 @@ export const GET_BLOG_BY_ID = gql`
           id
           blog_id
           user_id
-          title
           content
           likes
           createdAt
