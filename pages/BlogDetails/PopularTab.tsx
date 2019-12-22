@@ -1,15 +1,20 @@
 import * as React from "react";
-import { Card, Divider } from "semantic-ui-react";
+import { Card, Divider, Segment, Header } from "semantic-ui-react";
 import Popular from "./Popular";
 
 const PopularTab: React.FC = () => (
-  <Card className="blog-card" style={{ marginTop: "20px" }} fluid color="teal">
+  <Segment
+    className="blog-card"
+    style={{ marginTop: "20px" }}
+    fluid
+    color="blue"
+  >
     <Card.Content>
-      <Card.Header style={{ marginTop: "3px" }}>Popüler</Card.Header>
+      <Header style={{ marginTop: "3px" }}>Popüler</Header>
       <Divider />
       <Popular />
     </Card.Content>
-  </Card>
+  </Segment>
 );
 
 export default PopularTab;

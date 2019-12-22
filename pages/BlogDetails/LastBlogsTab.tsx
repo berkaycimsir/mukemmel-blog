@@ -1,15 +1,20 @@
 import * as React from "react";
-import { Card, Divider } from "semantic-ui-react";
+import { Card, Divider, Segment, Header } from "semantic-ui-react";
 import LastBlogs from "./LastBlogs";
 
 const LastBlogsTab: React.FC = () => (
-  <Card className="blog-card" style={{ marginTop: "20px" }} fluid color="teal">
+  <Segment
+    className="blog-card"
+    style={{ marginTop: "20px" }}
+    fluid
+    color="teal"
+  >
     <Card.Content>
-      <Card.Header style={{ marginTop: "3px" }}>Son Eklenen</Card.Header>
+      <Header style={{ marginTop: "3px" }}>Son Eklenen</Header>
       <Divider />
       <LastBlogs />
     </Card.Content>
-  </Card>
+  </Segment>
 );
 
 export default LastBlogsTab;

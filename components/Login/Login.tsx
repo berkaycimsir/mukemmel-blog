@@ -68,7 +68,7 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   };
 
   return (
-    <Segment padded color="purple">
+    <Segment className="blog-card" padded color="purple">
       <Header textAlign="center" content="Login" />
       <Divider />
       <Form>
