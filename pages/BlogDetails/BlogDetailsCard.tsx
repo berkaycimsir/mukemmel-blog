@@ -35,6 +35,7 @@ const BlogDetailsCard: React.FC<Props> = ({ comments, blog, user }) => {
         />
       </Card.Content>
       <Card.Content extra>
+        {!comments || (comments.length === 0 && <div>no comments.</div>)}
         <Comments comments={comments} />
       </Card.Content>
     </Card>
