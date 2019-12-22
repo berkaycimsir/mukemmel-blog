@@ -3,7 +3,7 @@ import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/commen
 import { Comment, Icon } from "semantic-ui-react";
 import Moment from "react-moment";
 
-const Comments: React.FC<Props> = ({ comments }) => {
+const Comments: React.FC<Props> = ({ activeUser, comments }) => {
   const menGenderImageUrls: Array<string> = [
     "https://react.semantic-ui.com/images/avatar/small/matt.jpg",
     "https://react.semantic-ui.com/images/avatar/small/elliot.jpg",
@@ -39,7 +39,8 @@ const Comments: React.FC<Props> = ({ comments }) => {
           />
           <Comment.Content>
             <Comment.Author>
-              {comment.user.name} {comment.user.surname}
+              {comment.user.name} {comment.user.surname}{" "}
+              {activeUser.name === comment.user.name && "(your comment)"}
             </Comment.Author>
             <Comment.Metadata>
               <div>

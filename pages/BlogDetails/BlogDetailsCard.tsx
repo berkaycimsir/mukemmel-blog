@@ -3,8 +3,14 @@ import { Card, Divider, Image } from "semantic-ui-react";
 import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
 import Moment from "react-moment";
 import Comments from "./Comments";
+import NoCommentsMessage from "./NoCommentsMessage";
 
-const BlogDetailsCard: React.FC<Props> = ({ comments, blog, user }) => {
+const BlogDetailsCard: React.FC<Props> = ({
+  activeUser,
+  comments,
+  blog,
+  user
+}) => {
   const { id, title, content, img, views, tags, likes, createdAt } = blog;
   const { username } = user;
 
@@ -35,8 +41,8 @@ const BlogDetailsCard: React.FC<Props> = ({ comments, blog, user }) => {
         />
       </Card.Content>
       <Card.Content extra>
-        {!comments || (comments.length === 0 && <div>no comments.</div>)}
-        <Comments comments={comments} />
+        {!comments || (comments.length === 0 && <NoCommentsMessage />)}
+        <Comments activeUser={activeUser} comments={comments} />
       </Card.Content>
     </Card>
   );

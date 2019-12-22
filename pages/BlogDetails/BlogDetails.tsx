@@ -34,7 +34,16 @@ const BlogDetails: React.FC<Props> = ({ session }) => {
     <Container style={{ maxWidth: "1440px" }}>
       <Grid columns={2} stackable>
         <Grid.Column width={11}>
-          <BlogDetailsCard comments={comments} blog={blog} user={user} />
+          <BlogDetailsCard
+            activeUser={
+              session &&
+              session.activeUser.user !== null &&
+              session.activeUser.user
+            }
+            comments={comments}
+            blog={blog}
+            user={user}
+          />
         </Grid.Column>
         <Grid.Column width={5}>
           {session && session.activeUser.user !== null ? (
