@@ -7,6 +7,7 @@ export const REGISTER: any = gql`
     $username: String!
     $email: String!
     $password: String!
+    $gender: String!
   ) {
     register(
       data: {
@@ -15,6 +16,7 @@ export const REGISTER: any = gql`
         username: $username
         email: $email
         password: $password
+        gender: $gender
       }
     ) {
       token {

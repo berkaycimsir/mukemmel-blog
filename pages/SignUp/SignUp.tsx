@@ -11,7 +11,8 @@ import {
   Card,
   Segment,
   Header,
-  Divider
+  Divider,
+  Checkbox
 } from "semantic-ui-react";
 import {
   Props,
@@ -26,6 +27,8 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const [username, setUsername] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [menGender, setMenGender] = useState<boolean>(false);
+  const [womenGender, setWomenGender] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const [register, { loading }] = useMutation<ReturnData, RegisterVariables>(
@@ -33,7 +36,14 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   );
 
   const formValidate = (): boolean => {
-    return !name || !surname || !username || !email || !password;
+    return (
+      !name ||
+      !surname ||
+      !username ||
+      !email ||
+      !password ||
+      (!menGender && !womenGender)
+    );
   };
 
   const resetInputValues = (): void => {
@@ -42,6 +52,8 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     setUsername("");
     setEmail("");
     setPassword("");
+    setMenGender(false);
+    setWomenGender(false);
   };
 
   const parseErrorMessage = (data: ReturnData | undefined): boolean => {
@@ -60,7 +72,15 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const onClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
     register({
-      variables: { name, surname, username, email, password }
+      variables: {
+        name,
+        surname,
+        username,
+        email,
+        password,
+        gender:
+          (menGender === true && "men") || (womenGender === true && "women")
+      }
     }).then(
       async ({ data }): Promise<void> => {
         resetInputValues();
@@ -137,6 +157,27 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
               setPassword(e.target.value);
             }}
           />
+          <div style={{ marginTop: "15px" }}>
+            <Checkbox
+              onClick={() => {
+                setMenGender(!menGender);
+                setWomenGender(false);
+              }}
+              label="Men"
+              value="men"
+              checked={menGender}
+            />{" "}
+            &nbsp;
+            <Checkbox
+              onClick={() => {
+                setWomenGender(!womenGender);
+                setMenGender(false);
+              }}
+              label="Women"
+              value="women"
+              checked={womenGender}
+            />
+          </div>
           <Error errorMessage={errorMessage} />
           <Button
             style={{ marginTop: "15px" }}
