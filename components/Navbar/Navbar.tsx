@@ -21,7 +21,7 @@ const Navbar: React.FC<Props> = ({ session }) => {
     <Menu stackable className="navbar" size="small">
       {console.log(session)}
       <Menu.Item>
-        {windowWidth <= 766 ? (
+        {windowWidth <= 766.9 ? (
           <>
             <Button
               basic
@@ -52,14 +52,16 @@ const Navbar: React.FC<Props> = ({ session }) => {
             <span>Profile</span>
           </NavLink>
         ) : (
-          <>
-            <NavLink className="item" to="/signup">
-              <span>Sign Up</span>
-            </NavLink>
-            <NavLink className="item" to="/login">
-              <span>Login</span>
-            </NavLink>
-          </>
+          windowWidth > 767 && (
+            <>
+              <NavLink className="item" to="/signup">
+                <span>Sign Up</span>
+              </NavLink>
+              <NavLink className="item" to="/login">
+                <span>Login</span>
+              </NavLink>
+            </>
+          )
         )}
       </Menu.Menu>
     </Menu>

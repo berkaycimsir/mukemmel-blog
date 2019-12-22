@@ -19,21 +19,26 @@ const SidebarMenu: React.FC<Props> = ({ isVisible, setIsVisible }) => {
       visible={isVisible}
     >
       <Menu.Item
-        style={{ fontSize: "18px" }}
-        as="a"
+        style={{ fontSize: "15px" }}
         onClick={() => setIsVisible(false)}
       >
         X
       </Menu.Item>
-      <NavLink onClick={() => setIsVisible(false)} to="/">
-        <Menu.Item>Home</Menu.Item>
+      <Menu.Item className="home-nav-link">
+        <NavLink onClick={() => setIsVisible(false)} to="/">
+          Home
+        </NavLink>
+      </Menu.Item>
+      <NavLink
+        onClick={() => setIsVisible(false)}
+        className="item"
+        to="/signup"
+      >
+        <span>Sign Up</span>
       </NavLink>
-      <Menu.Item onClick={() => setIsVisible(false)} as="a">
-        Games
-      </Menu.Item>
-      <Menu.Item onClick={() => setIsVisible(false)} as="a">
-        Channels
-      </Menu.Item>
+      <NavLink onClick={() => setIsVisible(false)} className="item" to="/login">
+        <span>Login</span>
+      </NavLink>
     </Sidebar>
   );
 };

@@ -70,7 +70,7 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
 
   return (
     <Segment className="blog-card" padded color="purple">
-      <Header textAlign="center" content="Login" />
+      <Header textAlign="center" content="Giriş Yap" />
       <Divider />
       <Form>
         <Input

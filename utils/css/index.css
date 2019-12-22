@@ -52,6 +52,11 @@
   font-size: 13px !important;
 }
 
+.home-nav-link:hover {
+  background: rgba(255, 255, 255, .08) !important;
+  color: #fff !important;
+}
+
 @media (max-width: 420px) {
   .blog-card-title {
     font-size: 10px !important;

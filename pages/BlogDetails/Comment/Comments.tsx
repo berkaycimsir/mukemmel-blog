@@ -45,7 +45,7 @@ const Comments: React.FC<Props> = ({ activeUser, comments }) => {
       </Comment.Group>
       {activeUser && activeUserComment === null ? (
         <AddComment />
-      ) : (
+      ) : activeUser && activeUserComment !== null ? null : (
         <Message color="brown">
           <Message.Header>Yorum yapmak için giriş yapınız!</Message.Header>
           <Divider />
