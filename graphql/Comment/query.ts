@@ -12,6 +12,7 @@ export const GET_COMMENT_BY_USER_ID = gql`
           name
           surname
           username
+          gender
         }
       }
       errorMessage

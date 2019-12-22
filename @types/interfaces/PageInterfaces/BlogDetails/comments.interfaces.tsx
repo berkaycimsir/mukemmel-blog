@@ -13,3 +13,7 @@ type returnType = {
 export type GetCommentByUserIdReturnData = {
   getCommentByUserId: returnType;
 };
+
+export type GetCommentByUserIdVariables = {
+  user_id: string;
+};
