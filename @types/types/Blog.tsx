@@ -29,4 +29,5 @@ export type Comment = {
   content: string;
   likes: number;
   createdAt: Date;
+  user: User;
 };

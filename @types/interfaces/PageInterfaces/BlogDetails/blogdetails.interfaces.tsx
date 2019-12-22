@@ -1,4 +1,4 @@
-import { Blog, User } from "../../../types/Blog";
+import { Blog, User, Comment } from "../../../types/Blog";
 
 export type Props = {
   session: any;
@@ -7,7 +7,7 @@ export type Props = {
 interface IReturnData {
   blog: Blog;
   user: User;
-  comments: [Comment];
+  comments: Array<Comment>;
   errorMessage: string;
 }
 

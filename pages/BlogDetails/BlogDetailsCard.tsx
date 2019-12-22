@@ -2,8 +2,9 @@ import * as React from "react";
 import { Card, Divider, Image } from "semantic-ui-react";
 import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
 import Moment from "react-moment";
+import Comments from "./Comments";
 
-const BlogDetailsCard: React.FC<Props> = ({ blog, user }) => {
+const BlogDetailsCard: React.FC<Props> = ({ comments, blog, user }) => {
   const { id, title, content, img, views, tags, likes, createdAt } = blog;
   const { username } = user;
 
@@ -20,6 +21,12 @@ const BlogDetailsCard: React.FC<Props> = ({ blog, user }) => {
           </span>
           <span style={{ float: "right" }}>@{username}</span>
         </Card.Meta>
+        <Card.Meta>
+          <span style={{ fontSize: "13px", opacity: ".7" }}>
+            {sortedTags.map(tag => ` #${tag}`)} ...
+          </span>
+          <span style={{ float: "right" }}>{views} görüntülenme</span>
+        </Card.Meta>
 
         <Divider />
         <Card.Description
@@ -28,8 +35,7 @@ const BlogDetailsCard: React.FC<Props> = ({ blog, user }) => {
         />
       </Card.Content>
       <Card.Content extra>
-        {sortedTags.map(tag => ` #${tag}`)} ...
-        <span style={{ float: "right" }}>{views} görüntülenme</span>
+        <Comments comments={comments} />
       </Card.Content>
     </Card>
   );

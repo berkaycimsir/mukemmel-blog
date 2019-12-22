@@ -86,8 +86,18 @@ export const GET_BLOG_BY_ID = gql`
           username
         }
         comments {
+          id
+          blog_id
+          user_id
           title
           content
+          likes
+          createdAt
+          user {
+            name
+            surname
+            username
+          }
         }
       }
       errorMessage

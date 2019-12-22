@@ -12,7 +12,7 @@ import Login from "../../components/Login/Login";
 import { Container, Grid } from "semantic-ui-react";
 import BlogDetailsCard from "./BlogDetailsCard";
 import PopularTab from "./PopularTab";
-import { Blog, User } from "../../@types/types/Blog";
+import { Blog, User, Comment } from "../../@types/types/Blog";
 import LastBlogsTab from "./LastBlogsTab";
 import IfThereIsAnActiveUser from "../../components/Login/IfThereIsAnActiveUser";
 
@@ -28,7 +28,7 @@ const BlogDetails: React.FC<Props> = ({ session }) => {
 
   const blog: Blog = getBlogByIdData.blog.blog;
   const user: User = getBlogByIdData.blog.blog.user;
-  const comments: Array<Comment> = getBlogByIdData.blog.comments;
+  const comments: Array<Comment> = getBlogByIdData.blog.blog.comments;
 
   return (
     <Container style={{ maxWidth: "1440px" }}>
