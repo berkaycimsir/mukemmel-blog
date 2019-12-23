@@ -3,6 +3,7 @@ import { Props } from "../../../@types/interfaces/PageInterfaces/BlogDetails/com
 import { Comment } from "semantic-ui-react";
 import Moment from "react-moment";
 import DeleteComment from "./DeleteComment";
+import UpdateComment from "./UpdateComment";
 
 const CommentItem: React.FC<Props> = ({
   activeUserDeleteComment,
@@ -39,6 +40,11 @@ const CommentItem: React.FC<Props> = ({
         {activeUserDeleteComment === true && (
           <Comment.Action>
             <DeleteComment
+              blog_id={comment.blog_id}
+              id={comment.id}
+              user_id={comment.user.id}
+            />
+            <UpdateComment
               blog_id={comment.blog_id}
               id={comment.id}
               user_id={comment.user.id}
