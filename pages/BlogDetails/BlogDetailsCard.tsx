@@ -4,6 +4,7 @@ import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogde
 import Moment from "react-moment";
 import Comments from "./Comment/Comments";
 import NoCommentsMessage from "./Comment/NoCommentsMessage";
+import { RemoveRedEye, WatchLater } from "@material-ui/icons";
 
 const BlogDetailsCard: React.FC<Props> = ({
   activeUser,
@@ -22,18 +23,19 @@ const BlogDetailsCard: React.FC<Props> = ({
       <Card.Content>
         <h1 className="blog-details-title">{title} </h1>
         <Card.Meta>
-          <span style={{ fontSize: "13px", opacity: ".7" }}>
+          <WatchLater fontSize="small" />
+          <span style={{ opacity: ".9" }}>
             <Moment toNow ago date={createdAt} /> ago
           </span>
           <span style={{ float: "right" }}>@{username}</span>
         </Card.Meta>
         <Card.Meta>
-          <span style={{ fontSize: "13px", opacity: ".7" }}>
+          <span style={{ opacity: ".9" }}>
             {sortedTags.map(tag => ` #${tag}`)} ...
           </span>
-          <span style={{ float: "right" }}>{views} görüntülenme</span>
+          <span style={{ float: "right", marginLeft: "2px" }}>{views}</span>
+          <RemoveRedEye style={{ float: "right" }} />
         </Card.Meta>
-
         <Divider />
         <Card.Description
           dangerouslySetInnerHTML={{ __html: content }}

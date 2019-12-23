@@ -32,7 +32,7 @@ const AllTrendBlogsPane: React.FC = () => {
   return (
     <Grid columns={2} doubling>
       <Grid.Column width={8}>
-        <BlogCard blog={mostTrendBlog} />
+        <BlogCard user={mostTrendBlog.user} blog={mostTrendBlog} />
       </Grid.Column>
       <Grid.Column>
         <Grid columns={4} doubling>
@@ -40,7 +40,7 @@ const AllTrendBlogsPane: React.FC = () => {
             if (blog.title !== mostTrendBlog.title) {
               return (
                 <Grid.Column key={blog.id} widescreen={8}>
-                  <BlogCard key={blog.id} blog={blog} />
+                  <BlogCard user={blog.user} key={blog.id} blog={blog} />
                 </Grid.Column>
               );
             }

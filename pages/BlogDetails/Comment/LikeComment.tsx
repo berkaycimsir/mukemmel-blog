@@ -8,19 +8,11 @@ import {
 import { useMutation } from "react-apollo";
 import { LIKE_COMMENT } from "../../../graphql/Comment/mutation";
 import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
+import { Favorite, FavoriteBorder, Loop } from "@material-ui/icons";
+import { Popup } from "semantic-ui-react";
 
 const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
-
-  const getImgUrl: Function = (): string => {
-    if (!loading) {
-      if (isLiked === true) {
-        return "https://img.icons8.com/dusk/25/000000/like.png";
-      }
-      return "https://img.icons8.com/wired/25/000000/like.png";
-    }
-    return "https://img.icons8.com/material-sharp/25/000000/loading.png";
-  };
 
   const [likeComment, { loading }] = useMutation<
     LikeCommentReturnData,
@@ -33,7 +25,7 @@ const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
   });
 
   const onLikeComment: Function = (
-    e: React.MouseEvent<HTMLImageElement>
+    e: React.MouseEvent<SVGSVGElement>
   ): void => {
     if (!loading) {
       e.preventDefault();
@@ -43,11 +35,35 @@ const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
   };
 
   return (
-    <img
-      style={{ marginLeft: "3px" }}
-      onClick={(e: React.MouseEvent<HTMLImageElement>) => onLikeComment(e)}
-      src={getImgUrl()}
-    />
+    <>
+      {loading ? (
+        <Loop />
+      ) : (
+        <Popup
+          trigger={
+            isLiked ? (
+              <Favorite
+                htmlColor="red"
+                style={{ marginLeft: "3px" }}
+                onClick={(e: React.MouseEvent<SVGSVGElement>) =>
+                  onLikeComment(e)
+                }
+              />
+            ) : (
+              <FavoriteBorder
+                htmlColor="red"
+                style={{ marginLeft: "3px" }}
+                onClick={(e: React.MouseEvent<SVGSVGElement>) =>
+                  onLikeComment(e)
+                }
+              />
+            )
+          }
+          content={isLiked ? "Beğenmekten vazgeç!" : "Yorumu beğen!"}
+          size="small"
+        />
+      )}
+    </>
   );
 };
 

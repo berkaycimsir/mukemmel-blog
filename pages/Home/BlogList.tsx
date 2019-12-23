@@ -17,7 +17,7 @@ const BlogList: React.FC = () => {
     <>
       <Grid stackable centered columns={4}>
         {data.getLastFourBlog.map(blog => (
-          <BlogCard key={blog.id} blog={blog} />
+          <BlogCard user={blog.user} key={blog.id} blog={blog} />
         ))}
       </Grid>
     </>

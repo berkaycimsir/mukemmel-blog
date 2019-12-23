@@ -1,11 +1,12 @@
 import * as React from "react";
 import { useState } from "react";
 import { Props } from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/commentitem.interfaces";
-import { Comment, Button } from "semantic-ui-react";
+import { Comment, Popup } from "semantic-ui-react";
 import Moment from "react-moment";
 import DeleteComment from "./DeleteComment";
 import UpdateComment from "./UpdateComment";
 import LikeComment from "./LikeComment";
+import { EditOutlined, FavoriteBorderOutlined } from "@material-ui/icons";
 
 const CommentItem: React.FC<Props> = ({
   activeUserDeleteComment,
@@ -32,13 +33,13 @@ const CommentItem: React.FC<Props> = ({
       <Comment.Content>
         <Comment.Author>
           {comment.user.name} {comment.user.surname}{" "}
-          {activeUser.id === comment.user_id && "(your comment)"}
+          {activeUser.id === comment.user.id && "(your comment)"}
         </Comment.Author>
         <Comment.Metadata>
           <div>
             <Moment date={comment.createdAt} fromNow ago /> ago
           </div>
-          <div>{comment.likes} likes</div>
+          <div>{comment.likes} beğeni</div>
         </Comment.Metadata>
         <Comment.Text>{comment.content}</Comment.Text>
         <Comment.Action>
@@ -49,13 +50,16 @@ const CommentItem: React.FC<Props> = ({
                 id={comment.id}
                 user_id={comment.user.id}
               />
-              <Button
-                style={{ marginLeft: "3px" }}
-                onClick={() => setIsUpdating(!isUpdating)}
-                size="mini"
-                color="green"
-                basic
-                content={isUpdating ? "Vazgeç" : "Güncelle"}
+              <Popup
+                content="Yorumunu güncelle!"
+                size="small"
+                trigger={
+                  <EditOutlined
+                    style={{ marginLeft: "3px" }}
+                    onClick={() => setIsUpdating(!isUpdating)}
+                    htmlColor="green"
+                  />
+                }
               />
             </>
           )}

@@ -3,9 +3,12 @@ import { Grid, Card, Divider, Image, Icon } from "semantic-ui-react";
 import { SemanticCOLORS } from "semantic-ui-react/dist/commonjs/generic";
 import { BlogCardProps } from "../../@types/interfaces/PageInterfaces/Home/blogcard.interfaces";
 import { NavLink } from "react-router-dom";
+import { RemoveRedEye } from "@material-ui/icons";
+import Moment from "react-moment";
 
 const BlogCard: React.FC<BlogCardProps> = props => {
   const { id, title, content, tags, likes, views, img, createdAt } = props.blog;
+  const { username } = props.user;
 
   const getRandomColor = (): SemanticCOLORS => {
     const colors: Array<SemanticCOLORS> = [
@@ -28,7 +31,14 @@ const BlogCard: React.FC<BlogCardProps> = props => {
           <Image className="blog-card-img" src={img} />
         </NavLink>
         <Card.Content>
-          <Card.Header className="blog-card-title">{title}</Card.Header>
+          <Card.Header className="blog-card-title">
+            <span>{title}</span>
+          </Card.Header>
+          <Card.Meta>
+            <span>@{username}</span>
+            <span style={{ float: "right", marginLeft: "2px" }}>{views}</span>
+            <RemoveRedEye fontSize="small" style={{ float: "right" }} />
+          </Card.Meta>
         </Card.Content>
       </Card>
     </Grid.Column>

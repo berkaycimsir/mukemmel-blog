@@ -12,6 +12,9 @@ export const GET_BLOGS = gql`
       views
       img
       createdAt
+      user {
+        username
+      }
     }
   }
 `;
@@ -28,6 +31,9 @@ export const GET_LAST_FOUR_BLOG = gql`
       views
       img
       createdAt
+      user {
+        username
+      }
     }
   }
 `;
@@ -45,6 +51,9 @@ export const GET_MOST_TREND_BLOG = gql`
         views
         img
         createdAt
+        user {
+          username
+        }
       }
       errorMessage
     }
@@ -63,6 +72,9 @@ export const GET_TREND_BLOGS = gql`
       views
       img
       createdAt
+      user {
+        username
+      }
     }
   }
 `;

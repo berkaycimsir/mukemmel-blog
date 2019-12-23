@@ -20,7 +20,7 @@ const AllLastBlogs: React.FC = () => {
       <Grid columns={4} doubling>
         {getBlogsData.blogs.map(blog => (
           <Grid.Column key={blog.id} widescreen="8">
-            <BlogCard key={blog.id} blog={blog} />
+            <BlogCard user={blog.user} key={blog.id} blog={blog} />
           </Grid.Column>
         ))}
       </Grid>
