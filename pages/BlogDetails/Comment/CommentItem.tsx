@@ -1,6 +1,7 @@
 import * as React from "react";
+import { useState } from "react";
 import { Props } from "../../../@types/interfaces/PageInterfaces/BlogDetails/commentitem.interfaces";
-import { Comment } from "semantic-ui-react";
+import { Comment, Button } from "semantic-ui-react";
 import Moment from "react-moment";
 import DeleteComment from "./DeleteComment";
 import UpdateComment from "./UpdateComment";
@@ -10,6 +11,8 @@ const CommentItem: React.FC<Props> = ({
   activeUser,
   comment
 }) => {
+  const [isUpdating, setIsUpdating] = useState<boolean>(false);
+
   const menGenderImageUrl: Array<string> = [
     "https://react.semantic-ui.com/images/avatar/small/joe.jpg"
   ];
@@ -44,12 +47,22 @@ const CommentItem: React.FC<Props> = ({
               id={comment.id}
               user_id={comment.user.id}
             />
-            <UpdateComment
-              blog_id={comment.blog_id}
-              id={comment.id}
-              user_id={comment.user.id}
+            <Button
+              style={{ marginLeft: "3px" }}
+              onClick={() => setIsUpdating(!isUpdating)}
+              size="mini"
+              color="green"
+              basic
+              content={isUpdating ? "Cancel" : "Update"}
             />
           </Comment.Action>
+        )}
+        {isUpdating === true && (
+          <UpdateComment
+            blog_id={comment.blog_id}
+            id={comment.id}
+            user_id={comment.user.id}
+          />
         )}
       </Comment.Content>
     </Comment>
