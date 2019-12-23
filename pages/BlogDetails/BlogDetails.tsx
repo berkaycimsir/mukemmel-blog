@@ -29,17 +29,15 @@ const BlogDetails: React.FC<Props> = ({ session }) => {
   const blog: Blog = getBlogByIdData.blog.blog;
   const user: User = getBlogByIdData.blog.blog.user;
   const comments: Array<Comment> = getBlogByIdData.blog.blog.comments;
+  const activeUser: User =
+    session && session.activeUser.user !== null && session.activeUser.user;
 
   return (
     <Container style={{ maxWidth: "1440px" }}>
       <Grid columns={2} stackable>
         <Grid.Column width={11}>
           <BlogDetailsCard
-            activeUser={
-              session &&
-              session.activeUser.user !== null &&
-              session.activeUser.user
-            }
+            activeUser={activeUser}
             comments={comments}
             blog={blog}
             user={user}

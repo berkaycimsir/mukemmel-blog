@@ -6,7 +6,7 @@ import Moment from "react-moment";
 import DeleteComment from "./DeleteComment";
 import UpdateComment from "./UpdateComment";
 import LikeComment from "./LikeComment";
-import { EditOutlined, FavoriteBorderOutlined } from "@material-ui/icons";
+import { EditOutlined, Close } from "@material-ui/icons";
 
 const CommentItem: React.FC<Props> = ({
   activeUserDeleteComment,
@@ -51,14 +51,22 @@ const CommentItem: React.FC<Props> = ({
                 user_id={comment.user.id}
               />
               <Popup
-                content="Yorumunu güncelle!"
+                content={isUpdating ? "Vazgeç!" : "Yorumunu güncelle!"}
                 size="small"
                 trigger={
-                  <EditOutlined
-                    style={{ marginLeft: "3px" }}
-                    onClick={() => setIsUpdating(!isUpdating)}
-                    htmlColor="green"
-                  />
+                  isUpdating ? (
+                    <Close
+                      htmlColor="red"
+                      onClick={() => setIsUpdating(!isUpdating)}
+                      style={{ marginLeft: "3px" }}
+                    />
+                  ) : (
+                    <EditOutlined
+                      style={{ marginLeft: "3px" }}
+                      onClick={() => setIsUpdating(!isUpdating)}
+                      htmlColor="green"
+                    />
+                  )
                 }
               />
             </>

@@ -38,7 +38,7 @@ const DeleteComment: React.FC<Props> = ({ blog_id, user_id, id }) => {
           onClick={(e: React.MouseEvent<SVGSVGElement>) => {
             onDelete(e);
           }}
-          htmlColor="red"
+          htmlColor="black"
         />
       }
       content="Yorumunu sil!"
