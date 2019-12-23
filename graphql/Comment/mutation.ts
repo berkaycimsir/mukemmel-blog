@@ -23,3 +23,14 @@ export const DELETE_COMMENT = gql`
     }
   }
 `;
+
+export const UPDATE_COMMENT = gql`
+  mutation($id: ID!, $content: String!) {
+    updateComment(data: {$id: ID!, $content: String!}) {
+      comment {
+        content
+      }
+      errorMessage
+    }
+  }
+`;
