@@ -5,6 +5,7 @@ import { Comment, Button } from "semantic-ui-react";
 import Moment from "react-moment";
 import DeleteComment from "./DeleteComment";
 import UpdateComment from "./UpdateComment";
+import LikeComment from "./LikeComment";
 
 const CommentItem: React.FC<Props> = ({
   activeUserDeleteComment,
@@ -55,6 +56,7 @@ const CommentItem: React.FC<Props> = ({
               basic
               content={isUpdating ? "Vazgeç" : "Güncelle"}
             />
+            <LikeComment id={comment.id} />
           </Comment.Action>
         )}
         {isUpdating === true && (
