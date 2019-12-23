@@ -57,8 +57,14 @@
   color: #fff !important;
 }
 
+
+
 @media (max-width: 420px) {
   .blog-card-title {
+    font-size: 10px !important;
+  }
+
+  .blog-card-meta {
     font-size: 10px !important;
   }
 

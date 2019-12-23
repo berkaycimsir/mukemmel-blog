@@ -34,7 +34,7 @@ const BlogCard: React.FC<BlogCardProps> = props => {
           <Card.Header className="blog-card-title">
             <span>{title}</span>
           </Card.Header>
-          <Card.Meta>
+          <Card.Meta className="blog-card-meta">
             <span>@{username}</span>
             <span style={{ float: "right", marginLeft: "2px" }}>{views}</span>
             <RemoveRedEye fontSize="small" style={{ float: "right" }} />
