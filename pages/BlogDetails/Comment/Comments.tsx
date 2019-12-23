@@ -18,6 +18,7 @@ import { Comment as CommentType } from "../../../@types/types/DatabaseTypes";
 import CommentItem from "./CommentItem";
 import AddComment from "./AddComment";
 import { NavLink } from "react-router-dom";
+import DeleteComment from "./DeleteComment";
 
 const Comments: React.FC<Props & WindowSizeProps> = ({
   windowWidth,
@@ -48,7 +49,16 @@ const Comments: React.FC<Props & WindowSizeProps> = ({
       <Comment.Group size={getCommentSize()}>
         {activeUser && activeUserComment !== null && (
           <>
-            <CommentItem activeUser={activeUser} comment={activeUserComment} />
+            <CommentItem
+              activeUserDeleteComment={
+                <Comment.Action>
+                  <DeleteComment id={activeUserComment.id} />
+                </Comment.Action>
+              }
+              activeUserComment={activeUserComment}
+              activeUser={activeUser}
+              comment={activeUserComment}
+            />
             <Divider />
           </>
         )}

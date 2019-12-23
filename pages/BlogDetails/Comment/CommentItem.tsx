@@ -2,8 +2,14 @@ import * as React from "react";
 import { Props } from "../../../@types/interfaces/PageInterfaces/BlogDetails/commentitem.interfaces";
 import { Comment } from "semantic-ui-react";
 import Moment from "react-moment";
+import DeleteComment from "./DeleteComment";
 
-const CommentItem: React.FC<Props> = ({ activeUser, comment }) => {
+const CommentItem: React.FC<Props> = ({
+  activeUserDeleteComment,
+  activeUserComment,
+  activeUser,
+  comment
+}) => {
   const menGenderImageUrl: Array<string> = [
     "https://react.semantic-ui.com/images/avatar/small/joe.jpg"
   ];
@@ -31,6 +37,7 @@ const CommentItem: React.FC<Props> = ({ activeUser, comment }) => {
           <div>{comment.likes} likes</div>
         </Comment.Metadata>
         <Comment.Text>{comment.content}</Comment.Text>
+        {activeUserDeleteComment}
       </Comment.Content>
     </Comment>
   );
