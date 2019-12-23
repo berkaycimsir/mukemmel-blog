@@ -53,7 +53,7 @@ const CommentItem: React.FC<Props> = ({
               size="mini"
               color="green"
               basic
-              content={isUpdating ? "Cancel" : "Update"}
+              content={isUpdating ? "Vazgeç" : "Güncelle"}
             />
           </Comment.Action>
         )}

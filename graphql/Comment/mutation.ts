@@ -34,3 +34,14 @@ export const UPDATE_COMMENT = gql`
     }
   }
 `;
+
+export const LIKE_COMMENT = gql`
+  mutation($id: ID!) {
+    likeComment(id: $id) {
+      comment {
+        likes
+      }
+      errorMessage
+    }
+  }
+`;
