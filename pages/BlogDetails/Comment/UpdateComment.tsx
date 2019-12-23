@@ -59,7 +59,7 @@ const UpdateComment: React.FC<Props> = ({
         loading={loading}
         disabled={loading || formValidate()}
         type="submit"
-        content="Update Comment"
+        content="Yorumunu Güncelle"
         primary
       />
     </Form>

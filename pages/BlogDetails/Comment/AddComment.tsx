@@ -45,7 +45,7 @@ const AddComment: React.FC<Props> = ({ blog_id, activeUser }) => {
       <Form.TextArea
         disabled={loading}
         style={{ minHeight: "15em" }}
-        placeholder="Enter your comment here..."
+        placeholder="Yorumunuzu buraya giriniz..."
         value={content}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
           setContent(e.target.value);
@@ -55,7 +55,7 @@ const AddComment: React.FC<Props> = ({ blog_id, activeUser }) => {
         loading={loading}
         disabled={loading || formValidate()}
         type="submit"
-        content="Add Comment"
+        content="Yorum Yap"
         primary
       />
     </Form>

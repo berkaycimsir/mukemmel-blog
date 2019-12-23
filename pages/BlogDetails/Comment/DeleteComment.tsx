@@ -40,7 +40,7 @@ const DeleteComment: React.FC<Props> = ({ blog_id, user_id, id }) => {
       size="mini"
       color="red"
       basic
-      content={loading ? "Loading..." : "Delete"}
+      content={loading ? "Yükleniyor..." : "Sil"}
     />
   );
 };
