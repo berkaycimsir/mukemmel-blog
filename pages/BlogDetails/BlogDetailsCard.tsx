@@ -42,7 +42,11 @@ const BlogDetailsCard: React.FC<Props> = ({
       </Card.Content>
       <Card.Content extra>
         {!comments || (comments.length === 0 && <NoCommentsMessage />)}
-        <Comments activeUser={activeUser} comments={comments} />
+        <Comments
+          blog_id={blog.id}
+          activeUser={activeUser}
+          comments={comments}
+        />
       </Card.Content>
     </Card>
   );

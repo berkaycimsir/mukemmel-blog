@@ -1,8 +1,7 @@
 import { Comment, User } from "../../../types/DatabaseTypes";
 
 export type Props = {
-  activeUserDeleteComment?: any;
-  activeUserComment?: Comment;
+  activeUserDeleteComment?: boolean;
   comment: Comment;
   activeUser: User;
 };

@@ -1,6 +1,7 @@
 import { Comment, User } from "../../../types/DatabaseTypes";
 
 export type Props = {
+  blog_id: string;
   activeUser: User;
   comments: Array<Comment>;
 };
@@ -16,4 +17,5 @@ export type GetCommentByUserIdReturnData = {
 
 export type GetCommentByUserIdVariables = {
   user_id: string;
+  blog_id: string;
 };

@@ -6,7 +6,6 @@ import DeleteComment from "./DeleteComment";
 
 const CommentItem: React.FC<Props> = ({
   activeUserDeleteComment,
-  activeUserComment,
   activeUser,
   comment
 }) => {
@@ -23,7 +22,7 @@ const CommentItem: React.FC<Props> = ({
   };
 
   return (
-    <Comment key={comment.id}>
+    <Comment>
       <Comment.Avatar as="a" src={getImageUrlByGender(comment.user.gender)} />
       <Comment.Content>
         <Comment.Author>
@@ -37,7 +36,15 @@ const CommentItem: React.FC<Props> = ({
           <div>{comment.likes} likes</div>
         </Comment.Metadata>
         <Comment.Text>{comment.content}</Comment.Text>
-        {activeUserDeleteComment}
+        {activeUserDeleteComment === true && (
+          <Comment.Action>
+            <DeleteComment
+              blog_id={comment.blog_id}
+              id={comment.id}
+              user_id={comment.user.id}
+            />
+          </Comment.Action>
+        )}
       </Comment.Content>
     </Comment>
   );

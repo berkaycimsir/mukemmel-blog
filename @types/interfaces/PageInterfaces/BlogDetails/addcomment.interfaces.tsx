@@ -1,6 +1,7 @@
 import { Comment, User } from "../../../types/DatabaseTypes";
 
 export type Props = {
+  blog_id: string;
   activeUser: User;
 };
 

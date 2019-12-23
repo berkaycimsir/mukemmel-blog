@@ -9,8 +9,9 @@ import {
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/addcomment.interfaces";
 import { ADD_COMMENT } from "../../../graphql/Comment/mutation";
 import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
+import { GET_BLOG_BY_ID } from "../../../graphql/Blog/query";
 
-const AddComment: React.FC<Props> = ({ activeUser }) => {
+const AddComment: React.FC<Props> = ({ blog_id, activeUser }) => {
   const [content, setContent] = useState<string>("");
   const blogId: string = window.location.pathname.split("/")[3];
 
@@ -18,10 +19,12 @@ const AddComment: React.FC<Props> = ({ activeUser }) => {
     AddCommentReturnData,
     AddCommentVariables
   >(ADD_COMMENT, {
+    awaitRefetchQueries: true,
     refetchQueries: [
+      { query: GET_BLOG_BY_ID, variables: { id: blog_id } },
       {
         query: GET_COMMENT_BY_USER_ID,
-        variables: { user_id: activeUser.id }
+        variables: { user_id: activeUser.id, blog_id }
       }
     ]
   });

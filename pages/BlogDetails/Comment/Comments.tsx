@@ -18,9 +18,9 @@ import { Comment as CommentType } from "../../../@types/types/DatabaseTypes";
 import CommentItem from "./CommentItem";
 import AddComment from "./AddComment";
 import { NavLink } from "react-router-dom";
-import DeleteComment from "./DeleteComment";
 
 const Comments: React.FC<Props & WindowSizeProps> = ({
+  blog_id,
   windowWidth,
   activeUser,
   comments
@@ -32,12 +32,12 @@ const Comments: React.FC<Props & WindowSizeProps> = ({
       GetCommentByUserIdReturnData,
       GetCommentByUserIdVariables
     >(GET_COMMENT_BY_USER_ID, {
-      variables: { user_id: activeUser.id }
+      variables: { user_id: activeUser.id, blog_id }
     });
 
     if (loading) return <Loading size={50} />;
 
-    activeUserComment = data.getCommentByUserId.comment;
+    if (data && !loading) activeUserComment = data.getCommentByUserId.comment;
   }
 
   const getCommentSize = (): StrictCommentGroupProps["size"] => {
@@ -50,12 +50,7 @@ const Comments: React.FC<Props & WindowSizeProps> = ({
         {activeUser && activeUserComment !== null && (
           <>
             <CommentItem
-              activeUserDeleteComment={
-                <Comment.Action>
-                  <DeleteComment id={activeUserComment.id} />
-                </Comment.Action>
-              }
-              activeUserComment={activeUserComment}
+              activeUserDeleteComment={true}
               activeUser={activeUser}
               comment={activeUserComment}
             />
@@ -66,14 +61,18 @@ const Comments: React.FC<Props & WindowSizeProps> = ({
           if (comment.user_id !== activeUser.id)
             return (
               <React.Fragment key={comment.id}>
-                <CommentItem activeUser={activeUser} comment={comment} />
+                <CommentItem
+                  activeUserDeleteComment={false}
+                  activeUser={activeUser}
+                  comment={comment}
+                />
                 <Divider />
               </React.Fragment>
             );
         })}
       </Comment.Group>
       {activeUser && activeUserComment === null ? (
-        <AddComment activeUser={activeUser} />
+        <AddComment blog_id={blog_id} activeUser={activeUser} />
       ) : activeUser && activeUserComment !== null ? null : (
         <Message color="brown">
           <Message.Header>Yorum yapmak için giriş yapınız!</Message.Header>
