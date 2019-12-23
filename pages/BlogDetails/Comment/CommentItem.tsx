@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Props } from "../../../@types/interfaces/PageInterfaces/BlogDetails/commentitem.interfaces";
+import { Props } from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/commentitem.interfaces";
 import { Comment, Button } from "semantic-ui-react";
 import Moment from "react-moment";
 import DeleteComment from "./DeleteComment";

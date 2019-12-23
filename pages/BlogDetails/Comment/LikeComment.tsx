@@ -4,7 +4,7 @@ import {
   Props,
   LikeCommentReturnData,
   LikeCommentVariables
-} from "../../../@types/interfaces/PageInterfaces/BlogDetails/likecomment.interfaces";
+} from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/likecomment.interfaces";
 import { useMutation } from "react-apollo";
 import { LIKE_COMMENT } from "../../../graphql/Comment/mutation";
 import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";

@@ -3,7 +3,7 @@ import {
   Props,
   DeleteCommentReturnData,
   DeleteCommentVariables
-} from "../../../@types/interfaces/PageInterfaces/BlogDetails/deletecomment.interfaces";
+} from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/deletecomment.interfaces";
 import { Button } from "semantic-ui-react";
 import { useMutation } from "react-apollo";
 import { DELETE_COMMENT } from "../../../graphql/Comment/mutation";

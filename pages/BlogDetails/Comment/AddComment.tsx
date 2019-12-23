@@ -6,7 +6,7 @@ import {
   AddCommentReturnData,
   AddCommentVariables,
   Props
-} from "../../../@types/interfaces/PageInterfaces/BlogDetails/addcomment.interfaces";
+} from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/addcomment.interfaces";
 import { ADD_COMMENT } from "../../../graphql/Comment/mutation";
 import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
 import { GET_BLOG_BY_ID } from "../../../graphql/Blog/query";

@@ -4,7 +4,7 @@ import {
   Props,
   GetCommentByUserIdReturnData,
   GetCommentByUserIdVariables
-} from "../../../@types/interfaces/PageInterfaces/BlogDetails/comments.interfaces";
+} from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/comments.interfaces";
 import {
   Comment,
   Divider,

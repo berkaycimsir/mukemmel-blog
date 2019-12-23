@@ -5,7 +5,7 @@ import {
   Props,
   UpdateCommentReturnData,
   UpdateCommentVariables
-} from "../../../@types/interfaces/PageInterfaces/BlogDetails/updatecomment.intrefaces";
+} from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/updatecomment.intrefaces";
 import { useMutation } from "react-apollo";
 import { UPDATE_COMMENT } from "../../../graphql/Comment/mutation";
 import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
