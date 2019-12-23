@@ -1,6 +1,8 @@
 import { Comment } from "../../../types/DatabaseTypes";
 
 export type Props = {
+  user_id: string;
+  blog_id: string;
   id: string;
 };
 
@@ -15,4 +17,5 @@ export interface LikeCommentReturnData {
 
 export interface LikeCommentVariables {
   id: string;
+  isUnliking: boolean;
 }

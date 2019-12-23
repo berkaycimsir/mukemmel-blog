@@ -41,24 +41,32 @@ const CommentItem: React.FC<Props> = ({
           <div>{comment.likes} likes</div>
         </Comment.Metadata>
         <Comment.Text>{comment.content}</Comment.Text>
-        {activeUserDeleteComment === true && (
-          <Comment.Action>
-            <DeleteComment
+        <Comment.Action>
+          {activeUserDeleteComment === true && (
+            <>
+              <DeleteComment
+                blog_id={comment.blog_id}
+                id={comment.id}
+                user_id={comment.user.id}
+              />
+              <Button
+                style={{ marginLeft: "3px" }}
+                onClick={() => setIsUpdating(!isUpdating)}
+                size="mini"
+                color="green"
+                basic
+                content={isUpdating ? "Vazgeç" : "Güncelle"}
+              />
+            </>
+          )}
+          {activeUser && activeUser.id !== comment.user.id && (
+            <LikeComment
               blog_id={comment.blog_id}
-              id={comment.id}
               user_id={comment.user.id}
+              id={comment.id}
             />
-            <Button
-              style={{ marginLeft: "3px" }}
-              onClick={() => setIsUpdating(!isUpdating)}
-              size="mini"
-              color="green"
-              basic
-              content={isUpdating ? "Vazgeç" : "Güncelle"}
-            />
-            <LikeComment id={comment.id} />
-          </Comment.Action>
-        )}
+          )}
+        </Comment.Action>
         {isUpdating === true && (
           <UpdateComment
             blog_id={comment.blog_id}

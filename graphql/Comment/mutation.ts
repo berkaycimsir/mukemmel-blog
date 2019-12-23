@@ -36,8 +36,8 @@ export const UPDATE_COMMENT = gql`
 `;
 
 export const LIKE_COMMENT = gql`
-  mutation($id: ID!) {
-    likeComment(id: $id) {
+  mutation($id: ID!, $isUnliking: Boolean!) {
+    likeComment(id: $id, isUnliking: $isUnliking) {
       comment {
         likes
       }
