@@ -62,6 +62,7 @@ const CommentItem: React.FC<Props> = ({
             blog_id={comment.blog_id}
             id={comment.id}
             user_id={comment.user.id}
+            setIsUpdating={setIsUpdating}
           />
         )}
       </Comment.Content>

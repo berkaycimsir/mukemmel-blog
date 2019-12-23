@@ -6,21 +6,62 @@ import {
   UpdateCommentReturnData,
   UpdateCommentVariables
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/updatecomment.intrefaces";
+import { useMutation } from "react-apollo";
+import { UPDATE_COMMENT } from "../../../graphql/Comment/mutation";
+import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
 
-const UpdateComment: React.FC<Props> = ({ blog_id, user_id, id }) => {
+const UpdateComment: React.FC<Props> = ({
+  setIsUpdating,
+  blog_id,
+  user_id,
+  id
+}) => {
   const [content, setContent] = useState<string>("");
 
+  const [updateComment, { loading }] = useMutation<
+    UpdateCommentReturnData,
+    UpdateCommentVariables
+  >(UPDATE_COMMENT, {
+    refetchQueries: [
+      { query: GET_COMMENT_BY_USER_ID, variables: { blog_id, user_id } }
+    ]
+  });
+
+  const resetTextAreaValue: Function = (): void => setContent("");
+
+  const onUpdateComment: Function = (
+    e: React.FormEvent<HTMLFormElement>
+  ): void => {
+    e.preventDefault();
+    updateComment({ variables: { id, content } }).then(() => {
+      resetTextAreaValue();
+      setIsUpdating(false);
+    });
+  };
+
+  const formValidate: Function = (): boolean => !content;
+
   return (
-    <Form reply>
+    <Form
+      onSubmit={(e: React.FormEvent<HTMLFormElement>) => onUpdateComment(e)}
+      reply
+    >
       <Form.TextArea
+        disabled={loading}
         style={{ minHeight: "12em" }}
-        placeholder="Enter your comment"
+        placeholder="Yorumunuzu girin..."
         value={content}
         onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
           setContent(e.target.value);
         }}
       />
-      <Button type="submit" content="Update Comment" primary />
+      <Button
+        loading={loading}
+        disabled={loading || formValidate()}
+        type="submit"
+        content="Update Comment"
+        primary
+      />
     </Form>
   );
 };
