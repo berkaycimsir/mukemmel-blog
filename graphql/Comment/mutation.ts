@@ -12,3 +12,14 @@ export const ADD_COMMENT = gql`
     }
   }
 `;
+
+export const DELETE_COMMENT = gql`
+  mutation($id: ID!) {
+    deleteComment(id: $id) {
+      comment {
+        id
+      }
+      errorMessage
+    }
+  }
+`;
