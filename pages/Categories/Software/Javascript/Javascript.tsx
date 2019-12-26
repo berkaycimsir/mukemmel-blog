@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Container, Grid } from "semantic-ui-react";
-import BlogDetailsCard from "../../../BlogDetails/BlogDetailsCard";
 import IfThereIsAnActiveUser from "../../../../components/Login/IfThereIsAnActiveUser";
 import Login from "../../../../components/Login/Login";
 import LastBlogsTab from "../../../BlogDetails/LastBlogsTab";

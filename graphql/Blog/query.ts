@@ -117,3 +117,36 @@ export const GET_BLOG_BY_ID = gql`
     }
   }
 `;
+
+export const GET_BLOGS_BY_CATEGORY = gql`
+  query($category: String!) {
+    getBlogByCategory(category: $category) {
+      id
+      owner_id
+      title
+      content
+      tags
+      likes
+      createdAt
+      category
+      user {
+        name
+        surname
+        username
+      }
+      comments {
+        id
+        blog_id
+        user_id
+        content
+        likes
+        createdAt
+        user {
+          name
+          surname
+          username
+        }
+      }
+    }
+  }
+`;
