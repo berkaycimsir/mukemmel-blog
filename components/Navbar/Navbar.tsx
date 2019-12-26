@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Menu, Image, Button } from "semantic-ui-react";
+import { Menu, Image, Button, Dropdown } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import SidebarMenu from "./Sidebar";
+import { ArrowDropDown } from "@material-ui/icons";
 
 type Props = {
   session: any;
@@ -54,6 +55,51 @@ const Navbar: React.FC<Props> = ({ session }) => {
         )}
       </Menu.Item>
 
+      {windowWidth > 767 && (
+        <Menu.Menu position="left">
+          <NavLink style={{ background: "#fff" }} className="item" to="/">
+            <span>Anasayfa</span>
+          </NavLink>
+          <NavLink className="item" to="/blog/category/technology">
+            <span>Teknoloji</span>
+          </NavLink>
+          <Dropdown
+            closeOnEscape
+            icon={<ArrowDropDown />}
+            item
+            simple
+            text="Yazılım"
+          >
+            <Dropdown.Menu>
+              <NavLink to="/software/category/php" className="dropdown item">
+                PHP
+              </NavLink>
+              <NavLink
+                to="/software/category/javascript"
+                className="dropdown item"
+              >
+                Javascript
+              </NavLink>
+              <NavLink to="/software/category/Python" className="dropdown item">
+                Python
+              </NavLink>
+              <NavLink to="/software/category/c#" className="dropdown item">
+                C#
+              </NavLink>
+              <NavLink to="/software/category/html" className="dropdown item">
+                HTML
+              </NavLink>
+            </Dropdown.Menu>
+          </Dropdown>
+          <NavLink className="item" to="/about">
+            <span>Hakkımızda</span>
+          </NavLink>
+          <NavLink className="item" to="/contact">
+            <span>İletişim</span>
+          </NavLink>
+        </Menu.Menu>
+      )}
+
       <Menu.Menu position="right">
         {session && session.activeUser.user !== null ? (
           <NavLink className="item" to="/profile">
@@ -63,10 +109,10 @@ const Navbar: React.FC<Props> = ({ session }) => {
           windowWidth > 767 && (
             <>
               <NavLink className="item" to="/signup">
-                <span>Sign Up</span>
+                <span>Kayıt Ol</span>
               </NavLink>
               <NavLink className="item" to="/login">
-                <span>Login</span>
+                <span>Giriş Yap</span>
               </NavLink>
             </>
           )

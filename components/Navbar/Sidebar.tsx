@@ -1,7 +1,9 @@
 import * as React from "react";
-import { Sidebar, Menu, Icon, Ref, Image, Button } from "semantic-ui-react";
+import { Sidebar, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { User } from "../../@types/types/DatabaseTypes";
+import { useState } from "react";
+import { ArrowDropDown } from "@material-ui/icons";
 
 type Props = {
   isVisible: boolean;
@@ -14,6 +16,8 @@ const SidebarMenu: React.FC<Props> = ({
   isVisible,
   setIsVisible
 }) => {
+  const [visible, setVisible] = useState<boolean>(false);
+
   return (
     <Sidebar
       as={Menu}
@@ -32,34 +36,111 @@ const SidebarMenu: React.FC<Props> = ({
       </Menu.Item>
       <Menu.Item className="home-nav-link">
         <NavLink onClick={() => setIsVisible(false)} to="/">
-          Home
+          Anasayfa
         </NavLink>
       </Menu.Item>
+      <NavLink
+        onClick={() => setIsVisible(false)}
+        className="item"
+        to="/blog/category/technology"
+      >
+        <span>Teknoloji</span>
+      </NavLink>
+      <NavLink onClick={() => setIsVisible(false)} className="item" to="/about">
+        <span>Hakkımızda</span>
+      </NavLink>
+      <NavLink
+        onClick={() => setIsVisible(false)}
+        className="item"
+        to="/contact"
+      >
+        <span>İletişim</span>
+      </NavLink>
+      <Menu.Item
+        content="Yazılım"
+        icon={<ArrowDropDown htmlColor="white" />}
+        onClick={() => setVisible(!visible)}
+      ></Menu.Item>
+      {visible && (
+        <>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisible(false);
+            }}
+            to="/software/category/php"
+            className="dropdown item"
+          >
+            PHP
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisible(false);
+            }}
+            to="/software/category/javascript"
+            className="dropdown item"
+          >
+            Javascript
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisible(false);
+            }}
+            to="/software/category/Python"
+            className="dropdown item"
+          >
+            Python
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisible(false);
+            }}
+            to="/software/category/c#"
+            className="dropdown item"
+          >
+            C#
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisible(false);
+            }}
+            to="/software/category/html"
+            className="dropdown item"
+          >
+            HTML
+          </NavLink>
+        </>
+      )}
       {activeUser ? (
         <NavLink
           onClick={() => setIsVisible(false)}
           className="item"
           to="/profile"
+          style={{ position: "fixed", left: 0, bottom: 0, width: "100%" }}
         >
           <span>Profile</span>
         </NavLink>
       ) : (
-        <>
+        <div style={{ position: "fixed", left: 0, bottom: 0, width: "100%" }}>
           <NavLink
             onClick={() => setIsVisible(false)}
             className="item"
             to="/signup"
           >
-            <span>Sign Up</span>
+            <span>Kayıt Ol</span>
           </NavLink>
           <NavLink
             onClick={() => setIsVisible(false)}
             className="item"
             to="/login"
           >
-            <span>Login</span>
+            <span>Giriş Yap</span>
           </NavLink>
-        </>
+        </div>
       )}
     </Sidebar>
   );
