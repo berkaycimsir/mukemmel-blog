@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, Divider, Image } from "semantic-ui-react";
+import { Card, Divider, Image, Header } from "semantic-ui-react";
 import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
 import Moment from "react-moment";
 import Comments from "./Comment/Comments";
@@ -43,6 +43,8 @@ const BlogDetailsCard: React.FC<Props> = ({
         />
       </Card.Content>
       <Card.Content extra>
+        <Header style={{ marginTop: "5px" }} content="Yorumlar" />
+        <Divider />
         {!comments || (comments.length === 0 && <NoCommentsMessage />)}
         <Comments
           blog_id={blog.id}
