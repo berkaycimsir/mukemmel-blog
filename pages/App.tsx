@@ -14,6 +14,7 @@ import Profile from "./Profile/Profile";
 // components
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+import Javascript from "./Categories/Software/Javascript/Javascript";
 
 type Props = {
   session: any;
@@ -44,6 +45,11 @@ const App: React.FC<Props> = ({ session }) => (
         render={() => <BlogDetails session={session} />}
       />
       <Route exact path="/profile" render={() => <Profile />} />
+      <Route
+        exact
+        path="/software/category/javascript"
+        render={() => <Javascript session={session} />}
+      />
       <Route exact path="*" render={() => <div>No page.</div>} />
     </Switch>
     <Footer />
