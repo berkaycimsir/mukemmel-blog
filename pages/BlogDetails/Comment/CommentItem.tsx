@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { Props } from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/commentitem.interfaces";
-import { Comment, Popup } from "semantic-ui-react";
+import { Comment, Popup, Icon } from "semantic-ui-react";
 import Moment from "react-moment";
 import DeleteComment from "./DeleteComment";
 import UpdateComment from "./UpdateComment";
@@ -54,19 +54,23 @@ const CommentItem: React.FC<Props> = ({
                 content={isUpdating ? "Vazgeç!" : "Yorumunu güncelle!"}
                 size="small"
                 trigger={
-                  isUpdating ? (
-                    <Close
-                      htmlColor="red"
-                      onClick={() => setIsUpdating(!isUpdating)}
-                      style={{ marginLeft: "3px" }}
-                    />
-                  ) : (
-                    <EditOutlined
-                      style={{ marginLeft: "3px" }}
-                      onClick={() => setIsUpdating(!isUpdating)}
-                      htmlColor="green"
-                    />
-                  )
+                  <Icon
+                    children={
+                      isUpdating ? (
+                        <Close
+                          htmlColor="red"
+                          onClick={() => setIsUpdating(!isUpdating)}
+                          style={{ marginLeft: "3px" }}
+                        />
+                      ) : (
+                        <EditOutlined
+                          style={{ marginLeft: "3px" }}
+                          onClick={() => setIsUpdating(!isUpdating)}
+                          htmlColor="green"
+                        />
+                      )
+                    }
+                  />
                 }
               />
             </>

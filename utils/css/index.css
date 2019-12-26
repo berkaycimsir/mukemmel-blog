@@ -61,7 +61,7 @@
 
 @media (max-width: 420px) {
   .blog-card-title {
-    font-size: 8px !important;
+    font-size: 11px !important;
   }
 
   .blog-card-icon {
@@ -70,7 +70,7 @@
   }
 
   .blog-card-meta {
-    font-size: 6px !important;
+    font-size: 5px !important;
   }
 
   h1 {

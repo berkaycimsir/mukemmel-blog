@@ -4,7 +4,7 @@ import {
   DeleteCommentReturnData,
   DeleteCommentVariables
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/deletecomment.interfaces";
-import { Button, Popup } from "semantic-ui-react";
+import { Button, Popup, Icon } from "semantic-ui-react";
 import { useMutation } from "react-apollo";
 import { DELETE_COMMENT } from "../../../graphql/Comment/mutation";
 import { GET_BLOG_BY_ID } from "../../../graphql/Blog/query";
@@ -34,11 +34,13 @@ const DeleteComment: React.FC<Props> = ({ blog_id, user_id, id }) => {
   return (
     <Popup
       trigger={
-        <DeleteOutline
+        <Icon
           onClick={(e: React.MouseEvent<SVGSVGElement>) => {
             onDelete(e);
           }}
-          htmlColor="black"
+          loading={loading}
+          disabled={loading}
+          children={<DeleteOutline htmlColor="black" />}
         />
       }
       content="Yorumunu sil!"

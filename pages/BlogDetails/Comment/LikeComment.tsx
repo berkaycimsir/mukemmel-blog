@@ -9,7 +9,7 @@ import { useMutation } from "react-apollo";
 import { LIKE_COMMENT } from "../../../graphql/Comment/mutation";
 import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
 import { Favorite, FavoriteBorder, Loop } from "@material-ui/icons";
-import { Popup } from "semantic-ui-react";
+import { Popup, Icon } from "semantic-ui-react";
 
 const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
@@ -35,12 +35,12 @@ const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
   };
 
   return (
-    <>
-      {loading ? (
-        <Loop />
-      ) : (
-        <Popup
-          trigger={
+    <Popup
+      trigger={
+        <Icon
+          disabled={loading}
+          loading={loading}
+          children={
             isLiked ? (
               <Favorite
                 htmlColor="red"
@@ -59,11 +59,11 @@ const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
               />
             )
           }
-          content={isLiked ? "Beğenmekten vazgeç!" : "Yorumu beğen!"}
-          size="small"
         />
-      )}
-    </>
+      }
+      content={isLiked ? "Beğenmekten vazgeç!" : "Yorumu beğen!"}
+      size="small"
+    />
   );
 };
 
