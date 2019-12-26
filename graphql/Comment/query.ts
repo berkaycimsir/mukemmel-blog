@@ -21,3 +21,22 @@ export const GET_COMMENT_BY_USER_ID = gql`
     }
   }
 `;
+
+export const GET_COMMENTS = gql`
+  query {
+    comments {
+      id
+      blog_id
+      content
+      likes
+      createdAt
+      user {
+        id
+        name
+        surname
+        username
+        gender
+      }
+    }
+  }
+`;
