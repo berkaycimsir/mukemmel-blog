@@ -60,7 +60,7 @@ const Navbar: React.FC<Props> = ({ session }) => {
           <NavLink style={{ background: "#fff" }} className="item" to="/">
             <span>Anasayfa</span>
           </NavLink>
-          <NavLink className="item" to="/blog/category/technology">
+          <NavLink className="item" to="/category/technology">
             <span>Teknoloji</span>
           </NavLink>
           <Dropdown
@@ -71,22 +71,19 @@ const Navbar: React.FC<Props> = ({ session }) => {
             text="Yazılım"
           >
             <Dropdown.Menu>
-              <NavLink to="/software/category/php" className="dropdown item">
+              <NavLink to="/category/php" className="dropdown item">
                 PHP
               </NavLink>
-              <NavLink
-                to="/software/category/javascript"
-                className="dropdown item"
-              >
+              <NavLink to="/category/javascript" className="dropdown item">
                 Javascript
               </NavLink>
-              <NavLink to="/software/category/Python" className="dropdown item">
+              <NavLink to="/category/python" className="dropdown item">
                 Python
               </NavLink>
-              <NavLink to="/software/category/c#" className="dropdown item">
+              <NavLink to="/category/csharp" className="dropdown item">
                 C#
               </NavLink>
-              <NavLink to="/software/category/html" className="dropdown item">
+              <NavLink to="/category/html" className="dropdown item">
                 HTML
               </NavLink>
             </Dropdown.Menu>

@@ -34,7 +34,6 @@ export const GET_COMMENTS = gql`
         id
         name
         surname
-        username
         gender
       }
     }

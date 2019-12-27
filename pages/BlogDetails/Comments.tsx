@@ -10,6 +10,7 @@ import {
 import Moment from "react-moment";
 import { ArrowBack, NavigateNext } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
+import { User } from "../../@types/types/DatabaseTypes";
 
 const Comments: React.FC<Props> = ({ activeUser }) => {
   const currentBlogId = window.location.pathname.split("/")[3];
@@ -30,6 +31,8 @@ const Comments: React.FC<Props> = ({ activeUser }) => {
     return gender === "men" ? menGenderImageUrl[0] : womenGenderImageUrl[0];
   };
 
+  console.log(data);
+
   return (
     <Grid>
       <Grid.Column>
@@ -43,7 +46,8 @@ const Comments: React.FC<Props> = ({ activeUser }) => {
               <Comment.Content>
                 <Comment.Author>
                   {comment.user.name} {comment.user.surname}{" "}
-                  {activeUser.id === comment.user.id && "(yorumun)"}
+                  {activeUser &&
+                    activeUser.id === comment.user.id && "(yorumun)"}
                 </Comment.Author>
                 <Comment.Metadata>
                   <div>

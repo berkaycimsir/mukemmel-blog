@@ -128,24 +128,13 @@ export const GET_BLOGS_BY_CATEGORY = gql`
       tags
       likes
       createdAt
-      category
+      img
+      views
       user {
         name
         surname
         username
-      }
-      comments {
-        id
-        blog_id
-        user_id
-        content
-        likes
-        createdAt
-        user {
-          name
-          surname
-          username
-        }
+        gender
       }
     }
   }

@@ -68,7 +68,7 @@ const SidebarMenu: React.FC<Props> = ({
               setIsVisible(false);
               setVisible(false);
             }}
-            to="/software/category/php"
+            to="/category/php"
             className="dropdown item"
           >
             PHP
@@ -78,7 +78,7 @@ const SidebarMenu: React.FC<Props> = ({
               setIsVisible(false);
               setVisible(false);
             }}
-            to="/software/category/javascript"
+            to="/category/javascript"
             className="dropdown item"
           >
             Javascript
@@ -88,7 +88,7 @@ const SidebarMenu: React.FC<Props> = ({
               setIsVisible(false);
               setVisible(false);
             }}
-            to="/software/category/Python"
+            to="/category/python"
             className="dropdown item"
           >
             Python
@@ -98,7 +98,7 @@ const SidebarMenu: React.FC<Props> = ({
               setIsVisible(false);
               setVisible(false);
             }}
-            to="/software/category/c#"
+            to="/category/csharp"
             className="dropdown item"
           >
             C#
@@ -108,7 +108,7 @@ const SidebarMenu: React.FC<Props> = ({
               setIsVisible(false);
               setVisible(false);
             }}
-            to="/software/category/html"
+            to="/category/html"
             className="dropdown item"
           >
             HTML

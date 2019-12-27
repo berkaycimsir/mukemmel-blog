@@ -35,6 +35,15 @@
   line-height: 1.8;
 }
 
+.blog-item-title {
+  color: black !important;
+  transition: color ease 0.2s !important;
+}
+
+.blog-item-title:hover {
+  color: #4183c4 !important;
+}
+
 .blog-card:hover {
   box-shadow: 0 3px 28px rgba(0, 0, 0, 0.25), 0 3px 10px rgba(0, 0, 0, 0.22) !important;
 }
