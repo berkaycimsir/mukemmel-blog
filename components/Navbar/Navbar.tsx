@@ -3,6 +3,7 @@ import { Menu, Image, Button, Dropdown } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import SidebarMenu from "./Sidebar";
 import { ArrowDropDown } from "@material-ui/icons";
+import { User } from "../../@types/types/DatabaseTypes";
 
 type Props = {
   session: any;
@@ -17,6 +18,9 @@ const Navbar: React.FC<Props> = ({ session }) => {
   React.useEffect(() => {
     window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
   });
+
+  const activeUser: User =
+    session && session.activeUser.user !== null && session.activeUser.user;
 
   return (
     <Menu stackable className="navbar" size="small">
@@ -56,65 +60,74 @@ const Navbar: React.FC<Props> = ({ session }) => {
       </Menu.Item>
 
       {windowWidth > 767 && (
-        <Menu.Menu position="left">
-          <NavLink style={{ background: "#fff" }} className="item" to="/">
-            <span>Anasayfa</span>
-          </NavLink>
-          <NavLink className="item" to="/category/technology">
-            <span>Teknoloji</span>
-          </NavLink>
-          <Dropdown
-            closeOnEscape
-            icon={<ArrowDropDown />}
-            item
-            simple
-            text="Yazılım"
-          >
-            <Dropdown.Menu>
-              <NavLink to="/category/php" className="dropdown item">
-                PHP
-              </NavLink>
-              <NavLink to="/category/javascript" className="dropdown item">
-                Javascript
-              </NavLink>
-              <NavLink to="/category/python" className="dropdown item">
-                Python
-              </NavLink>
-              <NavLink to="/category/csharp" className="dropdown item">
-                C#
-              </NavLink>
-              <NavLink to="/category/html" className="dropdown item">
-                HTML
-              </NavLink>
-            </Dropdown.Menu>
-          </Dropdown>
-          <NavLink className="item" to="/about">
-            <span>Hakkımızda</span>
-          </NavLink>
-          <NavLink className="item" to="/contact">
-            <span>İletişim</span>
-          </NavLink>
-        </Menu.Menu>
-      )}
+        <>
+          <Menu.Menu position="left">
+            <NavLink style={{ background: "#fff" }} className="item" to="/">
+              <span>Anasayfa</span>
+            </NavLink>
+            <NavLink className="item" to="/category/technology">
+              <span>Teknoloji</span>
+            </NavLink>
+            <Dropdown
+              closeOnEscape
+              icon={<ArrowDropDown />}
+              item
+              simple
+              text="Yazılım"
+            >
+              <Dropdown.Menu>
+                <NavLink to="/category/php" className="dropdown item">
+                  PHP
+                </NavLink>
+                <NavLink to="/category/javascript" className="dropdown item">
+                  Javascript
+                </NavLink>
+                <NavLink to="/category/python" className="dropdown item">
+                  Python
+                </NavLink>
+                <NavLink to="/category/csharp" className="dropdown item">
+                  C#
+                </NavLink>
+                <NavLink to="/category/html" className="dropdown item">
+                  HTML
+                </NavLink>
+              </Dropdown.Menu>
+            </Dropdown>
+            <NavLink className="item" to="/about">
+              <span>Hakkımızda</span>
+            </NavLink>
+            <NavLink className="item" to="/contact">
+              <span>İletişim</span>
+            </NavLink>
+          </Menu.Menu>
 
-      <Menu.Menu position="right">
-        {session && session.activeUser.user !== null ? (
-          <NavLink className="item" to="/profile">
-            <span>Profile</span>
-          </NavLink>
-        ) : (
-          windowWidth > 767 && (
-            <>
-              <NavLink className="item" to="/signup">
-                <span>Kayıt Ol</span>
-              </NavLink>
-              <NavLink className="item" to="/login">
-                <span>Giriş Yap</span>
-              </NavLink>
-            </>
-          )
-        )}
-      </Menu.Menu>
+          <Menu.Menu position="right">
+            {session && session.activeUser.user !== null ? (
+              <>
+                {activeUser.admin === true && (
+                  <NavLink className="item" to="/admin">
+                    <span>Admin</span>
+                  </NavLink>
+                )}
+                <NavLink className="item" to="/profile">
+                  <span>Profile</span>
+                </NavLink>
+              </>
+            ) : (
+              windowWidth > 767 && (
+                <>
+                  <NavLink className="item" to="/signup">
+                    <span>Kayıt Ol</span>
+                  </NavLink>
+                  <NavLink className="item" to="/login">
+                    <span>Giriş Yap</span>
+                  </NavLink>
+                </>
+              )
+            )}
+          </Menu.Menu>
+        </>
+      )}
     </Menu>
   );
 };

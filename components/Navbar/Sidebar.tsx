@@ -116,14 +116,24 @@ const SidebarMenu: React.FC<Props> = ({
         </>
       )}
       {activeUser ? (
-        <NavLink
-          onClick={() => setIsVisible(false)}
-          className="item"
-          to="/profile"
-          style={{ position: "fixed", left: 0, bottom: 0, width: "100%" }}
-        >
-          <span>Profile</span>
-        </NavLink>
+        <div style={{ position: "fixed", left: 0, bottom: 0, width: "100%" }}>
+          {activeUser.admin === true && (
+            <NavLink
+              onClick={() => setIsVisible(false)}
+              className="item"
+              to="/admin"
+            >
+              <span>Admin</span>
+            </NavLink>
+          )}
+          <NavLink
+            onClick={() => setIsVisible(false)}
+            className="item"
+            to="/profile"
+          >
+            <span>Profile</span>
+          </NavLink>
+        </div>
       ) : (
         <div style={{ position: "fixed", left: 0, bottom: 0, width: "100%" }}>
           <NavLink

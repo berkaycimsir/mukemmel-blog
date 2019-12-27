@@ -10,6 +10,7 @@ export const GET_ACTIVE_USER = gql`
         username
         email
         createdAt
+        admin
       }
       errorMessage
     }
