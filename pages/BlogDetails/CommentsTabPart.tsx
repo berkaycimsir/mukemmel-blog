@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Comment, Grid, Divider, Icon, Popup } from "semantic-ui-react";
+import {
+  Comment,
+  Grid,
+  Divider,
+  Icon,
+  Popup,
+  Message
+} from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import Loading from "../../components/Loading/Loading";
 import { GET_COMMENTS } from "../../graphql/Comment/query";
@@ -12,7 +19,7 @@ import { ArrowBack, NavigateNext } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 import { User } from "../../@types/types/DatabaseTypes";
 
-const Comments: React.FC<Props> = ({ activeUser }) => {
+const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
   const currentBlogId = window.location.pathname.split("/")[3];
 
   const { data, loading } = useQuery<GetCommentsReturnData>(GET_COMMENTS);
@@ -36,6 +43,16 @@ const Comments: React.FC<Props> = ({ activeUser }) => {
   return (
     <Grid>
       <Grid.Column>
+        {!data.comments ||
+          (data.comments.length === 0 && (
+            <Message error>
+              <Message.Header>Burada Hiç Yorum Yok!</Message.Header>
+              <Message.Content>
+                Bir tane eklemek ister misin?{" "}
+                <NavLink to="/login">Giriş yap!</NavLink>
+              </Message.Content>
+            </Message>
+          ))}
         <Comment.Group>
           {data.comments.map(comment => (
             <Comment key={comment.id}>
@@ -47,7 +64,8 @@ const Comments: React.FC<Props> = ({ activeUser }) => {
                 <Comment.Author>
                   {comment.user.name} {comment.user.surname}{" "}
                   {activeUser &&
-                    activeUser.id === comment.user.id && "(yorumun)"}
+                    activeUser.id === comment.user.id &&
+                    "(yorumun)"}
                 </Comment.Author>
                 <Comment.Metadata>
                   <div>
@@ -73,4 +91,4 @@ const Comments: React.FC<Props> = ({ activeUser }) => {
   );
 };
 
-export default Comments;
+export default CommentsTabPart;

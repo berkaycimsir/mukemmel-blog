@@ -7,7 +7,10 @@ import {
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/likecomment.interfaces";
 import { useMutation } from "react-apollo";
 import { LIKE_COMMENT } from "../../../graphql/Comment/mutation";
-import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
+import {
+  GET_COMMENT_BY_USER_ID,
+  GET_COMMENTS
+} from "../../../graphql/Comment/query";
 import { Favorite, FavoriteBorder, Loop } from "@material-ui/icons";
 import { Popup, Icon } from "semantic-ui-react";
 
@@ -20,7 +23,8 @@ const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
   >(LIKE_COMMENT, {
     variables: { id, isUnliking: isLiked },
     refetchQueries: [
-      { query: GET_COMMENT_BY_USER_ID, variables: { user_id, blog_id } }
+      { query: GET_COMMENT_BY_USER_ID, variables: { user_id, blog_id } },
+      { query: GET_COMMENTS }
     ]
   });
 

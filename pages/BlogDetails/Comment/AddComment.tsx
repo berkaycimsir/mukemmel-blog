@@ -8,7 +8,10 @@ import {
   Props
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/addcomment.interfaces";
 import { ADD_COMMENT } from "../../../graphql/Comment/mutation";
-import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
+import {
+  GET_COMMENT_BY_USER_ID,
+  GET_COMMENTS
+} from "../../../graphql/Comment/query";
 import { GET_BLOG_BY_ID } from "../../../graphql/Blog/query";
 
 const AddComment: React.FC<Props> = ({ blog_id, activeUser }) => {
@@ -25,7 +28,8 @@ const AddComment: React.FC<Props> = ({ blog_id, activeUser }) => {
       {
         query: GET_COMMENT_BY_USER_ID,
         variables: { user_id: activeUser.id, blog_id }
-      }
+      },
+      { query: GET_COMMENTS }
     ]
   });
 

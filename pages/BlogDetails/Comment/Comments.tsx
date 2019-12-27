@@ -74,7 +74,7 @@ const Comments: React.FC<Props & WindowSizeProps> = ({
       {activeUser && activeUserComment === null ? (
         <AddComment blog_id={blog_id} activeUser={activeUser} />
       ) : activeUser && activeUserComment !== null ? null : (
-        <Message color="brown">
+        <Message warning>
           <Message.Header>Yorum yapmak için giriş yapınız!</Message.Header>
           <Divider />
           <Message.Content>

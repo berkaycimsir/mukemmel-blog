@@ -8,7 +8,10 @@ import {
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/updatecomment.intrefaces";
 import { useMutation } from "react-apollo";
 import { UPDATE_COMMENT } from "../../../graphql/Comment/mutation";
-import { GET_COMMENT_BY_USER_ID } from "../../../graphql/Comment/query";
+import {
+  GET_COMMENT_BY_USER_ID,
+  GET_COMMENTS
+} from "../../../graphql/Comment/query";
 
 const UpdateComment: React.FC<Props> = ({
   setIsUpdating,
@@ -23,7 +26,8 @@ const UpdateComment: React.FC<Props> = ({
     UpdateCommentVariables
   >(UPDATE_COMMENT, {
     refetchQueries: [
-      { query: GET_COMMENT_BY_USER_ID, variables: { blog_id, user_id } }
+      { query: GET_COMMENT_BY_USER_ID, variables: { blog_id, user_id } },
+      { query: GET_COMMENTS }
     ]
   });
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Card, Divider, Segment, Header } from "semantic-ui-react";
-import Comments from "./Comments";
+import CommentsTabPart from "./CommentsTabPart";
 
 const CommentsTab: React.FC<any> = ({ activeUser }) => (
   <Segment
@@ -12,7 +12,7 @@ const CommentsTab: React.FC<any> = ({ activeUser }) => (
     <Card.Content>
       <Header style={{ marginTop: "3px" }}>Son yorumlar</Header>
       <Divider />
-      <Comments activeUser={activeUser} />
+      <CommentsTabPart activeUser={activeUser} />
     </Card.Content>
   </Segment>
 );
