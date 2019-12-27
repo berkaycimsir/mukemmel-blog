@@ -25,6 +25,7 @@ import Loading from "../../components/Loading/Loading";
 import BlogItem from "./BlogItem";
 import { isBrowser } from "../../lib/isBrowser";
 import Pagination from "../../components/Pagination/Pagination";
+import IfNoBlog from "./IfNoBlog";
 
 const CategoryPage: React.FC<Props> = ({ session }) => {
   const [blogsPerPage, setBlogPerPage] = useState<number>(8);
@@ -64,17 +65,25 @@ const CategoryPage: React.FC<Props> = ({ session }) => {
           <Segment color="violet" className="blog-card">
             <Header as="h2" content={category.toUpperCase()} />
             <Divider />
-            <Item.Group divided>
-              {currentBlogs.map(blog => (
-                <BlogItem blog={blog} />
-              ))}
-            </Item.Group>
-            <Pagination
-              totalBlogs={totalBlogs}
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              blogsPerPage={blogsPerPage}
-            />
+            {!totalBlogs ||
+            totalBlogs === undefined ||
+            totalBlogs.length === 0 ? (
+              <IfNoBlog />
+            ) : (
+              <>
+                <Item.Group divided>
+                  {currentBlogs.map(blog => (
+                    <BlogItem blog={blog} />
+                  ))}
+                </Item.Group>
+                <Pagination
+                  totalBlogs={totalBlogs}
+                  currentPage={currentPage}
+                  setCurrentPage={setCurrentPage}
+                  blogsPerPage={blogsPerPage}
+                />
+              </>
+            )}
           </Segment>
         </Grid.Column>
         <Grid.Column width={5}>

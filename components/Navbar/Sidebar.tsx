@@ -42,7 +42,7 @@ const SidebarMenu: React.FC<Props> = ({
       <NavLink
         onClick={() => setIsVisible(false)}
         className="item"
-        to="/blog/category/technology"
+        to="/category/technology"
       >
         <span>Teknoloji</span>
       </NavLink>
