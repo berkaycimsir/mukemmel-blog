@@ -35,7 +35,7 @@ const BlogItem: React.FC<Props> = ({ blog }) => {
         <Item.Description
           style={{ lineHeight: "1.6", fontSize: "14px" }}
           dangerouslySetInnerHTML={{
-            __html: blog.content.slice(0, 200) + "..."
+            __html: blog.content.slice(0, 190) + "..."
           }}
         />
         <Item.Extra>
