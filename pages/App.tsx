@@ -23,6 +23,7 @@ import Admin from "./Admin/Admin";
 // components
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+import AdminNavbar from "../components/Navbar/AdminNavbar";
 
 type Props = {
   session: any;
