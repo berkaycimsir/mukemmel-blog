@@ -103,7 +103,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   };
 
   return (
-    <Container centered="true" style={{ marginTop: "50px" }}>
+    <Container centered="true" style={{ marginTop: "50px", height: "500px" }}>
       <Segment padded color="purple">
         <Header textAlign="center" content="Kayıt Ol" />
         <Divider />

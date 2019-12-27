@@ -11,7 +11,8 @@ import {
   Card,
   Segment,
   Header,
-  Divider
+  Divider,
+  Message
 } from "semantic-ui-react";
 import {
   Props,
@@ -71,7 +72,7 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   };
 
   return (
-    <Container centered="true" style={{ marginTop: "50px" }}>
+    <Container centered="true" style={{ marginTop: "50px", height: "500px" }}>
       <Segment padded color="teal">
         <Header textAlign="center" content="Giriş Yap" />
         <Divider />
@@ -107,6 +108,10 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           />
         </Form>
       </Segment>
+      <Message
+        header="Giriş Yapın!"
+        content="Bir sürü güzel blog yazısı ve eğlenceli içerikleri için giriş yapın."
+      />
     </Container>
   );
 };
