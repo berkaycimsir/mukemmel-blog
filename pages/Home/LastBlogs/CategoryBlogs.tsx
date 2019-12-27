@@ -1,22 +1,32 @@
 import * as React from "react";
 import { Tab, Grid, Item } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
-import { GET_BLOGS } from "../../../graphql/Blog/query";
+import { GET_BLOGS_BY_CATEGORY } from "../../../graphql/Blog/query";
 import Loading from "../../../components/Loading/Loading";
 import BlogCard from "../BlogCard";
-import { GetBlogsReturnType } from "../../../@types/interfaces/PageInterfaces/Home/bloglist.interfaces";
+import {
+  GetBlogsByCategoryReturnData,
+  GetBlogsByCategoryVariables
+} from "../../../@types/interfaces/PageInterfaces/Categories/category.interfaces";
 import { Blog } from "../../../@types/types/DatabaseTypes";
 
-const AllLastBlogs: React.FC = () => {
+type Props = {
+  category: string;
+};
+
+const CategoryBlogs: React.FC<Props> = ({ category }) => {
   const { data: getBlogsData, loading: getBlogsLoading } = useQuery<
-    GetBlogsReturnType
-  >(GET_BLOGS);
+    GetBlogsByCategoryReturnData,
+    GetBlogsByCategoryVariables
+  >(GET_BLOGS_BY_CATEGORY, {
+    variables: { category }
+  });
 
   if (getBlogsLoading) {
     return <Loading size={50} />;
   }
 
-  const blogs: Array<Blog> = getBlogsData.blogs.slice(0, 8);
+  const blogs: Array<Blog> = getBlogsData.getBlogByCategory.slice(0, 8);
 
   return (
     <>
@@ -31,4 +41,4 @@ const AllLastBlogs: React.FC = () => {
   );
 };
 
-export default AllLastBlogs;
+export default CategoryBlogs;

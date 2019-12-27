@@ -4,33 +4,82 @@ import {
   SemanticShorthandItem,
   TabPaneProps,
   Card,
-  Divider
+  Divider,
+  Menu,
+  Input,
+  Segment
 } from "semantic-ui-react";
 import AllLastBlogs from "./AllLastBlogs";
+import CategoryBlogs from "./CategoryBlogs";
+import CategoryDropdown from "./CategoryDropdown";
 
-const panes: {
-  pane?: SemanticShorthandItem<TabPaneProps>;
-  menuItem?: any;
-  render?: () => React.ReactNode;
-}[] = [
-  {
-    menuItem: { key: "all-trend-blogs", content: "Tümü" },
-    render: () => <AllLastBlogs />
-  },
-  {
-    menuItem: "Tab 3",
-    render: () => <Tab.Pane attached="top">Trend İçerikler</Tab.Pane>
-  }
-];
+const LastBlogs: React.FC = () => {
+  const [activeItem, setActiveItem] = React.useState<string>("all");
+  const [windowWidth, setWindowWidth] = React.useState<number>(
+    window.innerWidth
+  );
 
-const LastBlogs: React.FC = () => (
-  <Card style={{ marginTop: "20px" }} fluid color="teal">
-    <Card.Content>
-      <Card.Header style={{ marginTop: "3px" }}>Son İçerikler</Card.Header>
-      <Divider />
-      <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
-    </Card.Content>
-  </Card>
-);
+  React.useEffect(() => {
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+  }, [windowWidth, setWindowWidth]);
+
+  return (
+    <Card style={{ marginTop: "20px" }} fluid color="teal">
+      <Card.Content>
+        <Card.Header style={{ marginTop: "3px" }}>Son İçerikler</Card.Header>
+        <Divider />
+        <Menu pointing>
+          <Menu.Item
+            content="Tümü"
+            active={activeItem === "all"}
+            onClick={() => setActiveItem("all")}
+          />
+          <Menu.Item
+            content="Javascript"
+            active={activeItem === "javascript"}
+            onClick={() => setActiveItem("javascript")}
+          />
+          {windowWidth > 766.9 ? (
+            <>
+              <Menu.Item
+                content="Php"
+                active={activeItem === "php"}
+                onClick={() => setActiveItem("php")}
+              />
+              <Menu.Item
+                content="Python"
+                active={activeItem === "python"}
+                onClick={() => setActiveItem("python")}
+              />
+              <Menu.Item
+                content="Html"
+                active={activeItem === "html"}
+                onClick={() => setActiveItem("html")}
+              />
+              <Menu.Item
+                content="C#"
+                active={activeItem === "csharp"}
+                onClick={() => setActiveItem("csharp")}
+              />
+            </>
+          ) : (
+            <Menu.Menu position="right">
+              <CategoryDropdown
+                activeItem={activeItem}
+                setActiveItem={setActiveItem}
+              />
+            </Menu.Menu>
+          )}
+        </Menu>
+
+        {activeItem === "all" ? (
+          <AllLastBlogs />
+        ) : (
+          <CategoryBlogs category={activeItem} />
+        )}
+      </Card.Content>
+    </Card>
+  );
+};
 
 export default LastBlogs;
