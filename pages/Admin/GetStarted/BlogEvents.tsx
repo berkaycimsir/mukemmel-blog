@@ -30,7 +30,7 @@ const BlogEvents: React.FC = () => {
   }
 
   return (
-    <>
+    <div style={{ marginTop: "5px" }}>
       {getBlogsLoading ? (
         <Loading size={30} />
       ) : (
@@ -51,8 +51,8 @@ const BlogEvents: React.FC = () => {
               </Feed.Event>
             ))}
             <Pagination
-              blogsPerPage={3}
-              totalBlogs={totalBlogs}
+              itemsPerPage={3}
+              totalItems={totalBlogs}
               currentPage={currentPage}
               setCurrentPage={setCurrentPage}
               scrollTo={false}
@@ -60,7 +60,7 @@ const BlogEvents: React.FC = () => {
           </Feed>
         </Card.Content>
       )}
-    </>
+    </div>
   );
 };
 

@@ -7,10 +7,10 @@ import { Props } from "../../@types/interfaces/ComponentInterfaces/Pagination/pa
 
 const Pagination: React.FC<Props> = ({
   scrollTo,
-  totalBlogs,
+  totalItems,
   currentPage,
   setCurrentPage,
-  blogsPerPage
+  itemsPerPage
 }) => {
   const onPageChange: Function = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -26,7 +26,7 @@ const Pagination: React.FC<Props> = ({
         e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
         pageInfo: PaginationProps
       ) => onPageChange(e, pageInfo)}
-      totalPages={Math.ceil(totalBlogs.length / blogsPerPage)}
+      totalPages={Math.ceil(totalItems.length / itemsPerPage)}
       activePage={currentPage}
       ellipsisItem={null}
       boundaryRange={0}

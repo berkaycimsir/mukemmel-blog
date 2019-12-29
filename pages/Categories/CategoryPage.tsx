@@ -79,10 +79,10 @@ const CategoryPage: React.FC<Props> = ({ session }) => {
                   ))}
                 </Item.Group>
                 <Pagination
-                  totalBlogs={totalBlogs}
+                  totalItems={totalBlogs}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
-                  blogsPerPage={blogsPerPage}
+                  itemsPerPage={blogsPerPage}
                 />
               </>
             )}

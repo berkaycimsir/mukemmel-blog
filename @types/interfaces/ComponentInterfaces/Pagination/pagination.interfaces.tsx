@@ -1,9 +1,9 @@
-import { Blog } from "../../../types/DatabaseTypes";
+import { Blog, User, Comment } from "../../../types/DatabaseTypes";
 
 export type Props = {
-  totalBlogs: Array<Blog>;
+  totalItems: Array<Blog> | Array<Comment> | Array<User>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   currentPage: number;
-  blogsPerPage: number;
+  itemsPerPage: number;
   scrollTo?: boolean;
 };
