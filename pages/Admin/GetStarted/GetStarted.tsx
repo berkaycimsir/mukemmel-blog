@@ -17,17 +17,11 @@ const GetStarted: React.FC = () => {
         <Header as="h2" content="Başlangıç" />
         <Divider />
         <Grid stackable>
-          <Grid.Column width={8}>
+          <Grid.Column width={16}>
             <Statistics />
           </Grid.Column>
-          <Grid.Column width={8}>
-            <Image src="/images/wireframe/paragraph.png" />
-          </Grid.Column>
-          <Grid.Column width={8}>
+          <Grid.Column width={16}>
             <Events />
-          </Grid.Column>
-          <Grid.Column width={8}>
-            <Image src="/images/wireframe/paragraph.png" />
           </Grid.Column>
         </Grid>
       </Container>
