@@ -109,7 +109,7 @@ const Navbar: React.FC<Props> = ({ session }) => {
                     <span>Profile</span>
                   </NavLink>
                   {activeUser.admin === true && (
-                    <a className="item" href="/admin">
+                    <a className="item" href="/admin/get-started">
                       <span>Admin Paneli</span>
                     </a>
                   )}

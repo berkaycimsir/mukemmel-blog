@@ -57,7 +57,8 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           path="/category/:category"
           render={() => <CategoryPage session={session} />}
         />
-        <Route exact path="/admin" render={() => <Admin />} />
+        <Route exact path="/admin/get-started" render={() => <Admin />} />
+        <Route exact path="/admin/:blabla" render={() => <Admin />} />
         <Route exact path="*" render={() => <div>No page.</div>} />
       </Switch>
       {!location.pathname.includes("/admin") && <Footer />}

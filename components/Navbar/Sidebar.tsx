@@ -121,7 +121,7 @@ const SidebarMenu: React.FC<Props> = ({
             <a
               onClick={() => setIsVisible(false)}
               className="item"
-              href="/admin"
+              href="/admin/get-started"
             >
               <span>Admin Paneli</span>
             </a>

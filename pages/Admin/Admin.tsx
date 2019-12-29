@@ -2,9 +2,15 @@ import * as React from "react";
 import Auth from "../../components/Hoc/Auth";
 import { User } from "../../@types/types/DatabaseTypes";
 import AdminNavbar from "../../components/Navbar/AdminNavbar";
+import GetStarted from "./GetStarted/GetStarted";
 
 const Admin: React.FC = () => {
-  return <AdminNavbar />;
+  return (
+    <>
+      <AdminNavbar />
+      <GetStarted />
+    </>
+  );
 };
 
 export default Auth((session: any) => {

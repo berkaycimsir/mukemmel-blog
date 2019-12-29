@@ -1,9 +1,10 @@
 import * as React from "react";
 import { Menu, Button, Image } from "semantic-ui-react";
 import { useState, useEffect } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import AdminSidebar from "./AdminSidebar";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const AdminNavbar: React.FC<{} & RouteComponentProps> = ({ location }) => {
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
@@ -17,24 +18,17 @@ const AdminNavbar: React.FC<{} & RouteComponentProps> = ({ location }) => {
   }, [windowWidth, setWindowWidth]);
 
   return (
-    <Menu fixed="top" size="large" inverted>
+    <Menu className="navbar" size="large" inverted>
       {windowWidth <= 766.9 && (
-        <Button
-          basic
-          style={{ width: "40px" }}
-          icon={
-            <Image
-              style={{ width: "30px" }}
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/200px-Hamburger_icon.svg.png"
-            />
-          }
-          onClick={() => setIsVisible(true)}
-        />
+        <Menu.Item onClick={() => setIsVisible(true)} icon={<MenuIcon />} />
       )}
       {windowWidth <= 767 && (
         <AdminSidebar isVisible={isVisible} setIsVisible={setIsVisible} />
       )}
       <Menu.Menu position={windowWidth >= 766.9 ? "left" : "right"}>
+        <NavLink to="/admin/get-started" className="item">
+          <span>Başlangıç</span>
+        </NavLink>
         <a className="item" href="/">
           <span>Siteye Git</span>
         </a>
