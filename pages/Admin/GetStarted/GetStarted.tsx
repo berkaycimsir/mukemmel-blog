@@ -15,24 +15,19 @@ const GetStarted: React.FC = () => {
       <Container>
         <Header as="h2" content="Başlangıç" />
         <Divider />
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <Statistics />
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <Image src="/images/wireframe/paragraph.png" />
-            </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <Image src="/images/wireframe/paragraph.png" />
-            </Grid.Column>
-            <Grid.Column width={8}>
-              <Image src="/images/wireframe/paragraph.png" />
-            </Grid.Column>
-          </Grid.Row>
+        <Grid stackable>
+          <Grid.Column width={8}>
+            <Statistics />
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <Image src="/images/wireframe/paragraph.png" />
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <Image src="/images/wireframe/paragraph.png" />
+          </Grid.Column>
+          <Grid.Column width={8}>
+            <Image src="/images/wireframe/paragraph.png" />
+          </Grid.Column>
         </Grid>
       </Container>
     </Segment>
