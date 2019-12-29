@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Card, Feed } from "semantic-ui-react";
-import { Create, ChatBubble } from "@material-ui/icons";
+import { Create, ChatBubble, FileCopy } from "@material-ui/icons";
 import { useQuery } from "react-apollo";
 import {
   GetBlogsReturnData,
@@ -18,6 +18,14 @@ const Statistics: React.FC = () => {
   const { data: getCommentsData, loading: getCommentsLoading } = useQuery<
     GetAllCommentsReturnData
   >(GET_ALL_COMMENTS);
+
+  const blogsPerPage: number = 9;
+
+  let totalPagesInBlog: number;
+
+  if (!getBlogsLoading) {
+    totalPagesInBlog = Math.round(getBlogsData.blogs.length / blogsPerPage);
+  }
 
   return (
     <Card fluid>
@@ -52,12 +60,12 @@ const Statistics: React.FC = () => {
             </Feed.Event>
 
             <Feed.Event>
-              <Feed.Label image="/images/avatar/small/elliot.jpg" />
+              <Feed.Label icon={<FileCopy />} />
               <Feed.Content>
-                <Feed.Date content="4 days ago" />
-                <Feed.Summary>
-                  You added <a>Elliot Baker</a> to your <a>musicians</a> group.
-                </Feed.Summary>
+                <Feed.Date>{totalPagesInBlog + " sayfa"}</Feed.Date>
+                <Feed.Summary
+                  content={`Şu ana kadar ki blogların toplam ${totalPagesInBlog} sayfa ediyor.`}
+                />
               </Feed.Content>
             </Feed.Event>
           </Feed>
