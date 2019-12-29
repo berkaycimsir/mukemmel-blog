@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Sidebar, Menu } from "semantic-ui-react";
+import { Sidebar, Menu, Dropdown } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { ArrowDropDown } from "@material-ui/icons";
 
 type Props = {
   isVisible: boolean;
@@ -9,6 +10,7 @@ type Props = {
 };
 
 const AdminSidebar: React.FC<Props> = ({ isVisible, setIsVisible }) => {
+  const [visible, setVisible] = useState<boolean>(false);
   const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
   useEffect(() => {
@@ -31,15 +33,42 @@ const AdminSidebar: React.FC<Props> = ({ isVisible, setIsVisible }) => {
       >
         X
       </Menu.Item>
-      <Menu.Item className="home-nav-link">
-        <NavLink to="/">Anasayfa</NavLink>
-      </Menu.Item>
-      <NavLink className="item" to="/category/technology">
-        <span>Teknoloji</span>
+      <NavLink
+        onClick={() => setIsVisible(false)}
+        className="item"
+        to="/admin/get-started"
+      >
+        <span>Başlangıç</span>
       </NavLink>
-      <NavLink className="item" to="/about">
-        <span>Hakkımızda</span>
-      </NavLink>
+      <Menu.Item
+        content="Yazılar"
+        icon={<ArrowDropDown htmlColor="white" />}
+        onClick={() => setVisible(!visible)}
+      />
+      {visible && (
+        <>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisible(false);
+            }}
+            to="/admin/articles"
+            className="dropdown item"
+          >
+            Tüm Yazılar
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisible(false);
+            }}
+            to="/admin/add-new-blog"
+            className="dropdown item"
+          >
+            Yeni Ekle
+          </NavLink>
+        </>
+      )}
     </Sidebar>
   );
 };

@@ -20,6 +20,7 @@ export const GET_ACTIVE_USER = gql`
 export const GET_LAST_USERS = gql`
   query {
     users {
+      id
       name
       surname
       username

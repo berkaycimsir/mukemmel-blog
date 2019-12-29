@@ -58,7 +58,7 @@ const AllBlogs: React.FC = () => {
 
       <Table.Body>
         {currentBlogs.map((blog: Blog) => (
-          <Table.Row>
+          <Table.Row key={blog.id}>
             <Table.Cell>
               <a href={`/blog/details/${blog.id}`}>
                 <Label color="violet" ribbon content={blog.title} />
@@ -78,7 +78,7 @@ const AllBlogs: React.FC = () => {
             <Table.Cell>{blog.category}</Table.Cell>
             <Table.Cell>
               {blog.tags.slice(0, 3).map(tag => (
-                <a> #{tag}</a>
+                <a key={tag}> #{tag}</a>
               ))}
             </Table.Cell>
             <Table.Cell>

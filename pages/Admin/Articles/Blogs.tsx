@@ -4,7 +4,7 @@ import AllBlogs from "./AllBlogs";
 
 const Blogs: React.FC = () => {
   return (
-    <Segment basic padded="very">
+    <Segment style={{ padding: "20px" }} basic>
       <Container fluid>
         <Header as="h2" content="Yazılar" />
         <Divider />

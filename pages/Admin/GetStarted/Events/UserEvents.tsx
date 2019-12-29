@@ -49,7 +49,7 @@ const UserEvents: React.FC = () => {
           <Feed>
             <Header as="h4" content="Son kayıtlar:" />
             {currentUsers.map((user: User) => (
-              <Feed.Event>
+              <Feed.Event key={user.id}>
                 <Feed.Label>
                   <Image size="mini" src={getImageUrlByGender(user.gender)} />
                 </Feed.Label>

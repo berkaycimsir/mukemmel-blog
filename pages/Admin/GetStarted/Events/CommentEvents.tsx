@@ -52,7 +52,7 @@ const CommentEvents: React.FC = () => {
           <Feed>
             <Header as="h4" content="Son yapılan yorumlar:" />
             {currentComments.map((comment: Comment) => (
-              <Feed.Event>
+              <Feed.Event key={comment.id}>
                 <Feed.Label>
                   <Image
                     size="mini"

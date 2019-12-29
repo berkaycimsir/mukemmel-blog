@@ -38,7 +38,7 @@ const BlogEvents: React.FC = () => {
           <Feed>
             <Header as="h4" content="Son eklenen bloglar:" />
             {currentBlogs.map((blog: Blog) => (
-              <Feed.Event>
+              <Feed.Event key={blog.id}>
                 <Feed.Label icon={<Description />} />
                 <Feed.Content>
                   <Feed.Date>

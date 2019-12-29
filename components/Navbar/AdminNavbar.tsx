@@ -30,25 +30,29 @@ const AdminNavbar: React.FC<{} & RouteComponentProps> = ({ location }) => {
         <a className="item" href="/">
           <span>Siteye Git</span>
         </a>
-        <NavLink to="/admin/get-started" className="item">
-          <span>Başlangıç</span>
-        </NavLink>
-        <Dropdown
-          closeOnEscape
-          icon={<ArrowDropDown />}
-          item
-          simple
-          text="Yazılar"
-        >
-          <Dropdown.Menu>
-            <NavLink to="/admin/articles" className="dropdown item">
-              Tüm Yazılar
+        {windowWidth >= 766.9 && (
+          <>
+            <NavLink to="/admin/get-started" className="item">
+              <span>Başlangıç</span>
             </NavLink>
-            <NavLink to="/admin/add-new-blog" className="dropdown item">
-              Yeni Ekle
-            </NavLink>
-          </Dropdown.Menu>
-        </Dropdown>
+            <Dropdown
+              closeOnEscape
+              icon={<ArrowDropDown />}
+              item
+              simple
+              text="Yazılar"
+            >
+              <Dropdown.Menu>
+                <NavLink to="/admin/articles" className="dropdown item">
+                  Tüm Yazılar
+                </NavLink>
+                <NavLink to="/admin/add-new-blog" className="dropdown item">
+                  Yeni Ekle
+                </NavLink>
+              </Dropdown.Menu>
+            </Dropdown>
+          </>
+        )}
       </Menu.Menu>
     </Menu>
   );
