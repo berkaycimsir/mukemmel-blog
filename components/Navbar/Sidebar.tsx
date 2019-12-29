@@ -2,7 +2,7 @@ import * as React from "react";
 import { Sidebar, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { User } from "../../@types/types/DatabaseTypes";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowDropDown } from "@material-ui/icons";
 
 type Props = {
@@ -117,15 +117,6 @@ const SidebarMenu: React.FC<Props> = ({
       )}
       {activeUser ? (
         <div style={{ position: "fixed", left: 0, bottom: 0, width: "100%" }}>
-          {activeUser.admin === true && (
-            <NavLink
-              onClick={() => setIsVisible(false)}
-              className="item"
-              to="/admin"
-            >
-              <span>Admin</span>
-            </NavLink>
-          )}
           <NavLink
             onClick={() => setIsVisible(false)}
             className="item"

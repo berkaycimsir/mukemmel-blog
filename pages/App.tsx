@@ -5,7 +5,6 @@ import "../utils/css/index.css";
 import {
   Route,
   Switch,
-  Redirect,
   withRouter,
   RouteComponentProps
 } from "react-router-dom";
@@ -23,13 +22,12 @@ import Admin from "./Admin/Admin";
 // components
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
-import AdminNavbar from "../components/Navbar/AdminNavbar";
 
 type Props = {
   session: any;
 };
 
-const App: React.FC<Props> = ({ session }) => {
+const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
   return (
     <>
       <Head>
@@ -44,7 +42,7 @@ const App: React.FC<Props> = ({ session }) => {
         />
       </Head>
 
-      <Navbar session={session} />
+      {!location.pathname.includes("/admin") && <Navbar session={session} />}
       <Switch>
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/login" render={() => <LoginPage />} />
@@ -63,9 +61,9 @@ const App: React.FC<Props> = ({ session }) => {
         <Route exact path="/admin" render={() => <Admin />} />
         <Route exact path="*" render={() => <div>No page.</div>} />
       </Switch>
-      <Footer />
+      {!location.pathname.includes("/admin") && <Footer />}
     </>
   );
 };
 
-export default SessionWrapperHOC(App);
+export default withRouter(SessionWrapperHOC(App));

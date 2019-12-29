@@ -1,9 +1,11 @@
 import * as React from "react";
 import Auth from "../../components/Hoc/Auth";
 import { User } from "../../@types/types/DatabaseTypes";
+import AdminSidebar from "../../components/Navbar/AdminSidebar";
+import AdminNavbar from "../../components/Navbar/AdminNavbar";
 
 const Admin: React.FC = () => {
-  return <div>admin page</div>;
+  return <AdminNavbar />;
 };
 
 export default Auth((session: any) => {

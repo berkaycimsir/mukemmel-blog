@@ -25,13 +25,7 @@ const Navbar: React.FC<Props> = ({ session }) => {
 
   return (
     <>
-      {session.activeUser.admin !== false && <AdminNavbar />}
-      <Menu
-        style={session.activeUser.admin !== false && { marginTop: "35px" }}
-        stackable
-        className="navbar"
-        size="small"
-      >
+      <Menu stackable className="navbar" size="small">
         {console.log(session)}
         <Menu.Item>
           {windowWidth <= 766.9 ? (
@@ -112,14 +106,14 @@ const Navbar: React.FC<Props> = ({ session }) => {
             <Menu.Menu position="right">
               {session && session.activeUser.user !== null ? (
                 <>
-                  {activeUser.admin === true && (
-                    <NavLink className="item" to="/admin">
-                      <span>Admin</span>
-                    </NavLink>
-                  )}
                   <NavLink className="item" to="/profile">
                     <span>Profile</span>
                   </NavLink>
+                  {activeUser.admin === true && (
+                    <a className="item" href="/admin">
+                      <span>Admin Paneli</span>
+                    </a>
+                  )}
                 </>
               ) : (
                 windowWidth > 767 && (
