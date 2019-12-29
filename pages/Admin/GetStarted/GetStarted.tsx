@@ -8,6 +8,7 @@ import {
   Segment
 } from "semantic-ui-react";
 import Statistics from "./Statistics";
+import Events from "./Events";
 
 const GetStarted: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const GetStarted: React.FC = () => {
             <Image src="/images/wireframe/paragraph.png" />
           </Grid.Column>
           <Grid.Column width={8}>
-            <Image src="/images/wireframe/paragraph.png" />
+            <Events />
           </Grid.Column>
           <Grid.Column width={8}>
             <Image src="/images/wireframe/paragraph.png" />
