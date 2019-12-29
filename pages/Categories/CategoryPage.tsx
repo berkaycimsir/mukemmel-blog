@@ -75,7 +75,7 @@ const CategoryPage: React.FC<Props> = ({ session }) => {
               <>
                 <Item.Group divided>
                   {currentBlogs.map(blog => (
-                    <BlogItem blog={blog} />
+                    <BlogItem key={blog.id} blog={blog} />
                   ))}
                 </Item.Group>
                 <Pagination
