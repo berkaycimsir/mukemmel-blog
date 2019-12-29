@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Table, Label, Image } from "semantic-ui-react";
+import { Table, Label, Image, Icon, Popup } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import { GetBlogsReturnData } from "../../../../@types/interfaces/PageInterfaces/Admin/GetStarted/statistics.interfaces";
 import { GET_BLOGS } from "../../../../graphql/Blog/query";
@@ -7,6 +7,8 @@ import { Blog } from "../../../../@types/types/DatabaseTypes";
 import Moment from "react-moment";
 import Loading from "../../../../components/Loading/Loading";
 import Pagination from "../../../../components/Pagination/Pagination";
+import { DeleteOutline } from "@material-ui/icons";
+import DeleteBlog from "./DeleteBlog";
 
 const AllBlogs: React.FC = () => {
   const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -49,9 +51,9 @@ const AllBlogs: React.FC = () => {
           <Table.HeaderCell>Başlık</Table.HeaderCell>
           <Table.HeaderCell>Yazar</Table.HeaderCell>
           <Table.HeaderCell>Kategori</Table.HeaderCell>
-          <Table.HeaderCell>Etiketler</Table.HeaderCell>
           <Table.HeaderCell>Tarih</Table.HeaderCell>
           <Table.HeaderCell>Görüntülenme</Table.HeaderCell>
+          <Table.HeaderCell>İşlemler</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
 
@@ -76,16 +78,14 @@ const AllBlogs: React.FC = () => {
             </Table.Cell>
             <Table.Cell>{blog.category}</Table.Cell>
             <Table.Cell>
-              {blog.tags.slice(0, 3).map(tag => (
-                <a key={tag}> #{tag}</a>
-              ))}
-            </Table.Cell>
-            <Table.Cell>
               <b>
                 <Moment date={blog.createdAt} format="DD/MM/YY" />
               </b>
             </Table.Cell>
             <Table.Cell>{blog.views}</Table.Cell>
+            <Table.Cell>
+              <DeleteBlog id={blog.id} />
+            </Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>
