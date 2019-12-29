@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
-import { User } from "../../../@types/types/DatabaseTypes";
-import Loading from "../../../components/Loading/Loading";
+import { User } from "../../../../@types/types/DatabaseTypes";
+import Loading from "../../../../components/Loading/Loading";
 import { Card, Feed, Header, Image } from "semantic-ui-react";
 import Moment from "react-moment";
-import Pagination from "../../../components/Pagination/Pagination";
-import { GetUsersReturnData } from "../../../@types/interfaces/PageInterfaces/Admin/GetStarted/events.interfaces";
-import { GET_LAST_USERS } from "../../../graphql/User/query";
+import Pagination from "../../../../components/Pagination/Pagination";
+import { GetUsersReturnData } from "../../../../@types/interfaces/PageInterfaces/Admin/GetStarted/events.interfaces";
+import { GET_LAST_USERS } from "../../../../graphql/User/query";
 
 const UserEvents: React.FC = () => {
   const [currentPage, setCurrentPage] = React.useState<number>(1);

@@ -1,12 +1,12 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
-import { Comment } from "../../../@types/types/DatabaseTypes";
-import Loading from "../../../components/Loading/Loading";
+import { Comment } from "../../../../@types/types/DatabaseTypes";
+import Loading from "../../../../components/Loading/Loading";
 import { Card, Feed, Header, Image } from "semantic-ui-react";
 import Moment from "react-moment";
-import Pagination from "../../../components/Pagination/Pagination";
-import { GetCommentsReturnData } from "../../../@types/interfaces/PageInterfaces/BlogDetails/allcommentstab.interfaces";
-import { GET_COMMENTS } from "../../../graphql/Comment/query";
+import Pagination from "../../../../components/Pagination/Pagination";
+import { GetCommentsReturnData } from "../../../../@types/interfaces/PageInterfaces/BlogDetails/allcommentstab.interfaces";
+import { GET_COMMENTS } from "../../../../graphql/Comment/query";
 
 const CommentEvents: React.FC = () => {
   const [currentPage, setCurrentPage] = React.useState<number>(1);
