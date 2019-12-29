@@ -16,3 +16,15 @@ export const GET_ACTIVE_USER = gql`
     }
   }
 `;
+
+export const GET_LAST_USERS = gql`
+  query {
+    users {
+      name
+      surname
+      username
+      gender
+      createdAt
+    }
+  }
+`;
