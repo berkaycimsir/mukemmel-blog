@@ -5,4 +5,5 @@ export type Props = {
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   currentPage: number;
   blogsPerPage: number;
+  scrollTo?: boolean;
 };

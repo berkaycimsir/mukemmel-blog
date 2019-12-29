@@ -6,6 +6,7 @@ import {
 import { Props } from "../../@types/interfaces/ComponentInterfaces/Pagination/pagination.interfaces";
 
 const Pagination: React.FC<Props> = ({
+  scrollTo,
   totalBlogs,
   currentPage,
   setCurrentPage,
@@ -16,7 +17,7 @@ const Pagination: React.FC<Props> = ({
     pageInfo: PaginationProps
   ) => {
     setCurrentPage(pageInfo.activePage as number);
-    window.scrollTo(0, 0);
+    scrollTo && window.scrollTo(0, 0);
   };
 
   return (
@@ -28,7 +29,10 @@ const Pagination: React.FC<Props> = ({
       totalPages={Math.ceil(totalBlogs.length / blogsPerPage)}
       activePage={currentPage}
       ellipsisItem={null}
-      boundaryRange={3}
+      boundaryRange={0}
+      siblingRange={1}
+      lastItem={null}
+      firstItem={null}
     />
   );
 };
