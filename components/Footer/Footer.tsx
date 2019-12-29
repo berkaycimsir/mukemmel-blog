@@ -7,8 +7,7 @@ import {
   List,
   Divider,
   Image,
-  Button,
-  Icon
+  Button
 } from "semantic-ui-react";
 
 const Footer: React.FC = () => (

@@ -9,7 +9,6 @@ import {
   RouteComponentProps
 } from "react-router-dom";
 import SessionWrapperHOC from "../components/Hoc/SessionWrapperHOC";
-import { User } from "../@types/types/DatabaseTypes";
 
 // pages
 import BlogDetails from "./BlogDetails/BlogDetails";

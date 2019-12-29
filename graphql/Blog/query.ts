@@ -25,12 +25,8 @@ export const GET_LAST_FOUR_BLOG = gql`
       id
       owner_id
       title
-      content
-      tags
-      likes
       views
       img
-      createdAt
       user {
         username
       }
@@ -88,7 +84,6 @@ export const GET_BLOG_BY_ID = gql`
         title
         content
         tags
-        likes
         views
         img
         createdAt

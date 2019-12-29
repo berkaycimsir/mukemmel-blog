@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import SidebarMenu from "./Sidebar";
 import { ArrowDropDown } from "@material-ui/icons";
 import { User } from "../../@types/types/DatabaseTypes";
-import AdminNavbar from "./AdminNavbar";
 
 type Props = {
   session: any;

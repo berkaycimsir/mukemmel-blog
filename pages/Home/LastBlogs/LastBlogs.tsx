@@ -1,14 +1,5 @@
 import * as React from "react";
-import {
-  Tab,
-  SemanticShorthandItem,
-  TabPaneProps,
-  Card,
-  Divider,
-  Menu,
-  Input,
-  Segment
-} from "semantic-ui-react";
+import { Card, Divider, Menu } from "semantic-ui-react";
 import AllLastBlogs from "./AllLastBlogs";
 import CategoryBlogs from "./CategoryBlogs";
 import CategoryDropdown from "./CategoryDropdown";

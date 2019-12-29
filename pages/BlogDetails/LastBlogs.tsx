@@ -5,7 +5,6 @@ import { GET_BLOGS } from "../../graphql/Blog/query";
 import Loading from "../../components/Loading/Loading";
 import { GetBlogsReturnType } from "../../@types/interfaces/PageInterfaces/Home/allblogs.interfaces";
 import { NavLink } from "react-router-dom";
-import { RemoveRedEye } from "@material-ui/icons";
 
 const LastBlogs: React.FC = () => {
   const { data: getBlogsData, loading: getBlogsLoading } = useQuery<

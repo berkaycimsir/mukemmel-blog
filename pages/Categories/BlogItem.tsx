@@ -2,7 +2,7 @@ import * as React from "react";
 import { Item, Button } from "semantic-ui-react";
 import { Props } from "../../@types/interfaces/PageInterfaces/Categories/blogitem.interfaces";
 import { NavLink } from "react-router-dom";
-import { Person, RemoveRedEye, WatchLater } from "@material-ui/icons";
+import { RemoveRedEye } from "@material-ui/icons";
 import Moment from "react-moment";
 
 const BlogItem: React.FC<Props> = ({ blog }) => {

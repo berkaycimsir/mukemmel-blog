@@ -4,7 +4,7 @@ import {
   DeleteCommentReturnData,
   DeleteCommentVariables
 } from "../../../@types/interfaces/PageInterfaces/BlogDetails/Comment/deletecomment.interfaces";
-import { Button, Popup, Icon } from "semantic-ui-react";
+import { Popup, Icon } from "semantic-ui-react";
 import { useMutation } from "react-apollo";
 import { DELETE_COMMENT } from "../../../graphql/Comment/mutation";
 import { GET_BLOG_BY_ID } from "../../../graphql/Blog/query";

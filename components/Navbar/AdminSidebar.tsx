@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Sidebar, Menu, Segment } from "semantic-ui-react";
+import { Sidebar, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 

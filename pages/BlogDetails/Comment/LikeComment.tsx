@@ -11,7 +11,7 @@ import {
   GET_COMMENT_BY_USER_ID,
   GET_COMMENTS
 } from "../../../graphql/Comment/query";
-import { Favorite, FavoriteBorder, Loop } from "@material-ui/icons";
+import { Favorite, FavoriteBorder } from "@material-ui/icons";
 import { Popup, Icon } from "semantic-ui-react";
 
 const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {

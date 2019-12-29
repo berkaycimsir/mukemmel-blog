@@ -1,12 +1,5 @@
 import * as React from "react";
-import {
-  Comment,
-  Grid,
-  Divider,
-  Icon,
-  Popup,
-  Message
-} from "semantic-ui-react";
+import { Comment, Grid, Divider, Message } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import Loading from "../../components/Loading/Loading";
 import { GET_COMMENTS } from "../../graphql/Comment/query";
@@ -15,9 +8,7 @@ import {
   Props
 } from "../../@types/interfaces/PageInterfaces/BlogDetails/allcommentstab.interfaces";
 import Moment from "react-moment";
-import { ArrowBack, NavigateNext } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
-import { User } from "../../@types/types/DatabaseTypes";
 
 const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
   const currentBlogId = window.location.pathname.split("/")[3];

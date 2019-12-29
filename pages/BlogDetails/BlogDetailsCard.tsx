@@ -12,7 +12,7 @@ const BlogDetailsCard: React.FC<Props> = ({
   blog,
   user
 }) => {
-  const { id, title, content, img, views, tags, likes, createdAt } = blog;
+  const { id, title, content, img, views, tags, createdAt } = blog;
   const { username } = user;
 
   const sortedTags: Array<string> = tags.slice(0, 2);
@@ -46,11 +46,7 @@ const BlogDetailsCard: React.FC<Props> = ({
         <Header style={{ marginTop: "5px" }} content="Yorumlar" />
         <Divider />
         {!comments || (comments.length === 0 && <NoCommentsMessage />)}
-        <Comments
-          blog_id={blog.id}
-          activeUser={activeUser}
-          comments={comments}
-        />
+        <Comments blog_id={id} activeUser={activeUser} comments={comments} />
       </Card.Content>
     </Card>
   );

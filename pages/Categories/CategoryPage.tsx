@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Container,
   Grid,
@@ -30,6 +30,8 @@ import IfNoBlog from "./IfNoBlog";
 const CategoryPage: React.FC<Props> = ({ session }) => {
   const [blogsPerPage, setBlogPerPage] = useState<number>(8);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+  useEffect(() => window.scrollTo(0, 0));
 
   const category: string = isBrowser && window.location.pathname.split("/")[2];
 

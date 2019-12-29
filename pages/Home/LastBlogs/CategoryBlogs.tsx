@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tab, Grid, Item } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import { GET_BLOGS_BY_CATEGORY } from "../../../graphql/Blog/query";
 import Loading from "../../../components/Loading/Loading";

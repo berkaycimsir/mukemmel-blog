@@ -7,7 +7,7 @@ import { RemoveRedEye } from "@material-ui/icons";
 import Moment from "react-moment";
 
 const BlogCard: React.FC<BlogCardProps> = props => {
-  const { id, title, content, tags, likes, views, img, createdAt } = props.blog;
+  const { id, title, views, img } = props.blog;
   const { username } = props.user;
 
   const getRandomColor = (): SemanticCOLORS => {
@@ -27,9 +27,9 @@ const BlogCard: React.FC<BlogCardProps> = props => {
   return (
     <Grid.Column widescreen={8}>
       <Card className="blog-card" color={getRandomColor()} fluid centered>
-        <NavLink to={`/blog/details/${id}`}>
+        <a href={`/blog/details/${id}`}>
           <Image className="blog-card-img" src={img} />
-        </NavLink>
+        </a>
         <Card.Content>
           <Card.Header className="blog-card-title">
             <span>{title}</span>
