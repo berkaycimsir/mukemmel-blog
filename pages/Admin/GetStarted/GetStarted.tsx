@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Grid, Header, Divider, Container, Segment } from "semantic-ui-react";
-import Statistics from "./Statistics";
+import Statistics from "./Statistics/Statistics";
 import Events from "./Events/Events";
 
 const GetStarted: React.FC = () => {
