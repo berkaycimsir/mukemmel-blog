@@ -22,7 +22,8 @@ import Admin from "./Admin/Admin";
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import AdminNavbar from "../components/Navbar/AdminNavbar";
-import Blogs from "./Admin/Articles/Blogs";
+import Blogs from "./Admin/Articles/AllBlogs/Blogs";
+import AddBlog from "./Admin/Articles/AddBlog/AddBlog";
 
 type Props = {
   session: any;
@@ -41,6 +42,10 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+          rel="stylesheet"
+        ></link>
       </Head>
 
       {location.pathname.includes("/admin") && <AdminNavbar />}
@@ -62,6 +67,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
         />
         <Route exact path="/admin/get-started" render={() => <Admin />} />
         <Route exact path="/admin/articles" render={() => <Blogs />} />
+        <Route exact path="/admin/add-new-blog" render={() => <AddBlog />} />
         <Route exact path="*" render={() => <div>No page.</div>} />
       </Switch>
       {!location.pathname.includes("/admin") && <Footer />}
