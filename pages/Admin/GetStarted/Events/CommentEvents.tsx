@@ -64,7 +64,12 @@ const CommentEvents: React.FC = () => {
                     {comment.user.name} {comment.user.surname} &nbsp;
                     <Moment date={comment.createdAt} fromNow ago /> ago
                   </Feed.Date>
-                  <Feed.Summary>{comment.content}</Feed.Summary>
+                  <Feed.Summary>
+                    {comment.content}{" "}
+                    <a href={`/blog/details/${comment.blog_id}`}>
+                      Blog'a git...
+                    </a>
+                  </Feed.Summary>
                 </Feed.Content>
               </Feed.Event>
             ))}
