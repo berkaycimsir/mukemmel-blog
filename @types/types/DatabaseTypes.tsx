@@ -20,6 +20,7 @@ export type Blog = {
   img: string;
   views: number;
   createdAt: Date;
+  category: string;
   comments?: [Comment];
   user?: User;
 };

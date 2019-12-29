@@ -21,6 +21,8 @@ import Admin from "./Admin/Admin";
 // components
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
+import AdminNavbar from "../components/Navbar/AdminNavbar";
+import Blogs from "./Admin/Articles/Blogs";
 
 type Props = {
   session: any;
@@ -41,6 +43,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
         />
       </Head>
 
+      {location.pathname.includes("/admin") && <AdminNavbar />}
       {!location.pathname.includes("/admin") && <Navbar session={session} />}
       <Switch>
         <Route exact path="/" render={() => <Home />} />
@@ -58,7 +61,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           render={() => <CategoryPage session={session} />}
         />
         <Route exact path="/admin/get-started" render={() => <Admin />} />
-        <Route exact path="/admin/:blabla" render={() => <Admin />} />
+        <Route exact path="/admin/articles" render={() => <Blogs />} />
         <Route exact path="*" render={() => <div>No page.</div>} />
       </Switch>
       {!location.pathname.includes("/admin") && <Footer />}

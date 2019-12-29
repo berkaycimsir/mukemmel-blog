@@ -12,8 +12,12 @@ export const GET_BLOGS = gql`
       views
       img
       createdAt
+      category
       user {
+        name
+        surname
         username
+        gender
       }
     }
   }

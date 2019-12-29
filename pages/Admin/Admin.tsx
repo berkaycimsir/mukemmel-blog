@@ -7,7 +7,6 @@ import GetStarted from "./GetStarted/GetStarted";
 const Admin: React.FC = () => {
   return (
     <>
-      <AdminNavbar />
       <GetStarted />
     </>
   );
