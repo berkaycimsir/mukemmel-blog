@@ -39,3 +39,11 @@ export const GET_COMMENTS = gql`
     }
   }
 `;
+
+export const GET_ALL_COMMENTS = gql`
+  query {
+    comments {
+      id
+    }
+  }
+`;
