@@ -34,9 +34,7 @@ const BlogItem: React.FC<Props> = ({ blog }) => {
 
         <Item.Description
           style={{ lineHeight: "1.6", fontSize: "14px" }}
-          dangerouslySetInnerHTML={{
-            __html: blog.content.slice(0, 190) + "..."
-          }}
+          content={blog.summary}
         />
         <Item.Extra>
           <NavLink to={`/blog/details/${blog.id}`}>

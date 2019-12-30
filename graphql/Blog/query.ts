@@ -124,6 +124,7 @@ export const GET_BLOGS_BY_CATEGORY = gql`
       owner_id
       title
       content
+      summary
       tags
       likes
       createdAt

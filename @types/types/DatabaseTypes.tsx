@@ -15,6 +15,7 @@ export type Blog = {
   owner_id: string;
   title: string;
   content: string;
+  summary: string;
   tags: [string];
   likes: number;
   img: string;
