@@ -9,6 +9,7 @@ import {
 } from "../../@types/interfaces/PageInterfaces/BlogDetails/allcommentstab.interfaces";
 import Moment from "react-moment";
 import { NavLink } from "react-router-dom";
+import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
 
 const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
   const currentBlogId = window.location.pathname.split("/")[3];
@@ -16,20 +17,6 @@ const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
   const { data, loading } = useQuery<GetCommentsReturnData>(GET_COMMENTS);
 
   if (loading) return <Loading size={50} />;
-
-  const menGenderImageUrl: Array<string> = [
-    "https://react.semantic-ui.com/images/avatar/small/joe.jpg"
-  ];
-
-  const womenGenderImageUrl: Array<string> = [
-    "https://react.semantic-ui.com/images/avatar/small/stevie.jpg"
-  ];
-
-  const getImageUrlByGender: Function = (gender: string): string => {
-    return gender === "men" ? menGenderImageUrl[0] : womenGenderImageUrl[0];
-  };
-
-  console.log(data);
 
   return (
     <Grid>

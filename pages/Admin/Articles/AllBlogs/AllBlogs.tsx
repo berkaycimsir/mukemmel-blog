@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Table, Label, Image, Icon, Popup } from "semantic-ui-react";
+import { Table, Label, Image } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import { GetBlogsReturnData } from "../../../../@types/interfaces/PageInterfaces/Admin/GetStarted/statistics.interfaces";
 import { GET_BLOGS } from "../../../../graphql/Blog/query";
@@ -7,8 +7,8 @@ import { Blog } from "../../../../@types/types/DatabaseTypes";
 import Moment from "react-moment";
 import Loading from "../../../../components/Loading/Loading";
 import Pagination from "../../../../components/Pagination/Pagination";
-import { DeleteOutline } from "@material-ui/icons";
 import DeleteBlog from "./DeleteBlog";
+import { getImageUrlByGender } from "../../../../utils/functions/getUserImageUrl";
 
 const AllBlogs: React.FC = () => {
   const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -18,18 +18,6 @@ const AllBlogs: React.FC = () => {
   >(GET_BLOGS);
 
   if (getBlogsLoading) return <Loading size={50} />;
-
-  const menGenderImageUrl: Array<string> = [
-    "https://react.semantic-ui.com/images/avatar/small/joe.jpg"
-  ];
-
-  const womenGenderImageUrl: Array<string> = [
-    "https://react.semantic-ui.com/images/avatar/small/stevie.jpg"
-  ];
-
-  const getImageUrlByGender: Function = (gender: string): string => {
-    return gender === "men" ? menGenderImageUrl[0] : womenGenderImageUrl[0];
-  };
 
   let totalBlogs: Array<Blog>;
 

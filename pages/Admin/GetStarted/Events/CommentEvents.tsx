@@ -7,6 +7,7 @@ import Moment from "react-moment";
 import Pagination from "../../../../components/Pagination/Pagination";
 import { GetCommentsReturnData } from "../../../../@types/interfaces/PageInterfaces/BlogDetails/allcommentstab.interfaces";
 import { GET_COMMENTS } from "../../../../graphql/Comment/query";
+import { getImageUrlByGender } from "../../../../utils/functions/getUserImageUrl";
 
 const CommentEvents: React.FC = () => {
   const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -30,18 +31,6 @@ const CommentEvents: React.FC = () => {
       indexOfLastComment
     );
   }
-
-  const menGenderImageUrl: Array<string> = [
-    "https://react.semantic-ui.com/images/avatar/small/joe.jpg"
-  ];
-
-  const womenGenderImageUrl: Array<string> = [
-    "https://react.semantic-ui.com/images/avatar/small/stevie.jpg"
-  ];
-
-  const getImageUrlByGender: Function = (gender: string): string => {
-    return gender === "men" ? menGenderImageUrl[0] : womenGenderImageUrl[0];
-  };
 
   return (
     <div style={{ marginTop: "15px" }}>

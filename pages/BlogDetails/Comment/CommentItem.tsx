@@ -7,6 +7,7 @@ import DeleteComment from "./DeleteComment";
 import UpdateComment from "./UpdateComment";
 import LikeComment from "./LikeComment";
 import { EditOutlined, Close } from "@material-ui/icons";
+import { getImageUrlByGender } from "../../../utils/functions/getUserImageUrl";
 
 const CommentItem: React.FC<Props> = ({
   activeUserDeleteComment,
@@ -14,18 +15,6 @@ const CommentItem: React.FC<Props> = ({
   comment
 }) => {
   const [isUpdating, setIsUpdating] = useState<boolean>(false);
-
-  const menGenderImageUrl: Array<string> = [
-    "https://react.semantic-ui.com/images/avatar/small/joe.jpg"
-  ];
-
-  const womenGenderImageUrl: Array<string> = [
-    "https://react.semantic-ui.com/images/avatar/small/stevie.jpg"
-  ];
-
-  const getImageUrlByGender: Function = (gender: string): string => {
-    return gender === "men" ? menGenderImageUrl[0] : womenGenderImageUrl[0];
-  };
 
   return (
     <Comment>
