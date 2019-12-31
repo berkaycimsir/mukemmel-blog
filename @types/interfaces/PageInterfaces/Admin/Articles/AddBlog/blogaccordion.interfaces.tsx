@@ -1,7 +1,8 @@
-import { Blog } from "../../../../../types/database/DatabaseTypes";
+import { Blog, User } from "../../../../../types/database/DatabaseTypes";
 
 export type Props = {
   content: string;
+  activeUser: User;
 };
 
 type ReturnType = {

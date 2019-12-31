@@ -53,7 +53,11 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
         />
         <Route exact path="/admin/get-started" render={() => <Admin />} />
         <Route exact path="/admin/articles" render={() => <Blogs />} />
-        <Route exact path="/admin/add-new-blog" render={() => <AddBlog />} />
+        <Route
+          exact
+          path="/admin/add-new-blog"
+          render={() => <AddBlog session={session} />}
+        />
         <Route exact path="*" render={() => <div>No page.</div>} />
       </Switch>
       {!location.pathname.includes("/admin") && <Footer />}

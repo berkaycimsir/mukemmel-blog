@@ -3,8 +3,9 @@ import { Editor as EditorComponent } from "@tinymce/tinymce-react";
 import { init, API_KEY } from "../../../../utils/editor/editor.config";
 import { Grid, Segment } from "semantic-ui-react";
 import BlogOptionsAccordion from "./BlogOptionsAccordion";
+import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/editor.interfaces";
 
-const Editor: React.FC = () => {
+const Editor: React.FC<Props> = ({ activeUser }) => {
   const [value, setValue] = React.useState<string>("");
 
   return (
@@ -18,7 +19,7 @@ const Editor: React.FC = () => {
         />
       </Grid.Column>
       <Grid.Column width={3}>
-        <BlogOptionsAccordion content={value} />
+        <BlogOptionsAccordion activeUser={activeUser} content={value} />
       </Grid.Column>
     </Grid>
   );

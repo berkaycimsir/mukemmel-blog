@@ -34,7 +34,7 @@ import {
   GET_LAST_FOUR_BLOG
 } from "../../../../graphql/Blog/query";
 
-const BlogOptionsAccordion: React.FC<Props> = ({ content }) => {
+const BlogOptionsAccordion: React.FC<Props> = ({ activeUser, content }) => {
   const [activeIndex, setActiveIndex] = useState<number>(5);
   // title input states
   const [title, setTitle] = useState<string>("");
@@ -57,11 +57,35 @@ const BlogOptionsAccordion: React.FC<Props> = ({ content }) => {
     awaitRefetchQueries: true,
     refetchQueries: [
       { query: GET_BLOGS },
-      { query: GET_BLOGS_BY_CATEGORY },
       { query: GET_TREND_BLOGS },
       { query: GET_LAST_FOUR_BLOG }
     ]
   });
+
+  // add blog function, that will work when user press the add blog button
+  const addBlog = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void => {
+    e.preventDefault();
+
+    let titleVar: string = title;
+    if (title.length > 40) title.slice(40, title.length);
+
+    let summaryVar: string = summary;
+    if (summary.length > 200) summary.slice(200, summary.length);
+
+    const variables: AddBlogMutationVariables = {
+      owner_id: activeUser.id,
+      title: titleVar,
+      content: content.toString(),
+      summary: summaryVar,
+      tags: tags.split(","),
+      img: imgUrl,
+      category
+    };
+
+    createBlog({ variables });
+  };
 
   // active accordion item
   const handleClick: IHandleClickFunc = (
@@ -391,7 +415,13 @@ const BlogOptionsAccordion: React.FC<Props> = ({ content }) => {
         indicating
         style={{ marginTop: "10px" }}
       />
-      <Button color="teal" disabled={percent !== 100} content="Yayımla" />
+      <Button
+        color="teal"
+        disabled={percent !== 100 || loading}
+        loading={loading}
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => addBlog(e)}
+        content="Yayımla"
+      />
     </>
   );
 };
