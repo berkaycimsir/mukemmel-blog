@@ -18,7 +18,7 @@ const Editor: React.FC = () => {
         />
       </Grid.Column>
       <Grid.Column width={3}>
-        <BlogOptionsAccordion />
+        <BlogOptionsAccordion content={value} />
       </Grid.Column>
     </Grid>
   );

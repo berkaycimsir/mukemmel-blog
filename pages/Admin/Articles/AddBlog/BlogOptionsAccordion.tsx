@@ -20,8 +20,9 @@ import {
   IHandleClickFunc,
   IDeleteTagFromArrayFunc
 } from "../../../../@types/types/functions/Articles/types";
+import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/blogaccordion.interfaces";
 
-const BlogOptionsAccordion: React.FC = () => {
+const BlogOptionsAccordion: React.FC<Props> = ({ content }) => {
   const [activeIndex, setActiveIndex] = useState<number>(5);
   // title input states
   const [title, setTitle] = useState<string>("");
