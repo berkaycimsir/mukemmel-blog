@@ -9,7 +9,7 @@ const font_formats: string = "Poppins=poppins;";
 const plugins: string = `
   advlist autolink lists link image charmap print preview hr anchor 
   searchreplace wordcount visualblocks visualchars code 
-  insertdatetime media nonbreaking save table 
+  insertdatetime media nonbreaking save table hr
   emoticons template paste textpattern codesample
 `;
 

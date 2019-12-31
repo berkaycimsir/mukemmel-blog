@@ -10,3 +10,7 @@ export type IHandleClickFunc = (
 ) => void;
 
 export type IDeleteTagFromArrayFunc = (tagValue: string) => void;
+
+export type IAddBlogFunc = (
+  e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+) => void;

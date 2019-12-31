@@ -18,7 +18,8 @@ import { ArrowDropDown } from "@material-ui/icons";
 import BlogInformation from "./BlogInformation";
 import {
   IHandleClickFunc,
-  IDeleteTagFromArrayFunc
+  IDeleteTagFromArrayFunc,
+  IAddBlogFunc
 } from "../../../../@types/types/functions/Articles/types";
 import {
   Props,
@@ -29,7 +30,6 @@ import { useMutation } from "react-apollo";
 import { ADD_BLOG } from "../../../../graphql/Blog/mutation";
 import {
   GET_BLOGS,
-  GET_BLOGS_BY_CATEGORY,
   GET_TREND_BLOGS,
   GET_LAST_FOUR_BLOG
 } from "../../../../graphql/Blog/query";
@@ -87,22 +87,16 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
   };
 
   // add blog function, that will work when user press the add blog button
-  const addBlog = (
+  const addBlog: IAddBlogFunc = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ): void => {
     e.preventDefault();
 
-    let titleVar: string = title;
-    if (title.length > 40) title.slice(40, title.length);
-
-    let summaryVar: string = summary;
-    if (summary.length > 200) summary.slice(200, summary.length);
-
     const variables: AddBlogMutationVariables = {
       owner_id: activeUser.id,
-      title: titleVar,
+      title,
       content: content.toString(),
-      summary: summaryVar,
+      summary,
       tags: tags.split(","),
       img: imgUrl,
       category
@@ -209,7 +203,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
             color={title.length > 40 ? "red" : null}
             content={
               title.length > 40
-                ? `${title.length - 40} karakter kesilecek!`
+                ? `40 karakterden fazla girdiniz!`
                 : "En fazla 40 karakter!"
             }
             pointing="below"
@@ -253,7 +247,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
             color={summary.length > 200 ? "red" : null}
             content={
               summary.length > 200
-                ? `${summary.length - 200} karakter kesilecek!`
+                ? `200 karakterden fazla girdiniz!`
                 : "En fazla 200 karakter!"
             }
             pointing="below"
