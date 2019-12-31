@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Sidebar, Menu } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
-import { User } from "../../@types/types/DatabaseTypes";
+import { User } from "../../@types/types/database/DatabaseTypes";
 import { useState } from "react";
 import { ArrowDropDown } from "@material-ui/icons";
 

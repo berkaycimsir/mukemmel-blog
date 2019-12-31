@@ -3,7 +3,7 @@ import { Menu, Image, Button, Dropdown } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import SidebarMenu from "./Sidebar";
 import { ArrowDropDown } from "@material-ui/icons";
-import { User } from "../../@types/types/DatabaseTypes";
+import { User } from "../../@types/types/database/DatabaseTypes";
 
 type Props = {
   session: any;

@@ -1,4 +1,4 @@
-import { Blog, User, Comment } from "../../../types/DatabaseTypes";
+import { Blog, User, Comment } from "../../../types/database/DatabaseTypes";
 
 export type Props = {
   session: any;

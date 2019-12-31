@@ -1,4 +1,4 @@
-import { Comment } from "../../../../types/DatabaseTypes";
+import { Comment } from "../../../../types/database/DatabaseTypes";
 
 export type Props = {
   blog_id: string;

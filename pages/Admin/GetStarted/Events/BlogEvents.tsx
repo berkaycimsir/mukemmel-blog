@@ -2,7 +2,7 @@ import * as React from "react";
 import { useQuery } from "react-apollo";
 import { GetBlogsReturnData } from "../../../../@types/interfaces/PageInterfaces/Admin/GetStarted/statistics.interfaces";
 import { GET_BLOGS } from "../../../../graphql/Blog/query";
-import { Blog } from "../../../../@types/types/DatabaseTypes";
+import { Blog } from "../../../../@types/types/database/DatabaseTypes";
 import Loading from "../../../../components/Loading/Loading";
 import { Card, Feed, Header } from "semantic-ui-react";
 import { Description } from "@material-ui/icons";

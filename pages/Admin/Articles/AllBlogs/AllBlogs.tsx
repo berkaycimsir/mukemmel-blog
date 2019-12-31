@@ -3,7 +3,7 @@ import { Table, Label, Image } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import { GetBlogsReturnData } from "../../../../@types/interfaces/PageInterfaces/Admin/GetStarted/statistics.interfaces";
 import { GET_BLOGS } from "../../../../graphql/Blog/query";
-import { Blog } from "../../../../@types/types/DatabaseTypes";
+import { Blog } from "../../../../@types/types/database/DatabaseTypes";
 import Moment from "react-moment";
 import Loading from "../../../../components/Loading/Loading";
 import Pagination from "../../../../components/Pagination/Pagination";

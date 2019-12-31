@@ -8,7 +8,7 @@ import {
   GetBlogsByCategoryReturnData,
   GetBlogsByCategoryVariables
 } from "../../../@types/interfaces/PageInterfaces/Categories/category.interfaces";
-import { Blog } from "../../../@types/types/DatabaseTypes";
+import { Blog } from "../../../@types/types/database/DatabaseTypes";
 
 type Props = {
   category: string;

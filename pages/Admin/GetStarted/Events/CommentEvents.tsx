@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
-import { Comment } from "../../../../@types/types/DatabaseTypes";
+import { Comment } from "../../../../@types/types/database/DatabaseTypes";
 import Loading from "../../../../components/Loading/Loading";
 import { Card, Feed, Header, Image } from "semantic-ui-react";
 import Moment from "react-moment";

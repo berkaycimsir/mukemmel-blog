@@ -12,7 +12,7 @@ import Login from "../../components/Login/Login";
 import { Container, Grid } from "semantic-ui-react";
 import BlogDetailsCard from "./BlogDetailsCard";
 import PopularTab from "./PopularTab";
-import { Blog, User, Comment } from "../../@types/types/DatabaseTypes";
+import { Blog, User, Comment } from "../../@types/types/database/DatabaseTypes";
 import LastBlogsTab from "./LastBlogsTab";
 import IfThereIsAnActiveUser from "../../components/Login/IfThereIsAnActiveUser";
 import CommentsTab from "./CommentsTab";

@@ -13,7 +13,7 @@ import Login from "../../components/Login/Login";
 import LastBlogsTab from "../BlogDetails/LastBlogsTab";
 import PopularTab from "../BlogDetails/PopularTab";
 import CommentsTab from "../BlogDetails/CommentsTab";
-import { User, Blog } from "../../@types/types/DatabaseTypes";
+import { User, Blog } from "../../@types/types/database/DatabaseTypes";
 import { useQuery } from "react-apollo";
 import { GET_BLOGS_BY_CATEGORY } from "../../graphql/Blog/query";
 import {

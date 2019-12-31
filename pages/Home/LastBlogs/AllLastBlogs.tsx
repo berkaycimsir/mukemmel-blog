@@ -5,7 +5,7 @@ import { GET_BLOGS } from "../../../graphql/Blog/query";
 import Loading from "../../../components/Loading/Loading";
 import BlogCard from "../BlogCard";
 import { GetBlogsReturnType } from "../../../@types/interfaces/PageInterfaces/Home/bloglist.interfaces";
-import { Blog } from "../../../@types/types/DatabaseTypes";
+import { Blog } from "../../../@types/types/database/DatabaseTypes";
 
 const AllLastBlogs: React.FC = () => {
   const { data: getBlogsData, loading: getBlogsLoading } = useQuery<

@@ -1,4 +1,4 @@
-import { Comment, User } from "../../../../types/DatabaseTypes";
+import { Comment, User } from "../../../../types/database/DatabaseTypes";
 
 export type Props = {
   activeUserDeleteComment?: boolean;
