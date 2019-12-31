@@ -34,6 +34,7 @@ import {
   GET_LAST_FOUR_BLOG
 } from "../../../../graphql/Blog/query";
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import Error from "../../../../components/Error/Error";
 
 const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
   activeUser,
@@ -54,6 +55,8 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
   const [category, setCategory] = useState<any>("");
   // blog image states
   const [imgUrl, setImgUrl] = useState<string>("");
+  // error handling states
+  const [error, setError] = useState<string | null>(null);
 
   // add blog mutation
   const [createBlog, { loading }] = useMutation<
@@ -103,7 +106,12 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
     };
 
     if (!formValidate())
-      createBlog({ variables }).then(() => {
+      createBlog({ variables }).then(({ data }) => {
+        if (data.createBlog.errorMessage !== "No error.") {
+          setError(data.createBlog.errorMessage);
+        } else {
+          setError(null);
+        }
         resetInputValues();
         history.push("/admin/articles");
       });
@@ -444,6 +452,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => addBlog(e)}
         content="Yayımla"
       />
+      <Error errorMessage={error} />
     </>
   );
 };
