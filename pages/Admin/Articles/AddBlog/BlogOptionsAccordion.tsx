@@ -20,7 +20,19 @@ import {
   IHandleClickFunc,
   IDeleteTagFromArrayFunc
 } from "../../../../@types/types/functions/Articles/types";
-import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/blogaccordion.interfaces";
+import {
+  Props,
+  AddBlogMutationReturnData,
+  AddBlogMutationVariables
+} from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/blogaccordion.interfaces";
+import { useMutation } from "react-apollo";
+import { ADD_BLOG } from "../../../../graphql/Blog/mutation";
+import {
+  GET_BLOGS,
+  GET_BLOGS_BY_CATEGORY,
+  GET_TREND_BLOGS,
+  GET_LAST_FOUR_BLOG
+} from "../../../../graphql/Blog/query";
 
 const BlogOptionsAccordion: React.FC<Props> = ({ content }) => {
   const [activeIndex, setActiveIndex] = useState<number>(5);
@@ -36,6 +48,20 @@ const BlogOptionsAccordion: React.FC<Props> = ({ content }) => {
   const [category, setCategory] = useState<any>("");
   // blog image states
   const [imgUrl, setImgUrl] = useState<string>("");
+
+  // add blog mutation
+  const [createBlog, { loading }] = useMutation<
+    AddBlogMutationReturnData,
+    AddBlogMutationVariables
+  >(ADD_BLOG, {
+    awaitRefetchQueries: true,
+    refetchQueries: [
+      { query: GET_BLOGS },
+      { query: GET_BLOGS_BY_CATEGORY },
+      { query: GET_TREND_BLOGS },
+      { query: GET_LAST_FOUR_BLOG }
+    ]
+  });
 
   // active accordion item
   const handleClick: IHandleClickFunc = (
