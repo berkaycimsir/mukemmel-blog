@@ -2,6 +2,7 @@ import { Blog, User } from "../../../../../types/database/DatabaseTypes";
 
 export type Props = {
   content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
   activeUser: User;
 };
 

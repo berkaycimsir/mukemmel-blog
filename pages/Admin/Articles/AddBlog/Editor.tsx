@@ -6,20 +6,24 @@ import BlogOptionsAccordion from "./BlogOptionsAccordion";
 import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/editor.interfaces";
 
 const Editor: React.FC<Props> = ({ activeUser }) => {
-  const [value, setValue] = React.useState<string>("");
+  const [content, setContent] = React.useState<string>("");
 
   return (
     <Grid columns={2} stackable>
       <Grid.Column width={13}>
         <EditorComponent
           apiKey={API_KEY}
-          value={value}
-          onEditorChange={content => setValue(content)}
+          value={content}
+          onEditorChange={content => setContent(content)}
           init={init}
         />
       </Grid.Column>
       <Grid.Column width={3}>
-        <BlogOptionsAccordion activeUser={activeUser} content={value} />
+        <BlogOptionsAccordion
+          activeUser={activeUser}
+          content={content}
+          setContent={setContent}
+        />
       </Grid.Column>
     </Grid>
   );

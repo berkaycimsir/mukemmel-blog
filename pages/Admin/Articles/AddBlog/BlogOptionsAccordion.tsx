@@ -14,7 +14,7 @@ import {
   Button,
   AccordionTitleProps
 } from "semantic-ui-react";
-import { ArrowDropDown, Error, ErrorOutline } from "@material-ui/icons";
+import { ArrowDropDown } from "@material-ui/icons";
 import BlogInformation from "./BlogInformation";
 import {
   IHandleClickFunc,
@@ -33,8 +33,14 @@ import {
   GET_TREND_BLOGS,
   GET_LAST_FOUR_BLOG
 } from "../../../../graphql/Blog/query";
+import { withRouter, RouteComponentProps } from "react-router-dom";
 
-const BlogOptionsAccordion: React.FC<Props> = ({ activeUser, content }) => {
+const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
+  activeUser,
+  content,
+  setContent,
+  history
+}) => {
   const [activeIndex, setActiveIndex] = useState<number>(5);
   // title input states
   const [title, setTitle] = useState<string>("");
@@ -62,6 +68,24 @@ const BlogOptionsAccordion: React.FC<Props> = ({ activeUser, content }) => {
     ]
   });
 
+  // validating forms
+  const formValidate: Function = (): boolean => {
+    return !title || !content || !summary || !tags || !imgUrl || !category;
+  };
+
+  // reseting input values when user clicked the add blog button
+  const resetInputValues: Function = (): void => {
+    setTitle("");
+    setTitleProgress(0);
+    setSummary("");
+    setSummaryProgress(0);
+    setActiveIndex(5);
+    setTags("");
+    setCategory("");
+    setImgUrl("");
+    setContent("");
+  };
+
   // add blog function, that will work when user press the add blog button
   const addBlog = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -84,7 +108,11 @@ const BlogOptionsAccordion: React.FC<Props> = ({ activeUser, content }) => {
       category
     };
 
-    createBlog({ variables });
+    if (!formValidate())
+      createBlog({ variables }).then(() => {
+        resetInputValues();
+        history.push("/admin/articles");
+      });
   };
 
   // active accordion item
@@ -417,7 +445,7 @@ const BlogOptionsAccordion: React.FC<Props> = ({ activeUser, content }) => {
       />
       <Button
         color="teal"
-        disabled={percent !== 100 || loading}
+        disabled={percent !== 100 || loading || formValidate()}
         loading={loading}
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => addBlog(e)}
         content="Yayımla"
@@ -426,4 +454,4 @@ const BlogOptionsAccordion: React.FC<Props> = ({ activeUser, content }) => {
   );
 };
 
-export default BlogOptionsAccordion;
+export default withRouter(BlogOptionsAccordion);
