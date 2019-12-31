@@ -4,14 +4,13 @@
 
 code,
 pre {
-  font-family: "Operator Mono", sans-serif !important;
-  font-size: 16px !important;
+  font-family: "Inconsolata" !important;
+  font-size: 18px !important;
   border: 2px solid grey;
   line-height: 2;
   border-radius: 3px;
   padding: 3.4px;
   background: #BFEDD2;
-  font-weight: bold;
 }
 
 .nav-link {
@@ -85,6 +84,11 @@ pre {
     font-size: 14px !important;
   }
 
+  code,
+  pre {
+    font-size: 15.5px !important;
+  }
+
   .blog-card-icon {
     margin-top: 3px;
     font-size: 12px !important;
@@ -110,6 +114,11 @@ pre {
 @media (max-width: 420px) {
   .blog-card-title {
     font-size: 11px !important;
+  }
+
+  code,
+  pre {
+    font-size: 13.1px !important;
   }
 
   .blog-card-meta {

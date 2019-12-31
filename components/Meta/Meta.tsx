@@ -13,9 +13,9 @@ const Meta: React.FC = () => (
       rel="stylesheet"
     />
     <link
-      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap"
       rel="stylesheet"
-    ></link>
+    />
   </Head>
 );
 
