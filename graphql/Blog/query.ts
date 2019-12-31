@@ -7,6 +7,7 @@ export const GET_BLOGS = gql`
       owner_id
       title
       content
+      summary
       tags
       likes
       views
@@ -67,6 +68,7 @@ export const GET_TREND_BLOGS = gql`
       owner_id
       title
       content
+      summary
       tags
       likes
       views

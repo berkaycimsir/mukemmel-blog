@@ -27,11 +27,10 @@ const Popular: React.FC = () => {
                     <NavLink to={`/blog/details/${blog.id}`}>
                       <h4>{blog.title}</h4>
                     </NavLink>
-                    <Item.Meta
-                      dangerouslySetInnerHTML={{
-                        __html: blog.content.slice(0, 20) + "..."
-                      }}
-                    />
+                    <Item.Description>
+                      {blog.summary.slice(0, 60)}{" "}
+                      <a href={`/blog/details/${blog.id}`}>...Blog'a git</a>
+                    </Item.Description>
                     <Item.Extra>{blog.views} görüntülenme</Item.Extra>
                   </Item.Content>
                 </Item>

@@ -90,9 +90,9 @@ const BlogOptionsAccordion: React.FC = () => {
 
   // check the input values and errors
   const isTitleEmpty: boolean =
-    title === "" || title.length >= 40 ? true : false;
+    title === "" || title.length > 40 ? true : false;
   const isSummaryEmpty: boolean =
-    summary === "" || summary.length >= 200 ? true : false;
+    summary === "" || summary.length > 200 ? true : false;
   const isTagsEmpty: boolean =
     tags === "" || tags.split(",").length >= 5 ? true : false;
   const isCategoryEmpty: boolean = category === "" ? true : false;
@@ -130,26 +130,27 @@ const BlogOptionsAccordion: React.FC = () => {
         <Accordion.Content active={activeIndex === 0}>
           <Label
             ribbon
-            color={title.length >= 40 ? "red" : null}
+            color={title.length > 40 ? "red" : null}
             content={
-              title.length >= 40
-                ? "Daha fazla girilemez!"
+              title.length > 40
+                ? `${title.length - 40} karakter kesilecek!`
                 : "En fazla 40 karakter!"
             }
             pointing="below"
           />
-          <Input
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setTitle(e.target.value);
-              setTitleProgress(title.length * 2.5);
-            }}
-            type="text"
-            value={title}
-            fluid
-            placeholder="Bir başlık giriniz"
-            required
-            disabled={title.length >= 40}
-          />
+          <Form reply>
+            <Form.TextArea
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+                setTitle(e.target.value);
+                setTitleProgress(title.length * 2.5);
+              }}
+              type="text"
+              value={title}
+              placeholder="Bir başlık giriniz"
+              style={{ minHeight: "200px" }}
+              required
+            />
+          </Form>
           <Progress
             active
             color={getTitleProgressColor()}
@@ -173,10 +174,10 @@ const BlogOptionsAccordion: React.FC = () => {
         <Accordion.Content active={activeIndex === 1}>
           <Label
             ribbon
-            color={summary.length >= 200 ? "red" : null}
+            color={summary.length > 200 ? "red" : null}
             content={
-              summary.length >= 200
-                ? "Daha fazla girilemez!"
+              summary.length > 200
+                ? `${summary.length - 200} karakter kesilecek!`
                 : "En fazla 200 karakter!"
             }
             pointing="below"
@@ -190,7 +191,6 @@ const BlogOptionsAccordion: React.FC = () => {
               style={{ minHeight: "200px" }}
               value={summary}
               placeholder="Blog özeti giriniz"
-              disabled={summary.length >= 200}
               required
             />
           </Form>
