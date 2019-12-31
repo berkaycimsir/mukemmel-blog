@@ -19,6 +19,10 @@ import {
   RegisterVariables
 } from "../../@types/interfaces/PageInterfaces/SignUp/signup.interfaces";
 import { REGISTER } from "../../graphql/User/mutations";
+import {
+  IParseErrorMessageFunc,
+  IOnClickFunc
+} from "../../@types/types/functions/SignUp/types";
 
 const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const [name, setName] = useState<string>("");
@@ -34,7 +38,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     REGISTER
   );
 
-  const formValidate = (): boolean => {
+  const formValidate: Function = (): boolean => {
     return (
       !name ||
       !surname ||
@@ -45,7 +49,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     );
   };
 
-  const resetInputValues = (): void => {
+  const resetInputValues: Function = (): void => {
     setName("");
     setSurname("");
     setUsername("");
@@ -55,7 +59,9 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     setWomenGender(false);
   };
 
-  const parseErrorMessage = (data: ReturnData | undefined): boolean => {
+  const parseErrorMessage: IParseErrorMessageFunc = (
+    data: ReturnData | undefined
+  ): boolean => {
     let error: any;
     if (data !== undefined && data.register.errorMessage !== "No error.") {
       error = data.register.errorMessage;
@@ -68,7 +74,9 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     }
   };
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  const onClick: IOnClickFunc = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ): void => {
     e.preventDefault();
     register({
       variables: {
