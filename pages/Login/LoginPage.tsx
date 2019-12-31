@@ -19,6 +19,10 @@ import {
   LoginVariables
 } from "../../@types/interfaces/PageInterfaces/Login/login.interfaces";
 import { LOGIN } from "../../graphql/User/mutations";
+import {
+  IParseErrorMessageFunc,
+  IOnClickFunc
+} from "../../@types/types/functions/Login/types";
 
 const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const [username, setUsername] = useState<string>("");
@@ -27,16 +31,18 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
 
   const [login, { loading }] = useMutation<ReturnData, LoginVariables>(LOGIN);
 
-  const formValidate = (): boolean => {
+  const formValidate: Function = (): boolean => {
     return !username || !password;
   };
 
-  const resetInputValues = (): void => {
+  const resetInputValues: Function = (): void => {
     setUsername("");
     setPassword("");
   };
 
-  const parseErrorMessage = (data: ReturnData | undefined): boolean => {
+  const parseErrorMessage: IParseErrorMessageFunc = (
+    data: ReturnData | undefined
+  ): boolean => {
     let error: any;
     if (data !== undefined && data.login.errorMessage !== "No error.") {
       error = data.login.errorMessage;
@@ -49,7 +55,9 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     }
   };
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  const onClick: IOnClickFunc = (
+    e: React.MouseEvent<HTMLButtonElement>
+  ): void => {
     e.preventDefault();
     login({
       variables: { username, password }
