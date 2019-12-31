@@ -3,7 +3,6 @@ import { useState } from "react";
 import {
   Accordion,
   Icon,
-  AccordionTitleProps,
   Image,
   Input,
   Form,
@@ -12,17 +11,15 @@ import {
   SemanticCOLORS,
   Select,
   DropdownProps,
-  Button
+  Button,
+  AccordionTitleProps
 } from "semantic-ui-react";
 import { ArrowDropDown, Error, ErrorOutline } from "@material-ui/icons";
 import BlogInformation from "./BlogInformation";
-
-type IHandleClickFunc = (
-  event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  data: AccordionTitleProps
-) => void;
-
-type IDeleteTagFromArrayFunc = (tagValue: string) => void;
+import {
+  IHandleClickFunc,
+  IDeleteTagFromArrayFunc
+} from "../../../../@types/types/functions/Articles/types";
 
 const BlogOptionsAccordion: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number>(5);
