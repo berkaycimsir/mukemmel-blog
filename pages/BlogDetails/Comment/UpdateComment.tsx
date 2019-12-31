@@ -12,6 +12,7 @@ import {
   GET_COMMENT_BY_USER_ID,
   GET_COMMENTS
 } from "../../../graphql/Comment/query";
+import { IOnUpdateCommentFunc } from "../../../@types/types/functions/Comment/types";
 
 const UpdateComment: React.FC<Props> = ({
   setIsUpdating,
@@ -33,7 +34,7 @@ const UpdateComment: React.FC<Props> = ({
 
   const resetTextAreaValue: Function = (): void => setContent("");
 
-  const onUpdateComment: Function = (
+  const onUpdateComment: IOnUpdateCommentFunc = (
     e: React.FormEvent<HTMLFormElement>
   ): void => {
     e.preventDefault();

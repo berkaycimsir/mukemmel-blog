@@ -13,6 +13,7 @@ import {
 } from "../../../../graphql/Blog/query";
 import { DELETE_BLOG } from "../../../../graphql/Blog/mutation";
 import { useMutation } from "@apollo/react-hooks";
+import { IOnDeleteBlogFunc } from "../../../../@types/types/functions/Articles/types";
 
 const DeleteBlog: React.FC<Props> = ({ id }) => {
   const [deleteBlog, { loading }] = useMutation<
@@ -28,9 +29,9 @@ const DeleteBlog: React.FC<Props> = ({ id }) => {
     ]
   });
 
-  const onDelete: Function = (
+  const onDelete: IOnDeleteBlogFunc = (
     e: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
+  ): void => {
     e.preventDefault();
     deleteBlog();
   };

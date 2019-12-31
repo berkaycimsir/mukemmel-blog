@@ -13,6 +13,7 @@ import {
 } from "../../../graphql/Comment/query";
 import { Favorite, FavoriteBorder } from "@material-ui/icons";
 import { Popup, Icon } from "semantic-ui-react";
+import { IOnLikeCommentFunc } from "../../../@types/types/functions/Comment/types";
 
 const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
@@ -28,7 +29,7 @@ const LikeComment: React.FC<Props> = ({ user_id, blog_id, id }) => {
     ]
   });
 
-  const onLikeComment: Function = (
+  const onLikeComment: IOnLikeCommentFunc = (
     e: React.MouseEvent<SVGSVGElement>
   ): void => {
     if (!loading) {

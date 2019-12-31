@@ -13,6 +13,7 @@ import {
   GET_COMMENTS
 } from "../../../graphql/Comment/query";
 import { GET_BLOG_BY_ID } from "../../../graphql/Blog/query";
+import { IOnSubmitFunc } from "../../../@types/types/functions/Comment/types";
 
 const AddComment: React.FC<Props> = ({ blog_id, activeUser }) => {
   const [content, setContent] = useState<string>("");
@@ -37,7 +38,9 @@ const AddComment: React.FC<Props> = ({ blog_id, activeUser }) => {
 
   const resetValues: Function = (): void => setContent("");
 
-  const onSubmit: Function = (e: React.FormEvent<HTMLFormElement>): void => {
+  const onSubmit: IOnSubmitFunc = (
+    e: React.FormEvent<HTMLFormElement>
+  ): void => {
     e.preventDefault();
     createComment({
       variables: { blog_id: blogId, user_id: activeUser.id, content }

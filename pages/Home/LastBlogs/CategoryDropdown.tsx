@@ -1,11 +1,7 @@
 import * as React from "react";
 import { Dropdown, DropdownItemProps } from "semantic-ui-react";
 import { ArrowDropDown } from "@material-ui/icons";
-
-type Props = {
-  activeItem: string;
-  setActiveItem: React.Dispatch<React.SetStateAction<string>>;
-};
+import { Props } from "../../../@types/interfaces/PageInterfaces/Categories/categorydropdown.interfaces";
 
 const CategoryDropdown: React.FC<Props> = ({ activeItem, setActiveItem }) => {
   const options: DropdownItemProps[] = [

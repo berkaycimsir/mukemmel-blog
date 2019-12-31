@@ -13,6 +13,7 @@ import {
   GET_COMMENTS
 } from "../../../graphql/Comment/query";
 import { DeleteOutline } from "@material-ui/icons";
+import { IOnDeleteCommentFunc } from "../../../@types/types/functions/Comment/types";
 
 const DeleteComment: React.FC<Props> = ({ blog_id, user_id, id }) => {
   const [deleteComment, { loading }] = useMutation<
@@ -28,9 +29,9 @@ const DeleteComment: React.FC<Props> = ({ blog_id, user_id, id }) => {
     ]
   });
 
-  const onDelete: Function = (
+  const onDelete: IOnDeleteCommentFunc = (
     e: React.MouseEvent<SVGSVGElement, MouseEvent>
-  ) => {
+  ): void => {
     e.preventDefault();
     deleteComment();
   };
