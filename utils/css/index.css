@@ -1,16 +1,7 @@
-* {
-  font-family: "Poppins", sans-serif !important;
-}
+@import "./prism.css";
 
-code,
-pre {
-  font-family: "Inconsolata" !important;
-  font-size: 18px !important;
-  border: 2px solid grey;
-  line-height: 2;
-  border-radius: 3px;
-  padding: 3.4px;
-  background: #BFEDD2;
+* {
+  font-family: "Poppins", "Inconsolata" !important;
 }
 
 .nav-link {
@@ -73,20 +64,13 @@ pre {
 }
 
 .home-nav-link:hover {
-  background: rgba(255, 255, 255, .08) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
   color: #fff !important;
 }
-
-
 
 @media (max-width: 500px) {
   .blog-card-title {
     font-size: 14px !important;
-  }
-
-  code,
-  pre {
-    font-size: 15.5px !important;
   }
 
   .blog-card-icon {
@@ -116,9 +100,9 @@ pre {
     font-size: 11px !important;
   }
 
-  code,
-  pre {
-    font-size: 13.1px !important;
+  code[class*="language-"],
+  pre[class*="language-"] {
+    font-size: 13px !important;
   }
 
   .blog-card-meta {

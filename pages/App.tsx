@@ -8,6 +8,7 @@ import {
   RouteComponentProps
 } from "react-router-dom";
 import SessionWrapperHOC from "../components/Hoc/SessionWrapperHOC";
+import Prism from "prismjs";
 
 // pages
 import BlogDetails from "./BlogDetails/BlogDetails";
@@ -30,6 +31,10 @@ type Props = {
 };
 
 const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
+  React.useEffect(() => {
+    Prism.highlightAll();
+  });
+
   return (
     <>
       <Meta />
