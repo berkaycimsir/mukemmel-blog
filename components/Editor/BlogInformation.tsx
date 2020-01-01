@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Icon, Grid, Step, Message } from "semantic-ui-react";
 import { Title, Close, Done } from "@material-ui/icons";
-import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/bloginformation.interfaces";
+import { Props } from "../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/bloginformation.interfaces";
 
 const BlogInformation: React.FC<Props> = ({
   isCategoryEmpty,

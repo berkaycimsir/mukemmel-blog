@@ -88,25 +88,23 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
         gender:
           (menGender === true && "men") || (womenGender === true && "women")
       }
-    }).then(
-      async ({ data }): Promise<void> => {
-        resetInputValues();
-        const canRegister = parseErrorMessage(data);
-        setTimeout((): void => setErrorMessage(null), 2000);
-        if (canRegister === true) {
-          const getToken = (): string => {
-            if (data && data !== undefined) {
-              return data.register.token.token;
-            } else {
-              return null;
-            }
-          };
-          localStorage.setItem("token", getToken());
-          history.push("/");
-          window.location.reload();
-        }
+    }).then(({ data }) => {
+      resetInputValues();
+      const canRegister = parseErrorMessage(data);
+      setTimeout((): void => setErrorMessage(null), 2000);
+      if (canRegister === true) {
+        const getToken = (): string => {
+          if (data && data !== undefined) {
+            return data.register.token.token;
+          } else {
+            return null;
+          }
+        };
+        localStorage.setItem("token", getToken());
+        history.push("/");
+        window.location.reload();
       }
-    );
+    });
   };
 
   return (

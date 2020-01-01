@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Editor as EditorComponent } from "@tinymce/tinymce-react";
-import { init, API_KEY } from "../../../../utils/editor/editor.config";
+import { init, API_KEY } from "../../utils/editor/editor.config";
 import { Grid, Segment } from "semantic-ui-react";
 import BlogOptionsAccordion from "./BlogOptionsAccordion";
-import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/editor.interfaces";
+import { Props } from "../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/editor.interfaces";
 
 const Editor: React.FC<Props> = ({ activeUser }) => {
   const [content, setContent] = React.useState<string>("");

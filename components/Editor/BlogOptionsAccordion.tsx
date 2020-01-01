@@ -20,21 +20,21 @@ import {
   IHandleClickFunc,
   IDeleteTagFromArrayFunc,
   IAddBlogFunc
-} from "../../../../@types/types/functions/Articles/types";
+} from "../../@types/types/functions/Articles/types";
 import {
   Props,
   AddBlogMutationReturnData,
   AddBlogMutationVariables
-} from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/blogaccordion.interfaces";
+} from "../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/blogaccordion.interfaces";
 import { useMutation } from "react-apollo";
-import { ADD_BLOG } from "../../../../graphql/Blog/mutation";
+import { ADD_BLOG } from "../../graphql/Blog/mutation";
 import {
   GET_BLOGS,
   GET_TREND_BLOGS,
   GET_LAST_FOUR_BLOG
-} from "../../../../graphql/Blog/query";
+} from "../../graphql/Blog/query";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import Error from "../../../../components/Error/Error";
+import Error from "../Error/Error";
 
 const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
   activeUser,
@@ -298,6 +298,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
               if (tag !== " " && tag !== "")
                 return (
                   <Label
+                    key={tag}
                     style={{ marginLeft: "10px", marginTop: "6px" }}
                     color="violet"
                     icon
