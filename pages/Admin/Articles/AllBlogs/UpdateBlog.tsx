@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Container, Segment } from "semantic-ui-react";
 import Editor from "../../../../components/Editor/Editor";
-import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/addblog.interfaces";
+import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/updateblog.interfaces";
 import { User } from "../../../../@types/types/database/DatabaseTypes";
 
 const UpdateBlog: React.FC<Props> = ({ session }) => {
