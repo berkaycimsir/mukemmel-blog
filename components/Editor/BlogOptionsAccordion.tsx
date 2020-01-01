@@ -35,6 +35,7 @@ import {
 } from "../../graphql/Blog/query";
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import Error from "../Error/Error";
+import ProgressBar from "../ProgressBar.tsx/ProgressBar";
 
 const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
   activeUser,
@@ -138,20 +139,6 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
     setTags(newArray.toString());
   };
 
-  // getting summary progress bar color according to percentage
-  const getSummaryProgressColor: Function = (): SemanticCOLORS => {
-    return summaryProgress < 45
-      ? "green"
-      : summaryProgress < 75
-      ? "yellow"
-      : "red";
-  };
-
-  // getting title progress bar color according to percentage
-  const getTitleProgressColor: Function = (): SemanticCOLORS => {
-    return titleProgress < 50 ? "green" : titleProgress < 75 ? "yellow" : "red";
-  };
-
   // category options
   const blogCategories: {
     key?: string;
@@ -175,6 +162,20 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
     tags === "" || tags.split(",").length >= 5 ? true : false;
   const isCategoryEmpty: boolean = category === "" ? true : false;
   const isImgUrlEmpty: boolean = imgUrl === "" ? true : false;
+
+  // getting summary progress bar color according to percentage
+  const getSummaryProgressColor: Function = (): SemanticCOLORS => {
+    return summaryProgress < 45
+      ? "green"
+      : summaryProgress < 75
+      ? "yellow"
+      : "red";
+  };
+
+  // getting title progress bar color according to percentage
+  const getTitleProgressColor: Function = (): SemanticCOLORS => {
+    return titleProgress < 50 ? "green" : titleProgress < 75 ? "yellow" : "red";
+  };
 
   // this progress bar controls all the conditions and give a permission to the share our blog.
   const getProgressBarPercent: Function = (): number => {
@@ -229,7 +230,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
               required
             />
           </Form>
-          <Progress
+          <ProgressBar
             active
             color={getTitleProgressColor()}
             label={`${title.length} karakter`}
@@ -264,7 +265,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
             <Form.TextArea
               onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
                 setSummary(e.target.value);
-                setSummaryProgress(summary.length / 2);
+                setSummaryProgress((summary.length * 100) / 200);
               }}
               style={{ minHeight: "200px" }}
               value={summary}
@@ -272,7 +273,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
               required
             />
           </Form>
-          <Progress
+          <ProgressBar
             active
             color={getSummaryProgressColor()}
             label={`${summary.length} karakter`}
@@ -438,7 +439,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
           />
         </Accordion.Content>
       </Accordion>
-      <Progress
+      <ProgressBar
         size="large"
         progress
         percent={percent}
