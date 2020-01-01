@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Message } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import { GET_BLOGS_BY_CATEGORY } from "../../../graphql/Blog/query";
 import Loading from "../../../components/Loading/Loading";
@@ -27,16 +27,26 @@ const CategoryBlogs: React.FC<Props> = ({ category }) => {
   }
 
   const blogs: Array<Blog> = getBlogsData.getBlogByCategory.slice(0, 8);
+  console.log(blogs);
 
   return (
     <>
-      <Grid columns={4} doubling>
-        {blogs.map(blog => (
-          <Grid.Column key={blog.id} widescreen="8">
-            <BlogCard user={blog.user} key={blog.id} blog={blog} />
-          </Grid.Column>
-        ))}
-      </Grid>
+      {blogs.length === 0 ? (
+        <Message error size="large">
+          <Message.Header>Burada hiç blog yok!</Message.Header>
+          <Message.Content>
+            Diğer bloglarımıza bakmak ister misin?
+          </Message.Content>
+        </Message>
+      ) : (
+        <Grid columns={4} doubling>
+          {blogs.map(blog => (
+            <Grid.Column key={blog.id} widescreen="8">
+              <BlogCard user={blog.user} key={blog.id} blog={blog} />
+            </Grid.Column>
+          ))}
+        </Grid>
+      )}
     </>
   );
 };
