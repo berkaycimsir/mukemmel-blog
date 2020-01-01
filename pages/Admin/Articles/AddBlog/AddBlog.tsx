@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Container, Segment } from "semantic-ui-react";
-import Editor from "../../../../components/Editor/Editor";
+import AddBlogEditor from "./AddBlogEditor";
 import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/addblog.interfaces";
 import { User } from "../../../../@types/types/database/DatabaseTypes";
 
@@ -13,7 +13,7 @@ const AddBlog: React.FC<Props> = ({ session }) => {
   return (
     <Segment basic padded>
       <Container fluid>
-        <Editor isUpdating={false} activeUser={activeUser} />
+        <AddBlogEditor activeUser={activeUser} />
       </Container>
     </Segment>
   );

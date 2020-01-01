@@ -88,6 +88,7 @@ export const GET_BLOG_BY_ID = gql`
         id
         owner_id
         title
+        summary
         content
         tags
         views

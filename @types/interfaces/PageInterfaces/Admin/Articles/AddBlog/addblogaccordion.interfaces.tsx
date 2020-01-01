@@ -4,7 +4,6 @@ export type Props = {
   content: string;
   setContent: React.Dispatch<React.SetStateAction<string>>;
   activeUser: User;
-  isUpdating: boolean;
 };
 
 type ReturnType = {

@@ -40,7 +40,7 @@ export const UPDATE_BLOG = gql`
     $img: String
     $category: String
   ) {
-    createBlog(
+    updateBlog(
       data: {
         blog_id: $blog_id
         title: $title

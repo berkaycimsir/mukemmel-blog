@@ -2,18 +2,18 @@ import * as React from "react";
 import { Popup, Icon } from "semantic-ui-react";
 import { DeleteOutline } from "@material-ui/icons";
 import {
-  Props,
-  DeleteBlogReturnData,
-  DeleteBlogVariables
-} from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/deleteblog.interfaces";
-import {
   GET_LAST_FOUR_BLOG,
   GET_BLOGS,
   GET_BLOG_BY_ID
-} from "../../../../graphql/Blog/query";
-import { DELETE_BLOG } from "../../../../graphql/Blog/mutation";
+} from "../../../../../graphql/Blog/query";
+import { DELETE_BLOG } from "../../../../../graphql/Blog/mutation";
 import { useMutation } from "@apollo/react-hooks";
-import { IOnDeleteBlogFunc } from "../../../../@types/types/functions/Articles/types";
+import { IOnDeleteBlogFunc } from "../../../../../@types/types/functions/Articles/types";
+import {
+  Props,
+  DeleteBlogReturnData,
+  DeleteBlogVariables
+} from "../../../../../@types/interfaces/PageInterfaces/Admin/Articles/DeleteBlog/deleteblog.interfaces";
 
 const DeleteBlog: React.FC<Props> = ({ id }) => {
   const [deleteBlog, { loading }] = useMutation<

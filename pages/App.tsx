@@ -25,7 +25,7 @@ import AdminNavbar from "../components/Navbar/AdminNavbar";
 import Blogs from "./Admin/Articles/AllBlogs/Blogs";
 import AddBlog from "./Admin/Articles/AddBlog/AddBlog";
 import Meta from "../components/Meta/Meta";
-import UpdateBlog from "./Admin/Articles/AllBlogs/UpdateBlog";
+import UpdateBlog from "./Admin/Articles/AllBlogs/UpdateBlog/UpdateBlog";
 
 type Props = {
   session: any;

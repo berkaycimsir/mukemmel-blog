@@ -1,7 +1,10 @@
-import { Blog } from "../../../../types/database/DatabaseTypes";
+import { Blog, User } from "../../../../../types/database/DatabaseTypes";
 
 export type Props = {
-  session: any;
+  content: string;
+  setContent: React.Dispatch<React.SetStateAction<string>>;
+  activeUser: User;
+  blog: Blog;
 };
 
 type ReturnType = {

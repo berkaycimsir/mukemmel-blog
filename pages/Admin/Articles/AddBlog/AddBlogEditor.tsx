@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Editor as EditorComponent } from "@tinymce/tinymce-react";
-import { init, API_KEY } from "../../utils/editor/editor.config";
+import { init, API_KEY } from "../../../../utils/editor/editor.config";
 import { Grid, Segment } from "semantic-ui-react";
-import BlogOptionsAccordion from "./BlogOptionsAccordion";
-import { Props } from "../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/editor.interfaces";
+import AddBlogOptionsAccordion from "./AddBlogOptionsAccordion";
+import { Props } from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/addblogeditor.interfaces";
 
-const Editor: React.FC<Props> = ({ activeUser, isUpdating }) => {
+const AddBlogEditor: React.FC<Props> = ({ activeUser }) => {
   const [content, setContent] = React.useState<string>("");
 
   return (
@@ -19,8 +19,7 @@ const Editor: React.FC<Props> = ({ activeUser, isUpdating }) => {
         />
       </Grid.Column>
       <Grid.Column width={3}>
-        <BlogOptionsAccordion
-          isUpdating={isUpdating}
+        <AddBlogOptionsAccordion
           activeUser={activeUser}
           content={content}
           setContent={setContent}
@@ -30,4 +29,4 @@ const Editor: React.FC<Props> = ({ activeUser, isUpdating }) => {
   );
 };
 
-export default Editor;
+export default AddBlogEditor;

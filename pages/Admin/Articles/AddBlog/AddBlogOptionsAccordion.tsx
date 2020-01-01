@@ -7,7 +7,6 @@ import {
   Input,
   Form,
   Label,
-  Progress,
   SemanticCOLORS,
   Select,
   DropdownProps,
@@ -15,34 +14,33 @@ import {
   AccordionTitleProps
 } from "semantic-ui-react";
 import { ArrowDropDown } from "@material-ui/icons";
-import BlogInformation from "./BlogInformation";
 import {
   IHandleClickFunc,
   IDeleteTagFromArrayFunc,
   IAddBlogFunc
-} from "../../@types/types/functions/Articles/types";
+} from "../../../../@types/types/functions/Articles/types";
 import {
   Props,
   AddBlogMutationReturnData,
   AddBlogMutationVariables
-} from "../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/blogaccordion.interfaces";
+} from "../../../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/addblogaccordion.interfaces";
 import { useMutation } from "react-apollo";
-import { ADD_BLOG } from "../../graphql/Blog/mutation";
+import { ADD_BLOG } from "../../../../graphql/Blog/mutation";
 import {
   GET_BLOGS,
   GET_TREND_BLOGS,
   GET_LAST_FOUR_BLOG
-} from "../../graphql/Blog/query";
+} from "../../../../graphql/Blog/query";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import Error from "../Error/Error";
-import ProgressBar from "../ProgressBar.tsx/ProgressBar";
+import Error from "../../../../components/Error/Error";
+import ProgressBar from "../../../../components/ProgressBar.tsx/ProgressBar";
+import AddBlogInformation from "./AddBlogInformation";
 
-const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
+const AddBlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
   activeUser,
   content,
   setContent,
-  history,
-  isUpdating
+  history
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(5);
   // title input states
@@ -99,7 +97,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
 
     const variables: AddBlogMutationVariables = {
       owner_id: activeUser.id,
-      title,
+      title: title.toUpperCase(),
       content: content.toString(),
       summary,
       tags: tags.split(","),
@@ -431,7 +429,7 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
           </div>
         </Accordion.Title>
         <Accordion.Content active>
-          <BlogInformation
+          <AddBlogInformation
             isCategoryEmpty={isCategoryEmpty}
             isImgUrlEmpty={isImgUrlEmpty}
             isSummaryEmpty={isSummaryEmpty}
@@ -460,4 +458,4 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
   );
 };
 
-export default withRouter(BlogOptionsAccordion);
+export default withRouter(AddBlogOptionsAccordion);
