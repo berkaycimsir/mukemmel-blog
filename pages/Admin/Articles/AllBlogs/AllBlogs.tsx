@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Table, Label, Image } from "semantic-ui-react";
+import { Table, Label, Image, Popup, Icon } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import { GetBlogsReturnData } from "../../../../@types/interfaces/PageInterfaces/Admin/GetStarted/statistics.interfaces";
 import { GET_BLOGS } from "../../../../graphql/Blog/query";
@@ -9,6 +9,7 @@ import Loading from "../../../../components/Loading/Loading";
 import Pagination from "../../../../components/Pagination/Pagination";
 import DeleteBlog from "./DeleteBlog";
 import { getImageUrlByGender } from "../../../../utils/functions/getUserImageUrl";
+import { UpdateOutlined, EditOutlined } from "@material-ui/icons";
 
 const AllBlogs: React.FC = () => {
   const [currentPage, setCurrentPage] = React.useState<number>(1);
@@ -73,6 +74,17 @@ const AllBlogs: React.FC = () => {
             <Table.Cell>{blog.views}</Table.Cell>
             <Table.Cell>
               <DeleteBlog id={blog.id} />
+              <Popup
+                trigger={
+                  <Icon
+                    as="a"
+                    href={`/admin/update-blog/${blog.id}`}
+                    children={<EditOutlined htmlColor="green" />}
+                  />
+                }
+                content="Blogu güncelle!"
+                size="small"
+              />
             </Table.Cell>
           </Table.Row>
         ))}

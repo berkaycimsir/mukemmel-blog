@@ -5,7 +5,7 @@ import { Grid, Segment } from "semantic-ui-react";
 import BlogOptionsAccordion from "./BlogOptionsAccordion";
 import { Props } from "../../@types/interfaces/PageInterfaces/Admin/Articles/AddBlog/editor.interfaces";
 
-const Editor: React.FC<Props> = ({ activeUser }) => {
+const Editor: React.FC<Props> = ({ activeUser, isUpdating }) => {
   const [content, setContent] = React.useState<string>("");
 
   return (
@@ -20,6 +20,7 @@ const Editor: React.FC<Props> = ({ activeUser }) => {
       </Grid.Column>
       <Grid.Column width={3}>
         <BlogOptionsAccordion
+          isUpdating={isUpdating}
           activeUser={activeUser}
           content={content}
           setContent={setContent}

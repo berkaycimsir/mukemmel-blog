@@ -25,6 +25,7 @@ import AdminNavbar from "../components/Navbar/AdminNavbar";
 import Blogs from "./Admin/Articles/AllBlogs/Blogs";
 import AddBlog from "./Admin/Articles/AddBlog/AddBlog";
 import Meta from "../components/Meta/Meta";
+import UpdateBlog from "./Admin/Articles/AllBlogs/UpdateBlog";
 
 type Props = {
   session: any;
@@ -62,6 +63,11 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           exact
           path="/admin/add-new-blog"
           render={() => <AddBlog session={session} />}
+        />
+        <Route
+          exact
+          path="/admin/update-blog/:id"
+          render={() => <UpdateBlog session={session} />}
         />
         <Route exact path="*" render={() => <div>No page.</div>} />
       </Switch>

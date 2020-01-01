@@ -41,7 +41,8 @@ const BlogOptionsAccordion: React.FC<Props & RouteComponentProps> = ({
   activeUser,
   content,
   setContent,
-  history
+  history,
+  isUpdating
 }) => {
   const [activeIndex, setActiveIndex] = useState<number>(5);
   // title input states
