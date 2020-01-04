@@ -1,7 +1,7 @@
 @import "./prism.css";
 
 * {
-  font-family: "Poppins", "Inconsolata" !important;
+  font-family: "Poppins" !important;
 }
 
 .nav-link {
@@ -98,11 +98,6 @@
 @media (max-width: 420px) {
   .blog-card-title {
     font-size: 11px !important;
-  }
-
-  code[class*="language-"],
-  pre[class*="language-"] {
-    font-size: 13px !important;
   }
 
   .blog-card-meta {

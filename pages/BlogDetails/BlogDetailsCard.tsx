@@ -1,10 +1,12 @@
 import * as React from "react";
+import { useEffect } from "react";
 import { Card, Divider, Image, Header } from "semantic-ui-react";
 import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
 import Moment from "react-moment";
 import Comments from "./Comment/Comments";
 import NoCommentsMessage from "./Comment/NoCommentsMessage";
 import { RemoveRedEye, WatchLater } from "@material-ui/icons";
+import Prism from "prismjs";
 
 const BlogDetailsCard: React.FC<Props> = ({
   activeUser,
@@ -12,6 +14,10 @@ const BlogDetailsCard: React.FC<Props> = ({
   blog,
   user
 }) => {
+  useEffect(() => {
+    Prism.highlightAll();
+  });
+
   const { id, title, content, img, views, tags, createdAt } = blog;
   const { username } = user;
 

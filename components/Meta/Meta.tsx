@@ -13,7 +13,7 @@ const Meta: React.FC = () => (
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap"
+      href="https://fonts.googleapis.com/css?family=Fira+Code&display=swap"
       rel="stylesheet"
     />
   </Head>
