@@ -17,15 +17,16 @@ import SignUp from "./SignUp/SignUp";
 import Profile from "./Profile/Profile";
 import CategoryPage from "./Categories/CategoryPage";
 import Admin from "./Admin/Admin";
+import About from "./About/About";
+import Blogs from "./Admin/Articles/AllBlogs/Blogs";
+import AddBlog from "./Admin/Articles/AddBlog/AddBlog";
+import UpdateBlog from "./Admin/Articles/AllBlogs/UpdateBlog/UpdateBlog";
 
 // components
 import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import AdminNavbar from "../components/Navbar/AdminNavbar";
-import Blogs from "./Admin/Articles/AllBlogs/Blogs";
-import AddBlog from "./Admin/Articles/AddBlog/AddBlog";
 import Meta from "../components/Meta/Meta";
-import UpdateBlog from "./Admin/Articles/AllBlogs/UpdateBlog/UpdateBlog";
 
 type Props = {
   session: any;
@@ -52,6 +53,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           render={() => <BlogDetails session={session} />}
         />
         <Route exact path="/profile" render={() => <Profile />} />
+        <Route exact path="/about" render={() => <About />} />
         <Route
           exact
           path="/category/:category"

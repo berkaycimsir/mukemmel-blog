@@ -45,14 +45,16 @@ const BlogDetails: React.FC<Props> = ({ session }) => {
           />
         </Grid.Column>
         <Grid.Column width={5}>
-          {session && session.activeUser.user !== null ? (
-            <IfThereIsAnActiveUser session={session} />
-          ) : (
-            <Login />
-          )}
-          <LastBlogsTab />
-          <PopularTab />
-          <CommentsTab activeUser={activeUser} />
+          <div style={{ position: "sticky", top: 10 }}>
+            {session && session.activeUser.user !== null ? (
+              <IfThereIsAnActiveUser session={session} />
+            ) : (
+              <Login />
+            )}
+            <LastBlogsTab />
+            <PopularTab />
+            <CommentsTab activeUser={activeUser} />
+          </div>
         </Grid.Column>
       </Grid>
     </Container>
