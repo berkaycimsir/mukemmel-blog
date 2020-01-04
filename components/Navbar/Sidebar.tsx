@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Sidebar, Menu } from "semantic-ui-react";
+import { Sidebar, Menu, Image } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 import { User } from "../../@types/types/database/DatabaseTypes";
 import { useState } from "react";
@@ -16,7 +16,8 @@ const SidebarMenu: React.FC<Props> = ({
   isVisible,
   setIsVisible
 }) => {
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visibleSoftware, setVisibleSoftware] = useState<boolean>(false);
+  const [visibleCategories, setVisibleCategories] = useState<boolean>(false);
 
   return (
     <Sidebar
@@ -58,15 +59,19 @@ const SidebarMenu: React.FC<Props> = ({
       </NavLink>
       <Menu.Item
         content="Yazılım"
-        icon={<ArrowDropDown htmlColor="white" />}
-        onClick={() => setVisible(!visible)}
+        icon={<Image children={<ArrowDropDown htmlColor="white" />} />}
+        onClick={() => {
+          setVisibleSoftware(!visibleSoftware);
+          setVisibleCategories(false);
+        }}
       ></Menu.Item>
-      {visible && (
+      {visibleSoftware && (
         <>
           <NavLink
             onClick={() => {
               setIsVisible(false);
-              setVisible(false);
+              setVisibleSoftware(false);
+              setVisibleCategories(false);
             }}
             to="/category/php"
             className="dropdown item"
@@ -76,7 +81,8 @@ const SidebarMenu: React.FC<Props> = ({
           <NavLink
             onClick={() => {
               setIsVisible(false);
-              setVisible(false);
+              setVisibleSoftware(false);
+              setVisibleCategories(false);
             }}
             to="/category/javascript"
             className="dropdown item"
@@ -86,7 +92,8 @@ const SidebarMenu: React.FC<Props> = ({
           <NavLink
             onClick={() => {
               setIsVisible(false);
-              setVisible(false);
+              setVisibleSoftware(false);
+              setVisibleCategories(false);
             }}
             to="/category/python"
             className="dropdown item"
@@ -96,7 +103,8 @@ const SidebarMenu: React.FC<Props> = ({
           <NavLink
             onClick={() => {
               setIsVisible(false);
-              setVisible(false);
+              setVisibleSoftware(false);
+              setVisibleCategories(false);
             }}
             to="/category/csharp"
             className="dropdown item"
@@ -106,12 +114,69 @@ const SidebarMenu: React.FC<Props> = ({
           <NavLink
             onClick={() => {
               setIsVisible(false);
-              setVisible(false);
+              setVisibleSoftware(false);
+              setVisibleCategories(false);
             }}
             to="/category/html"
             className="dropdown item"
           >
             HTML
+          </NavLink>
+        </>
+      )}
+      <Menu.Item
+        content="Kategoriler"
+        icon={<Image children={<ArrowDropDown htmlColor="white" />} />}
+        onClick={() => {
+          setVisibleCategories(!visibleCategories);
+          setVisibleSoftware(false);
+        }}
+      ></Menu.Item>
+      {visibleCategories && (
+        <>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisibleCategories(false);
+              setVisibleSoftware(false);
+            }}
+            to="/category/game"
+            className="dropdown item"
+          >
+            Oyun
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisibleCategories(false);
+              setVisibleSoftware(false);
+            }}
+            to="/category/ai"
+            className="dropdown item"
+          >
+            Yapay Zeka
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisibleCategories(false);
+              setVisibleSoftware(false);
+            }}
+            to="/category/science"
+            className="dropdown item"
+          >
+            Bilim
+          </NavLink>
+          <NavLink
+            onClick={() => {
+              setIsVisible(false);
+              setVisibleCategories(false);
+              setVisibleSoftware(false);
+            }}
+            to="/category/mobile"
+            className="dropdown item"
+          >
+            Mobil
           </NavLink>
         </>
       )}

@@ -94,6 +94,28 @@ const Navbar: React.FC<Props> = ({ session }) => {
                   </NavLink>
                 </Dropdown.Menu>
               </Dropdown>
+              <Dropdown
+                closeOnEscape
+                icon={<ArrowDropDown />}
+                item
+                simple
+                text="Kategoriler"
+              >
+                <Dropdown.Menu>
+                  <NavLink to="/category/game" className="dropdown item">
+                    Oyun
+                  </NavLink>
+                  <NavLink to="/category/ai" className="dropdown item">
+                    Yapay Zeka
+                  </NavLink>
+                  <NavLink to="/category/science" className="dropdown item">
+                    Bilim
+                  </NavLink>
+                  <NavLink to="/category/mobile" className="dropdown item">
+                    Mobil
+                  </NavLink>
+                </Dropdown.Menu>
+              </Dropdown>
               <NavLink className="item" to="/about">
                 <span>Hakkımızda</span>
               </NavLink>
