@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Comment, Grid, Divider, Message } from "semantic-ui-react";
-import { useQuery } from "react-apollo";
+import { useQuery, useMutation } from "react-apollo";
 import Loading from "../../components/Loading/Loading";
 import { GET_COMMENTS } from "../../graphql/Comment/query";
 import {
@@ -10,13 +10,27 @@ import {
 import Moment from "react-moment";
 import { NavLink } from "react-router-dom";
 import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
+import {
+  UpdateBlogViewsReturnData,
+  UpdateBlogViewsVariables
+} from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
+import { UPDATE_BLOG_VIEWS } from "../../graphql/Blog/mutation";
 
 const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
   const currentBlogId = window.location.pathname.split("/")[3];
 
   const { data, loading } = useQuery<GetCommentsReturnData>(GET_COMMENTS);
 
+  const [updateBlogViews] = useMutation<
+    UpdateBlogViewsReturnData,
+    UpdateBlogViewsVariables
+  >(UPDATE_BLOG_VIEWS);
+
   if (loading) return <Loading size={50} />;
+
+  const onClick: Function = (id: string) => {
+    updateBlogViews({ variables: { id } });
+  };
 
   return (
     <Grid>
@@ -54,9 +68,12 @@ const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
                 <Comment.Text>
                   {comment.content.slice(0, 40)}...{" "}
                   {currentBlogId !== comment.blog_id && (
-                    <NavLink to={`/blog/details/${comment.blog_id}`}>
+                    <a
+                      onClick={() => onClick(comment.blog_id)}
+                      href={`/blog/details/${comment.blog_id}`}
+                    >
                       Blog'a git!
-                    </NavLink>
+                    </a>
                   )}
                 </Comment.Text>
               </Comment.Content>

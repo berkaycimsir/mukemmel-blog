@@ -4,17 +4,36 @@ import { Props } from "../../@types/interfaces/PageInterfaces/Categories/blogite
 import { NavLink } from "react-router-dom";
 import { RemoveRedEye } from "@material-ui/icons";
 import Moment from "react-moment";
+import { useMutation } from "react-apollo";
+import {
+  UpdateBlogViewsReturnData,
+  UpdateBlogViewsVariables
+} from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
+import { UPDATE_BLOG_VIEWS } from "../../graphql/Blog/mutation";
 
 const BlogItem: React.FC<Props> = ({ blog }) => {
+  const [updateBlogViews] = useMutation<
+    UpdateBlogViewsReturnData,
+    UpdateBlogViewsVariables
+  >(UPDATE_BLOG_VIEWS);
+
+  const onClick: Function = (id: string) => {
+    updateBlogViews({ variables: { id } });
+  };
+
   return (
     <Item>
       <Item.Image size="medium" src={blog.img} />
 
       <Item.Content>
         <Item.Header as="h1">
-          <NavLink className="blog-item-title" to={`/blog/details/${blog.id}`}>
+          <a
+            onClick={() => onClick(blog.id)}
+            className="blog-item-title"
+            href={`/blog/details/${blog.id}`}
+          >
             {blog.title}
-          </NavLink>
+          </a>
         </Item.Header>
 
         <Item.Meta>
@@ -37,9 +56,9 @@ const BlogItem: React.FC<Props> = ({ blog }) => {
           content={blog.summary}
         />
         <Item.Extra>
-          <NavLink to={`/blog/details/${blog.id}`}>
+          <a onClick={() => onClick(blog.id)} href={`/blog/details/${blog.id}`}>
             <Button primary content="Devamını oku =>" />
-          </NavLink>
+          </a>
         </Item.Extra>
       </Item.Content>
     </Item>

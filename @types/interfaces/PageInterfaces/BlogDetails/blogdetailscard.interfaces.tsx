@@ -1,4 +1,6 @@
 import { Blog, User, Comment } from "../../../types/database/DatabaseTypes";
+import { MutationFunctionOptions } from "react-apollo";
+import { ExecutionResult } from "graphql";
 
 export type Props = {
   activeUser: User;
