@@ -6,3 +6,9 @@ export type Props = {
   blog: Blog;
   user: User;
 };
+
+export type UpdateBlogViewsReturnData = boolean;
+
+export interface UpdateBlogViewsVariables {
+  id: string;
+}
