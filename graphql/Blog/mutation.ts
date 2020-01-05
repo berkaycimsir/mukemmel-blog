@@ -59,6 +59,12 @@ export const UPDATE_BLOG = gql`
   }
 `;
 
+export const UPDATE_BLOG_VIEWS = gql`
+  mutation($id: ID!) {
+    updateBlogViews(id: $id)
+  }
+`;
+
 export const DELETE_BLOG = gql`
   mutation($id: ID!) {
     deleteBlog(id: $id) {
