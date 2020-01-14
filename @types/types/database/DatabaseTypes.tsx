@@ -35,3 +35,12 @@ export type Comment = {
   createdAt: Date;
   user: User;
 };
+
+export type Feed = {
+  id: string;
+  blog_id: string;
+  user_id: string;
+  content: string;
+  likes: number;
+  createdAt: Date;
+};
