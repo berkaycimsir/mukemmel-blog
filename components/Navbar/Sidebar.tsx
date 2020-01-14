@@ -43,6 +43,13 @@ const SidebarMenu: React.FC<Props> = ({
       <NavLink
         onClick={() => setIsVisible(false)}
         className="item"
+        to="/social"
+      >
+        <span>Sosyal</span>
+      </NavLink>
+      <NavLink
+        onClick={() => setIsVisible(false)}
+        className="item"
         to="/category/technology"
       >
         <span>Teknoloji</span>

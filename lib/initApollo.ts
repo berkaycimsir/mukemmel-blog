@@ -34,7 +34,7 @@ function create(initialState: any, { getToken }: Options) {
   const authLink = setContext((_, { headers }) => {
     return {
       headers: {
-        authorization: localStorage.getItem("token") || null
+        authorization: localStorage!.getItem("token") || null
       }
     };
   });

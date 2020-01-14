@@ -20,6 +20,7 @@ import About from "./About/About";
 import Blogs from "./Admin/Articles/AllBlogs/Blogs";
 import AddBlog from "./Admin/Articles/AddBlog/AddBlog";
 import UpdateBlog from "./Admin/Articles/AllBlogs/UpdateBlog/UpdateBlog";
+import Social from "./Social/Social";
 
 // components
 import Navbar from "../components/Navbar/Navbar";
@@ -54,6 +55,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           path="/category/:category"
           render={() => <CategoryPage session={session} />}
         />
+        <Route exact path="/social" render={() => <Social />} />
         <Route exact path="/admin/get-started" render={() => <Admin />} />
         <Route exact path="/admin/articles" render={() => <Blogs />} />
         <Route

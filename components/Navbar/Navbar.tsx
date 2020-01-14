@@ -66,6 +66,9 @@ const Navbar: React.FC<Props> = ({ session }) => {
               <NavLink style={{ background: "#fff" }} className="item" to="/">
                 <span>Anasayfa</span>
               </NavLink>
+              <NavLink className="item" to="/social">
+                <span>Sosyal</span>
+              </NavLink>
               <NavLink className="item" to="/category/technology">
                 <span>Teknoloji</span>
               </NavLink>
@@ -127,10 +130,11 @@ const Navbar: React.FC<Props> = ({ session }) => {
             <Menu.Menu position="right">
               {session && session.activeUser.user !== null ? (
                 <>
-                  <NavLink className="item" to="/profile">
-                    <span>Profile</span>
-                  </NavLink>
-                  {activeUser.admin === true && (
+                  {activeUser.admin === false ? (
+                    <NavLink className="item" to="/profile">
+                      <span>Profile</span>
+                    </NavLink>
+                  ) : (
                     <a className="item" href="/admin/get-started">
                       <span>Admin Paneli</span>
                     </a>
