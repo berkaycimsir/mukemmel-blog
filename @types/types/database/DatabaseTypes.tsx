@@ -40,8 +40,10 @@ export type Feed = {
   id: string;
   blog_id: string;
   user_id: string;
+  reply_id: string;
   content: string;
   likes: number;
   createdAt: Date;
   user: User;
+  replies: Feed[];
 };

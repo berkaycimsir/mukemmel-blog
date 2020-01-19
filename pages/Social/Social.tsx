@@ -2,8 +2,16 @@ import * as React from "react";
 import { Container, Grid, Segment, Header, Divider } from "semantic-ui-react";
 import SendFeed from "./SendFeed";
 import FeedList from "./FeedsList";
+import { User } from "../../@types/types/database/DatabaseTypes";
 
-const Social: React.FC = () => {
+type Props = {
+  session: any;
+};
+
+const Social: React.FC<Props> = ({ session }) => {
+  const activeUser: User =
+    session && session.activeUser.user !== null && session.activeUser.user;
+
   return (
     <Container>
       <Segment raised stacked color="violet">
@@ -11,7 +19,7 @@ const Social: React.FC = () => {
         <Divider />
         <SendFeed />
         <Divider />
-        <FeedList />
+        <FeedList activeUser={activeUser} />
       </Segment>
     </Container>
   );

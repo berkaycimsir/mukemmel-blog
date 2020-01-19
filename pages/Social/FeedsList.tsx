@@ -13,16 +13,29 @@ import { FEEDS } from "../../graphql/Feed/query";
 import Moment from "react-moment";
 import Loading from "../../components/Loading/Loading";
 import LikeFeed from "./LikeFeed";
+import ReplyFeed from "./ReplyFeed";
+import {
+  User,
+  Feed as FeedType
+} from "../../@types/types/database/DatabaseTypes";
 
-const FeedList: React.FC = () => {
+type Props = {
+  activeUser: User;
+};
+
+const FeedList: React.FC<Props> = ({ activeUser }) => {
   const { data, loading } = useQuery<GetFeedsReturnData>(FEEDS);
 
   if (loading) return <Loading size={50} />;
 
+  const feeds: FeedType[] = data.feeds.filter(
+    (feed: FeedType) => feed.reply_id === "not a reply"
+  );
+
   return (
     <>
       {!loading &&
-        data.feeds.map(feed => (
+        feeds.map(feed => (
           <Segment key={feed.id}>
             <Feed size="small">
               <Feed.Event>
@@ -48,7 +61,10 @@ const FeedList: React.FC = () => {
                       </span>
                     </Feed.Like>
                     <Feed.Like>
-                      <ChatBubbleOutline />
+                      <ReplyFeed reply_id={feed.id} activeUser={activeUser} />
+                      <span style={{ marginLeft: "2px" }}>
+                        {feed.replies.length} Yanıt
+                      </span>
                     </Feed.Like>
                   </Feed.Meta>
                 </Feed.Content>

@@ -55,7 +55,11 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           path="/category/:category"
           render={() => <CategoryPage session={session} />}
         />
-        <Route exact path="/social" render={() => <Social />} />
+        <Route
+          exact
+          path="/social"
+          render={() => <Social session={session} />}
+        />
         <Route exact path="/admin/get-started" render={() => <Admin />} />
         <Route exact path="/admin/articles" render={() => <Blogs />} />
         <Route
