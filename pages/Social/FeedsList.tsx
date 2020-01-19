@@ -18,6 +18,7 @@ import {
   User,
   Feed as FeedType
 } from "../../@types/types/database/DatabaseTypes";
+import { Redirect } from "react-router";
 
 type Props = {
   activeUser: User;
@@ -65,6 +66,11 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
                       <span style={{ marginLeft: "2px" }}>
                         {feed.replies.length} Yanıt
                       </span>
+                    </Feed.Like>
+                    <Feed.Like>
+                      <a href={`/social/feed/details/${feed.id}`}>
+                        Bu konuyu göster
+                      </a>
                     </Feed.Like>
                   </Feed.Meta>
                 </Feed.Content>

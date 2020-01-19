@@ -39,6 +39,23 @@ export const FEED = gql`
           username
           gender
         }
+        replies {
+          id
+          blog_id
+          user_id
+          content
+          likes
+          createdAt
+          user {
+            name
+            surname
+            username
+            gender
+          }
+          replies {
+            id
+          }
+        }
       }
       errorMessage
     }

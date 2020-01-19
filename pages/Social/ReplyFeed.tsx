@@ -3,13 +3,12 @@ import {
   Modal,
   Header,
   Image,
-  Popup,
   Form,
   Button,
   Segment,
   Feed
 } from "semantic-ui-react";
-import { ChatBubbleOutline, Done } from "@material-ui/icons";
+import { ChatBubbleOutline } from "@material-ui/icons";
 import { REPLY_FEED } from "../../graphql/Feed/mutation";
 import { useMutation, useQuery } from "react-apollo";
 import {
@@ -23,7 +22,6 @@ import { FEED, FEEDS } from "../../graphql/Feed/query";
 import Loading from "../../components/Loading/Loading";
 import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
 import Moment from "react-moment";
-import LikeFeed from "./LikeFeed";
 import { Feed as FeedType } from "../../@types/types/database/DatabaseTypes";
 
 const ReplyFeed: React.FC<Props> = ({ activeUser, reply_id }) => {
@@ -40,9 +38,7 @@ const ReplyFeed: React.FC<Props> = ({ activeUser, reply_id }) => {
     GetFeedByIdVariables
   >(FEED, { variables: { id: reply_id } });
 
-  if (getFeedLoading) return <Loading size={60} />;
-
-  const feed: FeedType = data.feed.feed;
+  const feed: FeedType = !getFeedLoading && data.feed.feed;
 
   const addReply = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -76,31 +72,37 @@ const ReplyFeed: React.FC<Props> = ({ activeUser, reply_id }) => {
           <Modal.Header>Yanıtla</Modal.Header>
           <Modal.Content>
             <Modal.Description>
-              <Segment key={feed.id}>
-                <Feed size="small">
-                  <Feed.Event>
-                    <Feed.Label image={getImageUrlByGender(feed.user.gender)} />
-                    <Feed.Content>
-                      <Feed.Summary className="blog-detail-content">
-                        <a>
-                          {feed.user.name} {feed.user.surname}
-                        </a>{" "}
-                        <Feed.Date>
-                          <b>@{feed.user.username}</b>{" "}
-                          <Moment date={feed.createdAt} fromNow ago /> ago
-                        </Feed.Date>
-                      </Feed.Summary>
-                      <Feed.Extra className="blog-detail-content">
-                        {feed.content}
-                      </Feed.Extra>
-                    </Feed.Content>
-                  </Feed.Event>
-                </Feed>
-              </Segment>
+              {getFeedLoading ? (
+                <Loading size={40} />
+              ) : (
+                <Segment key={feed.id}>
+                  <Feed size="small">
+                    <Feed.Event>
+                      <Feed.Label
+                        image={getImageUrlByGender(feed.user.gender)}
+                      />
+                      <Feed.Content>
+                        <Feed.Summary className="blog-detail-content">
+                          <a>
+                            {feed.user.name} {feed.user.surname}
+                          </a>{" "}
+                          <Feed.Date>
+                            <b>@{feed.user.username}</b>{" "}
+                            <Moment date={feed.createdAt} fromNow ago /> ago
+                          </Feed.Date>
+                        </Feed.Summary>
+                        <Feed.Extra className="blog-detail-content">
+                          {feed.content}
+                        </Feed.Extra>
+                      </Feed.Content>
+                    </Feed.Event>
+                  </Feed>
+                </Segment>
+              )}
 
               <Header as="h4">
                 <Header.Content>
-                  <a>@{feed.user.username}</a>'e yanıt olarak
+                  <a>@{!getFeedLoading && feed.user.username}</a>'e yanıt olarak
                 </Header.Content>
               </Header>
               <Form reply>

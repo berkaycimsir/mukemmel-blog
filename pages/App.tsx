@@ -27,6 +27,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/Footer";
 import AdminNavbar from "../components/Navbar/AdminNavbar";
 import Meta from "../components/Meta/Meta";
+import FeedDetail from "./Social/FeedDetail";
 
 type Props = {
   session: any;
@@ -59,6 +60,11 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           exact
           path="/social"
           render={() => <Social session={session} />}
+        />
+        <Route
+          exact
+          path="/social/feed/details/:id"
+          render={() => <FeedDetail session={session} />}
         />
         <Route exact path="/admin/get-started" render={() => <Admin />} />
         <Route exact path="/admin/articles" render={() => <Blogs />} />
