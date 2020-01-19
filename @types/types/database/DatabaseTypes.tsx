@@ -43,4 +43,5 @@ export type Feed = {
   content: string;
   likes: number;
   createdAt: Date;
+  user: User;
 };

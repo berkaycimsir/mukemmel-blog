@@ -9,6 +9,12 @@ export const FEEDS = gql`
       content
       likes
       createdAt
+      user {
+        name
+        surname
+        username
+        gender
+      }
     }
   }
 `;

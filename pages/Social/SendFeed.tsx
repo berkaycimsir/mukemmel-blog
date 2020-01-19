@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, Form, Image, Grid } from "semantic-ui-react";
+import { Form } from "semantic-ui-react";
 
 const SendFeed: React.FC = () => {
   return (

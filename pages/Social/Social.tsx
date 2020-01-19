@@ -6,16 +6,12 @@ import FeedList from "./FeedsList";
 const Social: React.FC = () => {
   return (
     <Container>
-      <Segment stacked color="violet">
+      <Segment raised stacked color="violet">
         <Header as="h2" textAlign="center" content="Feeds" />
         <Divider />
-        <Grid columns={1} stackable>
-          <Grid.Column>
-            <SendFeed />
-            <Divider />
-            <FeedList />
-          </Grid.Column>
-        </Grid>
+        <SendFeed />
+        <Divider />
+        <FeedList />
       </Segment>
     </Container>
   );
