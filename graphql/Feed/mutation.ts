@@ -18,3 +18,14 @@ export const REPLY_FEED = gql`
     }
   }
 `;
+
+export const ADD_FEED = gql`
+  mutation($blog_id: String, $user_id: ID!, $content: String!) {
+    addFeed(data: { blog_id: $blog_id, user_id: $user_id, content: $content }) {
+      feed {
+        id
+      }
+      errorMessage
+    }
+  }
+`;

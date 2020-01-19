@@ -17,7 +17,7 @@ const Social: React.FC<Props> = ({ session }) => {
       <Segment raised stacked color="violet">
         <Header as="h2" textAlign="center" content="Feeds" />
         <Divider />
-        <SendFeed />
+        <SendFeed activeUser={activeUser} />
         <Divider />
         <FeedList activeUser={activeUser} />
       </Segment>
