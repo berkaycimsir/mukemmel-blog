@@ -131,7 +131,7 @@ const Navbar: React.FC<Props> = ({ session }) => {
               {session && session.activeUser.user !== null ? (
                 <>
                   {activeUser.admin === false ? (
-                    <NavLink className="item" to="/profile">
+                    <NavLink className="item" to={`/profile/${activeUser.id}`}>
                       <span>Profile</span>
                     </NavLink>
                   ) : (

@@ -201,7 +201,7 @@ const SidebarMenu: React.FC<Props> = ({
           <NavLink
             onClick={() => setIsVisible(false)}
             className="item"
-            to="/profile"
+            to={`/profile/${activeUser.id}`}
           >
             <span>Profile</span>
           </NavLink>
