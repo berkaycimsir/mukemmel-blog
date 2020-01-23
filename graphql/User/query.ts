@@ -29,3 +29,30 @@ export const GET_LAST_USERS = gql`
     }
   }
 `;
+
+export const USER = gql`
+  query($id: ID!) {
+    user(id: $id) {
+      user {
+        id
+        name
+        surname
+        username
+        email
+        gender
+        admin
+        createdAt
+        blogs {
+          title
+        }
+        comments {
+          content
+        }
+        feeds {
+          content
+        }
+      }
+      errorMessage
+    }
+  }
+`;

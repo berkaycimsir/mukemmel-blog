@@ -8,6 +8,9 @@ export type User = {
   gender: string;
   admin: boolean;
   createdAt: Date;
+  blogs: Blog[];
+  comments: Comment[];
+  feeds: Feed[];
 };
 
 export type Blog = {
