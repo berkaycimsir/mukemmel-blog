@@ -19,6 +19,10 @@ export const FEEDS = gql`
       replies {
         id
       }
+      blog {
+        id
+        title
+      }
     }
   }
 `;
@@ -55,6 +59,10 @@ export const FEED = gql`
           replies {
             id
           }
+        }
+        blog {
+          id
+          title
         }
       }
       errorMessage

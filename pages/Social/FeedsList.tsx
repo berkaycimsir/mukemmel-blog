@@ -19,6 +19,7 @@ import {
   Feed as FeedType
 } from "../../@types/types/database/DatabaseTypes";
 import { Redirect } from "react-router";
+import { NavLink } from "react-router-dom";
 
 type Props = {
   activeUser: User;
@@ -53,6 +54,11 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
                   </Feed.Summary>
                   <Feed.Extra className="blog-detail-content">
                     {feed.content}
+                    {feed.blog !== null && (
+                      <NavLink to={`/blog/details/${feed.blog.id}`}>
+                        ({feed.blog.title}'dan bahsederek)
+                      </NavLink>
+                    )}
                   </Feed.Extra>
                   <Feed.Meta>
                     <Feed.Like>
@@ -67,11 +73,13 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
                         {feed.replies.length} Yanıt
                       </span>
                     </Feed.Like>
-                    <Feed.Like>
-                      <a href={`/social/feed/details/${feed.id}`}>
-                        Bu konuyu göster
-                      </a>
-                    </Feed.Like>
+                    {feed.replies.length !== 0 && (
+                      <Feed.Like>
+                        <a href={`/social/feed/details/${feed.id}`}>
+                          Bu konuyu göster
+                        </a>
+                      </Feed.Like>
+                    )}
                   </Feed.Meta>
                 </Feed.Content>
               </Feed.Event>

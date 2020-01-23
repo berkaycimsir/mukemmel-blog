@@ -42,7 +42,9 @@ const ReplyFeed: React.FC<Props> = ({ activeUser, reply_id }) => {
 
   const addReply = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    addFeed({ variables: { reply_id, user_id: activeUser.id, content } });
+    addFeed({
+      variables: { reply_id, user_id: activeUser.id, content }
+    }).then(() => window.location.reload());
   };
 
   return (
@@ -66,6 +68,14 @@ const ReplyFeed: React.FC<Props> = ({ activeUser, reply_id }) => {
               <a href="/login">Giriş Yap!</a>
             </Modal.Description>
           </Modal.Content>
+          <Modal.Actions>
+            <Button
+              color="red"
+              inverted
+              content="Vazgeç"
+              onClick={() => setOpen(false)}
+            />
+          </Modal.Actions>
         </>
       ) : (
         <>

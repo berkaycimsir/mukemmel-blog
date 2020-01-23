@@ -17,6 +17,7 @@ import {
 import { Blog } from "../../@types/types/database/DatabaseTypes";
 import { FEEDS } from "../../graphql/Feed/query";
 import { ADD_FEED } from "../../graphql/Feed/mutation";
+import { NavLink } from "react-router-dom";
 
 const SendFeed: React.FC<Props> = ({ activeUser }) => {
   const [blogId, setBlogId] = React.useState<string>("");
@@ -70,6 +71,7 @@ const SendFeed: React.FC<Props> = ({ activeUser }) => {
       });
     });
   }
+  console.log(activeUser);
 
   return (
     <Form reply>
@@ -80,29 +82,41 @@ const SendFeed: React.FC<Props> = ({ activeUser }) => {
         disabled={addFeedLoading}
         value={content}
         style={{ minHeight: "200px" }}
-        placeholder="Feed Gönder"
+        placeholder={
+          !activeUser
+            ? "Feed göndermek için önce giriş yapmanız gerekir!"
+            : "Feed Gönder"
+        }
       />
-      <Message
-        content="İsterseniz bir bloğu etiketleyerek feed'inizi paylaşabilirsiniz!"
-        size="small"
-      />
+      <Message size="small" color={!activeUser ? "red" : null}>
+        <Message.Content>
+          {!activeUser ? (
+            <NavLink style={{ color: "#db2828" }} to="/login">
+              Giriş Yapmak İçin Tıkla
+            </NavLink>
+          ) : (
+            <div>İsterseniz bir bloğu etiketleyerek paylaşabilirsiniz!</div>
+          )}
+        </Message.Content>
+      </Message>
       <Dropdown
-        placeholder="Blog Seçiniz..."
+        placeholder={!activeUser ? "Önce giriş yapın!" : "Blog Seçiniz..."}
         loading={loading}
         options={options}
         fluid
         selection
         scrolling
         value={value}
+        disabled={!activeUser}
       />
       <Form.Button
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e)}
         loading={addFeedLoading}
-        disabled={addFeedLoading || !content}
+        disabled={addFeedLoading || !content || !activeUser}
         style={{ marginTop: "10px" }}
         inverted
-        color="green"
-        content="Gönder"
+        color={!activeUser ? "red" : "green"}
+        content={!activeUser ? "Lütfen Giriş Yapınız!" : "Gönder"}
       />
     </Form>
   );

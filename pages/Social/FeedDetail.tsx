@@ -16,6 +16,7 @@ import {
   Feed as FeedType,
   User
 } from "../../@types/types/database/DatabaseTypes";
+import { NavLink } from "react-router-dom";
 
 type Props = {
   session: any;
@@ -54,6 +55,11 @@ const FeedDetail: React.FC<Props> = ({ session }) => {
                 </Feed.Summary>
                 <Feed.Extra className="blog-detail-content">
                   {feed.content}
+                  {feed.blog !== null && (
+                    <NavLink to={`/blog/details/${feed.blog.id}`}>
+                      ({feed.blog.title}'dan bahsederek)
+                    </NavLink>
+                  )}
                 </Feed.Extra>
                 <Feed.Meta>
                   <Feed.Like>

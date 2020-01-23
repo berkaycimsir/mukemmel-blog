@@ -46,4 +46,5 @@ export type Feed = {
   createdAt: Date;
   user: User;
   replies: Feed[];
+  blog: Blog;
 };
