@@ -18,6 +18,7 @@ import {
 } from "../../@types/types/database/DatabaseTypes";
 import { NavLink } from "react-router-dom";
 import DeleteFeed from "./DeleteFeed";
+import UpdateFeed from "./UpdateFeed";
 
 type Props = {
   session: any;
@@ -78,6 +79,11 @@ const FeedDetail: React.FC<Props> = ({ session }) => {
                   {activeUser.id === feed.user_id && (
                     <Feed.Like>
                       <DeleteFeed id={feed.id} /> Sil
+                    </Feed.Like>
+                  )}
+                  {activeUser.id === feed.user_id && (
+                    <Feed.Like>
+                      <UpdateFeed id={feed.id} /> Güncelle
                     </Feed.Like>
                   )}
                 </Feed.Meta>

@@ -3,7 +3,7 @@ export type Props = {
 };
 
 export interface DeleteFeedReturnData {
-  comment: boolean;
+  deleteFeed: boolean;
 }
 
 export interface DeleteFeedVariables {

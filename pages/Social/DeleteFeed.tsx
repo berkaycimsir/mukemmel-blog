@@ -34,7 +34,6 @@ const DeleteFeed: React.FC<Props> = ({ id }) => {
           loading={loading}
           children={
             <DeleteOutline
-              htmlColor="black"
               onClick={(e: React.MouseEvent<SVGSVGElement>) => onDeleteFeed(e)}
             />
           }

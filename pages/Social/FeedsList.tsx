@@ -21,6 +21,7 @@ import {
 import { Redirect } from "react-router";
 import { NavLink } from "react-router-dom";
 import DeleteFeed from "./DeleteFeed";
+import UpdateFeed from "./UpdateFeed";
 
 type Props = {
   activeUser: User;
@@ -77,6 +78,11 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
                     {activeUser.id === feed.user_id && (
                       <Feed.Like>
                         <DeleteFeed id={feed.id} /> Sil
+                      </Feed.Like>
+                    )}
+                    {activeUser.id === feed.user_id && (
+                      <Feed.Like>
+                        <UpdateFeed id={feed.id} /> Güncelle
                       </Feed.Like>
                     )}
                     {feed.replies.length !== 0 && (

@@ -30,6 +30,12 @@ export const ADD_FEED = gql`
   }
 `;
 
+export const UPDATE_FEED = gql`
+  mutation($id: ID!, $content: String!) {
+    updateFeed(data: { id: $id, content: $content })
+  }
+`;
+
 export const DELETE_FEED = gql`
   mutation($id: ID!) {
     deleteFeed(id: $id)
