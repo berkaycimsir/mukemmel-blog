@@ -20,6 +20,7 @@ import {
 } from "../../@types/types/database/DatabaseTypes";
 import { Redirect } from "react-router";
 import { NavLink } from "react-router-dom";
+import DeleteFeed from "./DeleteFeed";
 
 type Props = {
   activeUser: User;
@@ -73,6 +74,11 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
                         {feed.replies.length} Yanıt
                       </span>
                     </Feed.Like>
+                    {activeUser.id === feed.user_id && (
+                      <Feed.Like>
+                        <DeleteFeed id={feed.id} /> Sil
+                      </Feed.Like>
+                    )}
                     {feed.replies.length !== 0 && (
                       <Feed.Like>
                         <a href={`/social/feed/details/${feed.id}`}>

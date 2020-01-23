@@ -14,7 +14,7 @@ import { FEEDS } from "../../graphql/Feed/query";
 const LikeFeed: React.FC<Props> = ({ id }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
 
-  const [likeComment, { loading }] = useMutation<
+  const [likeFeed, { loading }] = useMutation<
     LikeFeedReturnData,
     LikeFeedVariables
   >(LIKE_FEED, {
@@ -25,7 +25,7 @@ const LikeFeed: React.FC<Props> = ({ id }) => {
   const onLikeFeed = (e: React.MouseEvent<SVGSVGElement>): void => {
     if (!loading) {
       e.preventDefault();
-      likeComment();
+      likeFeed();
       setIsLiked(!isLiked);
     }
   };

@@ -29,3 +29,9 @@ export const ADD_FEED = gql`
     }
   }
 `;
+
+export const DELETE_FEED = gql`
+  mutation($id: ID!) {
+    deleteFeed(id: $id)
+  }
+`;

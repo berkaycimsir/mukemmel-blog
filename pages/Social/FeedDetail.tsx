@@ -17,6 +17,7 @@ import {
   User
 } from "../../@types/types/database/DatabaseTypes";
 import { NavLink } from "react-router-dom";
+import DeleteFeed from "./DeleteFeed";
 
 type Props = {
   session: any;
@@ -74,6 +75,11 @@ const FeedDetail: React.FC<Props> = ({ session }) => {
                       {feed.replies.length} Yanıt
                     </span>
                   </Feed.Like>
+                  {activeUser.id === feed.user_id && (
+                    <Feed.Like>
+                      <DeleteFeed id={feed.id} /> Sil
+                    </Feed.Like>
+                  )}
                 </Feed.Meta>
               </Feed.Content>
             </Feed.Event>
@@ -110,6 +116,11 @@ const FeedDetail: React.FC<Props> = ({ session }) => {
                         {feed.replies.length} Yanıt
                       </span>
                     </Feed.Like>
+                    {activeUser.id === feed.user_id && (
+                      <Feed.Like>
+                        <DeleteFeed id={feed.id} /> Sil
+                      </Feed.Like>
+                    )}
                     <Feed.Like>
                       <a href={`/social/feed/details/${feed.id}`}>
                         Bu konuyu göster
