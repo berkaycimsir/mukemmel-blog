@@ -127,6 +127,11 @@ const FeedDetail: React.FC<Props> = ({ session }) => {
                         <DeleteFeed id={feed.id} /> Sil
                       </Feed.Like>
                     )}
+                    {activeUser.id === feed.user_id && (
+                      <Feed.Like>
+                        <UpdateFeed id={feed.id} /> Güncelle
+                      </Feed.Like>
+                    )}
                     <Feed.Like>
                       <a href={`/social/feed/details/${feed.id}`}>
                         Bu konuyu göster

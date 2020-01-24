@@ -13,9 +13,11 @@ import {
   Grid,
   Image,
   List,
-  Icon
+  Icon,
+  Menu,
+  Divider
 } from "semantic-ui-react";
-import { User } from "../../@types/types/database/DatabaseTypes";
+import { User, Feed } from "../../@types/types/database/DatabaseTypes";
 import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
 import {
   AccountCircleOutlined,
@@ -24,8 +26,12 @@ import {
   Delete
 } from "@material-ui/icons";
 import Moment from "react-moment";
+import UserFeeds from "./UserFeeds";
+import UserComments from "./UserComments";
 
 const Profile: React.FC = () => {
+  const [activeItem, setActiveItem] = React.useState<string>("feeds");
+
   const { data, loading } = useQuery<
     GetUserByIdReturnData,
     GetUserByIdVariables
@@ -36,6 +42,7 @@ const Profile: React.FC = () => {
   if (loading) return <Loading size={50} />;
 
   const user: User = data.user.user;
+  const feeds: Feed[] = data.user.user.feeds;
 
   return (
     <Container>
@@ -44,7 +51,7 @@ const Profile: React.FC = () => {
           content={`${user.name} ${user.surname} Profili`}
           textAlign="center"
         />
-        <Grid columns={2} stackable>
+        <Grid columns={3} stackable>
           <Grid.Column width={6}>
             <Image
               src="https://image.flaticon.com/icons/svg/17/17004.svg"
@@ -102,6 +109,25 @@ const Profile: React.FC = () => {
                 </List.Content>
               </List.Item>
             </List>
+          </Grid.Column>
+          <Grid.Column width={16}>
+            <Divider />
+            <Menu pointing>
+              <Menu.Item
+                content="Feeds"
+                active={activeItem === "feeds"}
+                onClick={() => setActiveItem("feeds")}
+              />
+              <Menu.Item
+                content="Yorumları"
+                active={activeItem === "comments"}
+                onClick={() => setActiveItem("comments")}
+              />
+            </Menu>
+            {activeItem === "feeds" && (
+              <UserFeeds feeds={feeds} activeUser={user} />
+            )}
+            {activeItem === "comments" && <UserComments />}
           </Grid.Column>
         </Grid>
       </Segment>

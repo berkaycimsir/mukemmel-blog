@@ -49,7 +49,39 @@ export const USER = gql`
           content
         }
         feeds {
+          id
+          blog_id
+          user_id
           content
+          likes
+          createdAt
+          user {
+            name
+            surname
+            username
+            gender
+          }
+          replies {
+            id
+            blog_id
+            user_id
+            content
+            likes
+            createdAt
+            user {
+              name
+              surname
+              username
+              gender
+            }
+            replies {
+              id
+            }
+          }
+          blog {
+            id
+            title
+          }
         }
       }
       errorMessage

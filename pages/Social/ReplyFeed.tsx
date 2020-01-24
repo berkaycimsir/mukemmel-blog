@@ -31,7 +31,7 @@ const ReplyFeed: React.FC<Props> = ({ activeUser, reply_id }) => {
   const [addFeed, { loading }] = useMutation<
     ReplyFeedReturnData,
     ReplyFeedVariables
-  >(REPLY_FEED, { refetchQueries: FEEDS });
+  >(REPLY_FEED, { refetchQueries: [{ query: FEEDS }] });
 
   const { data, loading: getFeedLoading } = useQuery<
     GetFeedByIdReturnData,
@@ -44,7 +44,7 @@ const ReplyFeed: React.FC<Props> = ({ activeUser, reply_id }) => {
     e.preventDefault();
     addFeed({
       variables: { reply_id, user_id: activeUser.id, content }
-    }).then(() => window.location.reload());
+    });
   };
 
   return (

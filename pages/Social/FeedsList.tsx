@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Feed, Image, Card, Segment } from "semantic-ui-react";
+import { Feed, Image, Card, Segment, Message } from "semantic-ui-react";
 import {
   Favorite,
   FavoriteBorder,
@@ -38,7 +38,13 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
 
   return (
     <>
-      {!loading &&
+      {feeds.length === 0 ? (
+        <Message
+          color="red"
+          header="Burada hiç feed yok!"
+          content="Eğer istersen hemen giriş yaparak ya da kayıt olarak düşüncelerini paylaşabilirsin!"
+        />
+      ) : (
         feeds.map(feed => (
           <Segment key={feed.id}>
             <Feed size="small">
@@ -97,7 +103,8 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
               </Feed.Event>
             </Feed>
           </Segment>
-        ))}
+        ))
+      )}
     </>
   );
 };
