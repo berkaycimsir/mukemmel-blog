@@ -21,6 +21,7 @@ import { User, Feed, Comment } from "../../@types/types/database/DatabaseTypes";
 import Moment from "react-moment";
 import UserFeeds from "./UserFeeds";
 import UserComments from "./UserComments";
+import ProfileListItem from "./ProfileListItem";
 
 const Profile: React.FC<Props> = ({ session }) => {
   const [activeItem, setActiveItem] = React.useState<string>("feeds");
@@ -56,55 +57,37 @@ const Profile: React.FC<Props> = ({ session }) => {
             />
           </Grid.Column>
           <Grid.Column width={10}>
-            <List relaxed divided animated>
-              <List.Item style={{ marginTop: "5px" }} as="a">
-                <List.Content>
-                  <List.Header style={{ color: "#EA7675" }}>İsim</List.Header>
-                  <List.Description>{user.name}</List.Description>
-                </List.Content>
-              </List.Item>
-              <List.Item style={{ marginTop: "5px" }} as="a">
-                <List.Content>
-                  <List.Header style={{ color: "#F48840" }}>
-                    Soyisim
-                  </List.Header>
-                  <List.Description>{user.surname}</List.Description>
-                </List.Content>
-              </List.Item>
-              <List.Item style={{ marginTop: "5px" }} as="a">
-                <List.Content>
-                  <List.Header style={{ color: "#B58105" }}>
-                    Kullanıcı Adı
-                  </List.Header>
-                  <List.Description>@{user.username}</List.Description>
-                </List.Content>
-              </List.Item>
-              <List.Item style={{ marginTop: "5px" }} as="a">
-                <List.Content>
-                  <List.Header style={{ color: "#10a3a3" }}>Email</List.Header>
-                  <List.Description>{user.email}</List.Description>
-                </List.Content>
-              </List.Item>
-              <List.Item style={{ marginTop: "5px" }} as="a">
-                <List.Content>
-                  <List.Header style={{ color: "#6435c9 " }}>
-                    Cinsiyet
-                  </List.Header>
-                  <List.Description>
-                    {user.gender === "men" ? "Erkek" : "Kadın"}
-                  </List.Description>
-                </List.Content>
-              </List.Item>
-              <List.Item style={{ marginTop: "5px" }} as="a">
-                <List.Content>
-                  <List.Header style={{ color: "#a5673f" }}>
-                    Oluşturulma Tarihi
-                  </List.Header>
-                  <List.Description>
-                    <Moment date={user.createdAt} format="DD/MM/YY" />
-                  </List.Description>
-                </List.Content>
-              </List.Item>
+            <List relaxed divided>
+              <ProfileListItem
+                color="#EA7675"
+                header="İsim"
+                description={user.name}
+              />
+              <ProfileListItem
+                color="#F48840"
+                header="Soyisim"
+                description={user.surname}
+              />
+              <ProfileListItem
+                color="#B58105"
+                header="Kullanıcı Adı"
+                description={`@${user.username}`}
+              />
+              <ProfileListItem
+                color="#10a3a3"
+                header="Email"
+                description={user.email}
+              />
+              <ProfileListItem
+                color="#6435c9"
+                header="Cinsiyet"
+                description={user.gender === "men" ? "Erkek" : "Kadın"}
+              />
+              <ProfileListItem
+                color="#a5673f"
+                header="Oluşturulma Tarihi"
+                description={<Moment date={user.createdAt} format="DD/MM/YY" />}
+              />
             </List>
           </Grid.Column>
           <Grid.Column width={16}>
