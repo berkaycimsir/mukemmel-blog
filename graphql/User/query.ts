@@ -46,7 +46,18 @@ export const USER = gql`
           title
         }
         comments {
+          id
+          blog_id
           content
+          likes
+          createdAt
+          user {
+            id
+            name
+            surname
+            username
+            gender
+          }
         }
         feeds {
           id

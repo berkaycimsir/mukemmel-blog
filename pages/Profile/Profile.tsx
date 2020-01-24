@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useQuery } from "react-apollo";
 import {
+  Props,
   GetUserByIdReturnData,
   GetUserByIdVariables
 } from "../../@types/interfaces/PageInterfaces/Profile/profile.interfaces";
@@ -13,24 +14,19 @@ import {
   Grid,
   Image,
   List,
-  Icon,
   Menu,
   Divider
 } from "semantic-ui-react";
-import { User, Feed } from "../../@types/types/database/DatabaseTypes";
-import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
-import {
-  AccountCircleOutlined,
-  AccountBoxOutlined,
-  Help,
-  Delete
-} from "@material-ui/icons";
+import { User, Feed, Comment } from "../../@types/types/database/DatabaseTypes";
 import Moment from "react-moment";
 import UserFeeds from "./UserFeeds";
 import UserComments from "./UserComments";
 
-const Profile: React.FC = () => {
+const Profile: React.FC<Props> = ({ session }) => {
   const [activeItem, setActiveItem] = React.useState<string>("feeds");
+
+  const activeUser: User =
+    session && session.activeUser.user !== null && session.activeUser.user;
 
   const { data, loading } = useQuery<
     GetUserByIdReturnData,
@@ -43,6 +39,7 @@ const Profile: React.FC = () => {
 
   const user: User = data.user.user;
   const feeds: Feed[] = data.user.user.feeds;
+  const comments: Comment[] = data.user.user.comments;
 
   return (
     <Container>
@@ -125,9 +122,17 @@ const Profile: React.FC = () => {
               />
             </Menu>
             {activeItem === "feeds" && (
-              <UserFeeds feeds={feeds} activeUser={user} />
+              <UserFeeds feeds={feeds} activeUser={activeUser} />
             )}
-            {activeItem === "comments" && <UserComments />}
+            {activeItem === "comments" && (
+              <UserComments
+                activeUserDeleteComment={
+                  activeUser.id === user.id ? true : false
+                }
+                comments={comments}
+                activeUser={activeUser}
+              />
+            )}
           </Grid.Column>
         </Grid>
       </Segment>

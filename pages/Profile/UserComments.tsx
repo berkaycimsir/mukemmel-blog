@@ -1,7 +1,52 @@
 import * as React from "react";
+import {
+  Comment as CommentType,
+  User
+} from "../../@types/types/database/DatabaseTypes";
+import { Segment, Message, Comment, Divider, Header } from "semantic-ui-react";
+import CommentItem from "../BlogDetails/Comment/CommentItem";
 
-const UserComments: React.FC = () => {
-  return <div>user comments</div>;
+type Props = {
+  comments: CommentType[];
+  activeUser: User;
+  activeUserDeleteComment: boolean;
+};
+
+const UserComments: React.FC<Props> = ({
+  comments,
+  activeUser,
+  activeUserDeleteComment
+}) => {
+  return (
+    <Segment color="teal" raised>
+      <Comment.Group>
+        {comments.length !== 0 && (
+          <>
+            <Header
+              content={`Bu kullanıcı ${comments.length} yorum yapmış!`}
+              as="h4"
+            />
+            <Divider />
+          </>
+        )}
+        {comments.length === 0 && (
+          <Message
+            error
+            header="Bu kullanıcı hiç yorum yapmamış!"
+            content="İstersen sen hemen yorum yapabilirsin!"
+          />
+        )}
+        {comments.map((comment: CommentType) => (
+          <CommentItem
+            key={comment.id}
+            comment={comment}
+            activeUser={activeUser}
+            activeUserDeleteComment={activeUserDeleteComment}
+          />
+        ))}
+      </Comment.Group>
+    </Segment>
+  );
 };
 
 export default UserComments;

@@ -49,7 +49,11 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           path="/blog/details/:id"
           render={() => <BlogDetails session={session} />}
         />
-        <Route exact path="/profile/:id" render={() => <Profile />} />
+        <Route
+          exact
+          path="/profile/:id"
+          render={() => <Profile session={session} />}
+        />
         <Route exact path="/about" render={() => <About />} />
         <Route
           exact

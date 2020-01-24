@@ -52,7 +52,7 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
                 <Feed.Label image={getImageUrlByGender(feed.user.gender)} />
                 <Feed.Content>
                   <Feed.Summary className="blog-detail-content">
-                    <a>
+                    <a href={`/profile/${feed.user_id}`}>
                       {feed.user.name} {feed.user.surname}
                     </a>{" "}
                     <Feed.Date>
