@@ -6,6 +6,7 @@ import {
   CloseOutlined,
   Done
 } from "@material-ui/icons";
+import UpdateUser from "./UpdateUser";
 
 type Props = {
   color: string;
@@ -16,18 +17,42 @@ type Props = {
 const ProfileListItem: React.FC<Props> = ({ color, header, description }) => {
   const [update, setUpdate] = React.useState<{
     updating?: boolean;
-    field?: string;
     text?: string;
   }>({ updating: false, text: "" });
 
-  const { updating, field, text } = update;
+  const getFieldName = (): string => {
+    switch (header) {
+      case "İsim":
+        return "name";
+      case "Soyisim":
+        return "surname";
+      case "Kullanıcı Adı":
+        return "username";
+      case "Email":
+        return "email";
+      case "Cinsiyet":
+        return "gender";
+      default:
+        break;
+    }
+  };
+
+  const { updating, text } = update;
 
   return (
     <List.Item style={{ marginTop: "5px" }} as="a">
       <List.Content>
         <List.Header style={{ color }} content={header} />
         <List.Description>
-          {description}
+          {updating === true ? (
+            <UpdateUser
+              field={getFieldName()}
+              text={text}
+              setUpdate={setUpdate}
+            />
+          ) : (
+            description
+          )}
 
           {!updating && (
             <Image
