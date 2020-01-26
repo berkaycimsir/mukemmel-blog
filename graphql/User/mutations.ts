@@ -37,3 +37,25 @@ export const LOGIN: any = gql`
     }
   }
 `;
+
+export const UPDATE: any = gql`
+  mutation(
+    $id: ID!
+    $name: String
+    $surname: String
+    $username: String
+    $email: String
+    $gender: String
+  ) {
+    update(
+      data: {
+        id: $id
+        name: $name
+        surname: $surname
+        username: $username
+        email: $email
+        gender: $gender
+      }
+    )
+  }
+`;
