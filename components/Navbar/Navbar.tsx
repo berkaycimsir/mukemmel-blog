@@ -130,14 +130,18 @@ const Navbar: React.FC<Props> = ({ session }) => {
             <Menu.Menu position="right">
               {session && session.activeUser.user !== null ? (
                 <>
-                  {activeUser.admin === false ? (
-                    <NavLink className="item" to={`/profile/${activeUser.id}`}>
-                      <span>Profile</span>
-                    </NavLink>
-                  ) : (
-                    <a className="item" href="/admin/get-started">
-                      <span>Admin Paneli</span>
-                    </a>
+                  {activeUser.admin === true && (
+                    <>
+                      <NavLink
+                        className="item"
+                        to={`/profile/${activeUser.id}`}
+                      >
+                        <span>Profile</span>
+                      </NavLink>
+                      <a className="item" href="/admin/get-started">
+                        <span>Admin Paneli</span>
+                      </a>
+                    </>
                   )}
                 </>
               ) : (

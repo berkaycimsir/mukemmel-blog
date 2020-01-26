@@ -20,7 +20,7 @@ const Logout: React.FC<RouteComponentProps<Props>> = ({ history }) => {
       {client => (
         <Button
           fluid
-          basic
+          inverted
           color="blue"
           content="Çıkış Yap"
           onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
