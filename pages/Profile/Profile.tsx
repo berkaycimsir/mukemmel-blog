@@ -62,7 +62,7 @@ const Profile: React.FC<Props> = ({ session }) => {
           </Grid.Column>
           <Grid.Column width={10}>
             {updating ? (
-              <UpdateUser setUpdating={setUpdating} />
+              <UpdateUser id={user.id} setUpdating={setUpdating} />
             ) : (
               <List relaxed divided>
                 <ProfileListItem

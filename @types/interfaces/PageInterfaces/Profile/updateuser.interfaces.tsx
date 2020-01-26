@@ -1,4 +1,5 @@
 export type Props = {
+  id: string;
   setUpdating: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
