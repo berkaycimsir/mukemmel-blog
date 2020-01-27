@@ -59,3 +59,16 @@ export const UPDATE: any = gql`
     )
   }
 `;
+
+export const SEND_MAIL = gql`
+  mutation(
+    $name: String!
+    $email: String!
+    $subject: String
+    $message: String
+  ) {
+    sendMail(
+      data: { name: $name, email: $email, subject: $subject, message: $message }
+    )
+  }
+`;
