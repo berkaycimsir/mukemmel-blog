@@ -1,31 +1,119 @@
 import * as React from "react";
-import { Form, Input, TextArea, Button } from "semantic-ui-react";
+import { Form, Input, TextArea, Button, Message } from "semantic-ui-react";
+import { useMutation } from "react-apollo";
+import { SEND_MAIL } from "../../graphql/User/mutations";
+import {
+  SendContactMailReturnData,
+  SendContactMailVariables
+} from "../../@types/interfaces/PageInterfaces/Contact/contactform.interfaces";
+import Error from "../../components/Error/Error";
 
 const ContactForm: React.FC = () => {
+  const [name, setName] = React.useState<string>("");
+  const [email, setEmail] = React.useState<string>("");
+  const [subject, setSubject] = React.useState<string>("");
+  const [message, setMessage] = React.useState<string>("");
+  const [error, setError] = React.useState<boolean | undefined>(undefined);
+  const [sending, setSending] = React.useState<boolean>(false);
+
+  const [sendMail, { loading }] = useMutation<
+    SendContactMailReturnData,
+    SendContactMailVariables
+  >(SEND_MAIL);
+
+  const formValidate = (): boolean => !name || !email;
+
+  const resetInputValues = (): void => {
+    setName("");
+    setEmail("");
+    setSubject("");
+    setMessage("");
+  };
+
+  const onSendMail = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    sendMail({ variables: { name, email, subject, message } }).then(
+      ({ data }) => {
+        resetInputValues();
+        setSending(true);
+        setError(!data.sendMail);
+        if (!loading) {
+          setTimeout(() => {
+            setError(false);
+            setSending(false);
+          }, 2000);
+        }
+      }
+    );
+  };
+
   return (
     <Form>
-      <Form.Field>
-        <Form.Field>
-          <label>Adınız *gerekli (your name *required)</label>
-          <Input fluid type="text" placeholder="email" />
-        </Form.Field>
-        <Form.Field>
-          <label>Email *gerekli (your email *required)</label>
-          <Input fluid type="text" placeholder="email" />
-        </Form.Field>
-        <label>Konu (Subject)</label>
-        <Input fluid type="text" placeholder="konu (subject)" />
+      <Form.Field required error={error}>
+        <label>Adınız *gerekli (your name *required)</label>
+        <Input
+          value={name}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setName(e.target.value);
+          }}
+          fluid
+          type="text"
+          placeholder="adınız (your name)"
+        />
       </Form.Field>
-      <Form.Field>
+      <Form.Field required error={error}>
+        <label>Email *gerekli (your email *required)</label>
+        <Input
+          value={email}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setEmail(e.target.value);
+          }}
+          fluid
+          type="text"
+          placeholder="email"
+        />
+      </Form.Field>
+      <Form.Field error={error}>
+        <label>Konu (Subject)</label>
+        <Input
+          value={subject}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setSubject(e.target.value);
+          }}
+          fluid
+          type="text"
+          placeholder="konu (subject)"
+        />
+      </Form.Field>
+      <Form.Field error={error}>
         <label>Mesajınız (your message)</label>
         <TextArea
-          fluid
+          value={message}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => {
+            setMessage(e.target.value);
+          }}
           type="text"
           placeholder="mesajınız (your message)"
           style={{ minHeight: "300px" }}
         />
       </Form.Field>
+      {error && (
+        <Error
+          errorMessage={
+            error ? "Bir şeyler yanlış gitti! Tekrar deneyiniz." : null
+          }
+        />
+      )}
+      {!error && sending && (
+        <Message
+          color="green"
+          content="Mail başarıyla gönderildi! (Mail sent successfully)"
+        />
+      )}
       <Button
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => onSendMail(e)}
+        loading={loading}
+        disabled={loading || formValidate()}
         color="purple"
         inverted
         content="Gönder (Send)"
