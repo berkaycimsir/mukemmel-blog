@@ -28,6 +28,7 @@ import Footer from "../components/Footer/Footer";
 import AdminNavbar from "../components/Navbar/AdminNavbar";
 import Meta from "../components/Meta/Meta";
 import FeedDetail from "./Social/FeedDetail";
+import Contact from "./Contact/Contact";
 
 type Props = {
   session: any;
@@ -55,6 +56,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           render={() => <Profile session={session} />}
         />
         <Route exact path="/about" render={() => <About />} />
+        <Route exact path="/contact" render={() => <Contact />} />
         <Route
           exact
           path="/category/:category"
