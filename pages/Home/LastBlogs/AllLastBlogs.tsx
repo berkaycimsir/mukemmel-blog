@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tab, Grid, Item } from "semantic-ui-react";
+import { Tab, Grid, Item, Message } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import { GET_BLOGS } from "../../../graphql/Blog/query";
 import Loading from "../../../components/Loading/Loading";
@@ -20,13 +20,22 @@ const AllLastBlogs: React.FC = () => {
 
   return (
     <>
-      <Grid columns={4} doubling>
-        {blogs.map(blog => (
-          <Grid.Column key={blog.id} widescreen="8">
-            <BlogCard user={blog.user} key={blog.id} blog={blog} />
-          </Grid.Column>
-        ))}
-      </Grid>
+      {blogs.length === 0 ? (
+        <Message error size="large">
+          <Message.Header>Burada hiç blog yok!</Message.Header>
+          <Message.Content>
+            Diğer bloglarımıza bakmak ister misin?
+          </Message.Content>
+        </Message>
+      ) : (
+        <Grid columns={4} doubling>
+          {blogs.map(blog => (
+            <Grid.Column key={blog.id} widescreen="8">
+              <BlogCard user={blog.user} key={blog.id} blog={blog} />
+            </Grid.Column>
+          ))}
+        </Grid>
+      )}
     </>
   );
 };

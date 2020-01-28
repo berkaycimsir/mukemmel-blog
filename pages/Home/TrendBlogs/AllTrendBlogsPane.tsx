@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tab, Grid, Item } from "semantic-ui-react";
+import { Tab, Grid, Item, Message } from "semantic-ui-react";
 import { useQuery } from "react-apollo";
 import {
   GetTrendBlogsReturnType,
@@ -30,24 +30,35 @@ const AllTrendBlogsPane: React.FC = () => {
   const mostTrendBlog: Blog = getMostTrendBlogData.getMostTrendBlog.blog;
 
   return (
-    <Grid columns={2} doubling>
-      <Grid.Column width={8}>
-        <BlogCard user={mostTrendBlog.user} blog={mostTrendBlog} />
-      </Grid.Column>
-      <Grid.Column>
-        <Grid columns={4} doubling>
-          {getTrendBlogsData.getTrendBlogs.map(blog => {
-            if (blog.title !== mostTrendBlog.title) {
-              return (
-                <Grid.Column key={blog.id} widescreen={8}>
-                  <BlogCard user={blog.user} key={blog.id} blog={blog} />
-                </Grid.Column>
-              );
-            }
-          })}
+    <>
+      {!mostTrendBlog || !getTrendBlogsData.getTrendBlogs ? (
+        <Message error size="large">
+          <Message.Header>Burada hiç blog yok!</Message.Header>
+          <Message.Content>
+            Diğer bloglarımıza bakmak ister misin?
+          </Message.Content>
+        </Message>
+      ) : (
+        <Grid columns={2} doubling>
+          <Grid.Column width={8}>
+            <BlogCard user={mostTrendBlog.user} blog={mostTrendBlog} />
+          </Grid.Column>
+          <Grid.Column>
+            <Grid columns={4} doubling>
+              {getTrendBlogsData.getTrendBlogs.map(blog => {
+                if (blog.title !== mostTrendBlog.title) {
+                  return (
+                    <Grid.Column key={blog.id} widescreen={8}>
+                      <BlogCard user={blog.user} key={blog.id} blog={blog} />
+                    </Grid.Column>
+                  );
+                }
+              })}
+            </Grid>
+          </Grid.Column>
         </Grid>
-      </Grid.Column>
-    </Grid>
+      )}
+    </>
   );
 };
 
