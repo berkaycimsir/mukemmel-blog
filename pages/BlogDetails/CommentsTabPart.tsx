@@ -32,6 +32,8 @@ const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
     updateBlogViews({ variables: { id } });
   };
 
+  const comments = data.comments.slice(0, 4);
+
   return (
     <Grid>
       <Grid.Column>
@@ -46,7 +48,7 @@ const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
             </Message>
           ))}
         <Comment.Group>
-          {data.comments.map(comment => (
+          {comments.map(comment => (
             <Comment key={comment.id}>
               <Comment.Avatar
                 as="a"

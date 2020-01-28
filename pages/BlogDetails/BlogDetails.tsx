@@ -16,6 +16,7 @@ import { Blog, User, Comment } from "../../@types/types/database/DatabaseTypes";
 import LastBlogsTab from "./LastBlogsTab";
 import IfThereIsAnActiveUser from "../../components/Login/IfThereIsAnActiveUser";
 import CommentsTab from "./CommentsTab";
+import LastFeedsTab from "./LastFeedsTab";
 
 const BlogDetails: React.FC<Props> = ({ session }) => {
   const blogId: string = isBrowser && window.location.pathname.split("/")[3];
@@ -54,6 +55,7 @@ const BlogDetails: React.FC<Props> = ({ session }) => {
             <LastBlogsTab />
             <PopularTab />
             <CommentsTab activeUser={activeUser} />
+            <LastFeedsTab activeUser={activeUser} />
           </div>
         </Grid.Column>
       </Grid>

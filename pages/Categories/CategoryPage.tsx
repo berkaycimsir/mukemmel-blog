@@ -26,6 +26,8 @@ import BlogItem from "./BlogItem";
 import { isBrowser } from "../../lib/isBrowser";
 import Pagination from "../../components/Pagination/Pagination";
 import IfNoBlog from "./IfNoBlog";
+import LastFeeds from "../BlogDetails/LastFeeds";
+import LastFeedsTab from "../BlogDetails/LastFeedsTab";
 
 const CategoryPage: React.FC<Props> = ({ session }) => {
   const [blogsPerPage, setBlogPerPage] = useState<number>(8);
