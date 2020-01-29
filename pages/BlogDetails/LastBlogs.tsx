@@ -40,7 +40,7 @@ const LastBlogs: React.FC = () => {
       <Grid>
         <Grid.Column>
           <Item.Group divided>
-            {getBlogsData.blogs.map(blog => {
+            {getBlogsData.blogs.slice(0, 4).map(blog => {
               if (blog.id !== window.location.pathname.split("/")[3])
                 return (
                   <Item key={blog.id}>

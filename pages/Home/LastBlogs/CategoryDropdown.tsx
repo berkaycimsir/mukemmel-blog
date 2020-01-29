@@ -32,6 +32,13 @@ const CategoryDropdown: React.FC<Props> = ({ activeItem, setActiveItem }) => {
       value: "C#",
       active: activeItem === "csharp",
       onClick: () => setActiveItem("csharp")
+    },
+    {
+      key: 5,
+      text: "Teknoloji",
+      value: "teknoloji",
+      active: activeItem === "technology",
+      onClick: () => setActiveItem("technology")
     }
   ];
 

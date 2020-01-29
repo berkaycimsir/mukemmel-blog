@@ -52,6 +52,11 @@ const LastBlogs: React.FC = () => {
                 active={activeItem === "csharp"}
                 onClick={() => setActiveItem("csharp")}
               />
+              <Menu.Item
+                content="Teknoloji"
+                active={activeItem === "technology"}
+                onClick={() => setActiveItem("technology")}
+              />
             </>
           ) : (
             <Menu.Menu position="right">
