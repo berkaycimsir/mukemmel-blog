@@ -1,167 +1,114 @@
-/*
-Name: Duotone Dark
-Author: Simurai, adapted from DuoTone themes for Atom (http://simurai.com/projects/2016/01/01/duotone-themes)
-
-Conversion: Bram de Haan (http://atelierbram.github.io/Base2Tone-prism/output/prism/prism-base2tone-evening-dark.css)
-Generated with Base16 Builder (https://github.com/base16-builder/base16-builder)
-*/
-
-@media (max-width: 500px) {
-
-  pre>* {
-    font-size: 15px !important;
-  }
-}
-
-
-code[class*="language-"],
-pre[class*="language-"] {
-  border-radius: 6px;
-  font-family: Fira Code !important;
-  font-size: 17px;
-  line-height: 1.6;
+pre[class*="language-"],
+code[class*="language-"] {
+  color: rgb(212, 212, 212);
+  font-size: 15px;
+  text-shadow: none;
+  font-family: "Fira Code" !important;
+  font-weight: bold;
   direction: ltr;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
-  font-weight: bold;
-
+  line-height: 1.6;
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
-
   -webkit-hyphens: none;
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  background: #2a2734;
-  color: #9a86fd;
-}
-
-pre>code[class*="language-"] {
-  font-family: "Fira Code" !important;
-  font-size: 1em;
-}
-
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
-  font-family: "Fira Code" !important;
-  text-shadow: none;
-  background: #6a51e6;
+  border-radius: 0px 16px 0px 16px;
 }
 
 pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
-  font-family: "Fira Code" !important;
+code[class*="language-"]::selection {
   text-shadow: none;
-  background: #6a51e6;
+  background: #b3d4fc;
 }
 
-/* Code blocks */
+@media print {
+
+  pre[class*="language-"],
+  code[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
 pre[class*="language-"] {
-  font-family: "Fira Code" !important;
   padding: 1em;
   margin: .5em 0;
   overflow: auto;
+  background: #1e1e1e;
 }
 
-/* Inline code */
 :not(pre)>code[class*="language-"] {
-  font-family: "Fira Code" !important;
-  padding: .1em;
+  padding: .1em .3em;
   border-radius: .3em;
+  color: #db4c69;
+  background: #f9f2f4;
+}
+
+/*********************************************************
+* Tokens
+*/
+.namespace {
+  opacity: .7;
 }
 
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  font-family: "Fira Code" !important;
-  color: #6c6783;
+  color: #6a9955;
 }
 
 .token.punctuation {
-  font-family: "Fira Code" !important;
-  color: #6c6783;
-}
-
-.token.namespace {
-  font-family: "Fira Code" !important;
-  opacity: .7;
-}
-
-.token.tag,
-.token.operator,
-.token.number {
-  font-family: "Fira Code" !important;
-  color: #e09142;
+  color: #d4d4d4;
 }
 
 .token.property,
-.token.function {
-  font-family: "Fira Code" !important;
-  color: #9a86fd;
-}
-
-.token.tag-id,
-.token.selector,
-.token.atrule-id {
-  font-family: "Fira Code" !important;
-  color: #eeebff;
-}
-
-code.language-javascript,
-.token.attr-name {
-  font-family: "Fira Code" !important;
-  color: #c4b9fe;
-}
-
-code.language-css,
-code.language-scss,
+.token.tag,
 .token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #b5cea8;
+}
+
+.token.selector,
+.token.attr-name,
 .token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #ce9178;
+}
+
+.token.operator,
 .token.entity,
 .token.url,
 .language-css .token.string,
-.language-scss .token.string,
-.style .token.string,
+.style .token.string {
+  color: #d4d4d4;
+  background: #1e1e1e;
+}
+
+.token.atrule,
 .token.attr-value,
-.token.keyword,
-.token.control,
-.token.directive,
-.token.unit,
-.token.statement,
+.token.keyword {
+  color: #c586c0;
+}
+
+.token.function {
+  color: #dcdcaa;
+}
+
 .token.regex,
-.token.atrule {
-  font-family: "Fira Code" !important;
-  color: #ffcc99;
-}
-
-.token.placeholder,
+.token.important,
 .token.variable {
-  font-family: "Fira Code" !important;
-  color: #ffcc99;
-}
-
-.token.deleted {
-  font-family: "Fira Code" !important;
-  text-decoration: line-through;
-}
-
-.token.inserted {
-  font-family: "Fira Code" !important;
-  border-bottom: 1px dotted #eeebff;
-  text-decoration: none;
-}
-
-.token.italic {
-  font-family: "Fira Code" !important;
-  font-style: italic;
+  color: #d16969;
 }
 
 .token.important,
@@ -169,40 +116,112 @@ code.language-scss,
   font-weight: bold;
 }
 
-.token.important {
-  color: #c4b9fe;
+.token.italic {
+  font-style: italic;
+}
+
+.token.constant {
+  color: #9CDCFE;
+}
+
+.token.class-name {
+  color: #4EC9B0;
+}
+
+.token.parameter {
+  color: #9CDCFE;
+}
+
+.token.interpolation {
+  color: #9CDCFE;
+}
+
+.token.punctuation.interpolation-punctuation {
+  color: #569cd6;
+}
+
+.token.boolean {
+  color: #569cd6;
+}
+
+.token.property {
+  color: #9cdcfe;
+}
+
+.token.selector {
+  color: #d7ba7d;
+}
+
+.token.tag {
+  color: #569cd6;
+}
+
+.token.attr-name {
+  color: #9cdcfe;
+}
+
+.token.attr-value {
+  color: #ce9178;
 }
 
 .token.entity {
-  cursor: help;
+  color: #4ec9b0;
+  cursor: unset;
 }
 
-pre>code.highlight {
-  outline: .4em solid #8a75f5;
-  outline-offset: .4em;
+.token.namespace {
+  color: #4ec9b0;
 }
 
-.token,
-.parameter {
-  font-family: "Fira Code" !important;
-}
-
-/* overrides color-values for the Line Numbers plugin
- * http://prismjs.com/plugins/line-numbers/
- */
-.line-numbers .line-numbers-rows {
-  border-right-color: #2c2937;
-}
-
-.line-numbers-rows>span:before {
-  color: #3c3949;
-}
-
-/* overrides color-values for the Line Highlight plugin
-* http://prismjs.com/plugins/line-highlight/
+/*********************************************************
+* Language Specific
 */
+pre[class*="language-javascript"],
+code[class*="language-javascript"] {
+  color: #4ec9b0;
+}
+
+pre[class*="language-css"],
+code[class*="language-css"] {
+  color: #CE9178;
+}
+
+pre[class*="language-html"],
+code[class*="language-html"] {
+  color: #d4d4d4;
+}
+
+.language-html .token.punctuation {
+  color: #808080;
+}
+
+/*********************************************************
+* Line highlighting
+*/
+pre[data-line] {
+  position: relative;
+}
+
+pre[class*="language-"]>code[class*="language-"] {
+  position: relative;
+  z-index: 1;
+}
+
 .line-highlight {
-  background: rgba(224, 145, 66, 0.2);
-  background: -webkit-linear-gradient(left, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
-  background: linear-gradient(to right, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: #f7ebc6;
+  box-shadow: inset 5px 0 0 #f7d87c;
+  z-index: 0;
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+.token {
+  font-family: "Fira Code" !important;
+  font-weight: bold;
 }

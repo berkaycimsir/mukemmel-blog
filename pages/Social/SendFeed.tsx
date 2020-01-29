@@ -71,7 +71,6 @@ const SendFeed: React.FC<Props> = ({ activeUser }) => {
       });
     });
   }
-  console.log(activeUser);
 
   return (
     <Form reply>
