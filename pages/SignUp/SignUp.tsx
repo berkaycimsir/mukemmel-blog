@@ -23,6 +23,7 @@ import {
   IParseErrorMessageFunc,
   IOnClickFunc
 } from "../../@types/types/functions/SignUp/types";
+import OtherAuth from "../../components/Hoc/OtherAuth";
 
 const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const [name, setName] = useState<string>("");
@@ -198,4 +199,6 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   );
 };
 
-export default withRouter(SignUp);
+export default OtherAuth(
+  (session: any) => session && session.activeUser.user !== null
+)(withRouter(SignUp));

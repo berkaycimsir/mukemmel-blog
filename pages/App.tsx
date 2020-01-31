@@ -29,18 +29,27 @@ import AdminNavbar from "../components/Navbar/AdminNavbar";
 import Meta from "../components/Meta/Meta";
 import FeedDetail from "./Social/FeedDetail";
 import Contact from "./Contact/Contact";
+import PageNotFound from "./PageNotFound/PageNotFound";
+import { User } from "../@types/types/database/DatabaseTypes";
 
 type Props = {
   session: any;
 };
 
 const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
+  const activeUser: User =
+    session && session.activeUser.user !== null && session.activeUser.user;
+
   return (
     <>
       <Meta />
 
-      {location.pathname.includes("/admin") && <AdminNavbar />}
-      {!location.pathname.includes("/admin") && <Navbar session={session} />}
+      {location.pathname.includes("/admin") && activeUser.admin && (
+        <AdminNavbar />
+      )}
+      {(!location.pathname.includes("/admin") || !activeUser.admin) && (
+        <Navbar session={session} />
+      )}
       <Switch>
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/login" render={() => <LoginPage />} />
@@ -84,7 +93,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
           path="/admin/update-blog/:id"
           render={() => <UpdateBlog session={session} />}
         />
-        <Route exact path="*" render={() => <div>No page.</div>} />
+        <Route exact path="*" render={() => <PageNotFound />} />
       </Switch>
       {!location.pathname.includes("/admin") && <Footer />}
     </>

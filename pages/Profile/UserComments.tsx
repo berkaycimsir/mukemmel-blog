@@ -19,30 +19,33 @@ const UserComments: React.FC<Props> = ({
 }) => {
   return (
     <Segment color="teal" raised>
+      {comments.length !== 0 && (
+        <>
+          <Header
+            content={`Bu kullanıcı ${comments.length} yorum yapmış!`}
+            as="h4"
+          />
+          <Divider />
+        </>
+      )}
+      {comments.length === 0 && (
+        <Message
+          error
+          header="Bu kullanıcı hiç yorum yapmamış!"
+          content="İstersen sen hemen yorum yapabilirsin!"
+        />
+      )}
       <Comment.Group>
-        {comments.length !== 0 && (
+        {comments.map((comment: CommentType) => (
           <>
-            <Header
-              content={`Bu kullanıcı ${comments.length} yorum yapmış!`}
-              as="h4"
+            <CommentItem
+              key={comment.id}
+              comment={comment}
+              activeUser={activeUser}
+              activeUserDeleteComment={activeUserDeleteComment}
             />
             <Divider />
           </>
-        )}
-        {comments.length === 0 && (
-          <Message
-            error
-            header="Bu kullanıcı hiç yorum yapmamış!"
-            content="İstersen sen hemen yorum yapabilirsin!"
-          />
-        )}
-        {comments.map((comment: CommentType) => (
-          <CommentItem
-            key={comment.id}
-            comment={comment}
-            activeUser={activeUser}
-            activeUserDeleteComment={activeUserDeleteComment}
-          />
         ))}
       </Comment.Group>
     </Segment>

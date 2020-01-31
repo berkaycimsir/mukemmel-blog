@@ -52,7 +52,8 @@ const LastFeeds: React.FC<Props> = ({ activeUser }) => {
                     </Feed.Date>
                   </Feed.Summary>
                   <Feed.Extra className="blog-detail-content">
-                    {feed.content}
+                    {feed.content.slice(0, 80)}...{" "}
+                    <a href={`/social/feed/details/${feed.id}`}>feed'i gör</a>
                     {feed.blog !== null && feed.blog_id !== currentBlogId && (
                       <NavLink to={`/blog/details/${feed.blog.id}`}>
                         ({feed.blog.title}'dan bahsederek)

@@ -91,13 +91,11 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
                         <UpdateFeed id={feed.id} /> Güncelle
                       </Feed.Like>
                     )}
-                    {feed.replies.length !== 0 && (
-                      <Feed.Like>
-                        <a href={`/social/feed/details/${feed.id}`}>
-                          Bu konuyu göster
-                        </a>
-                      </Feed.Like>
-                    )}
+                    <Feed.Like>
+                      <a href={`/social/feed/details/${feed.id}`}>
+                        Bu konuyu göster
+                      </a>
+                    </Feed.Like>
                   </Feed.Meta>
                 </Feed.Content>
               </Feed.Event>

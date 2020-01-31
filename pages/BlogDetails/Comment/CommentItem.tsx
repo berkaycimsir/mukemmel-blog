@@ -30,7 +30,9 @@ const CommentItem: React.FC<Props> = ({
           </div>
           <div>{comment.likes} beğeni</div>
         </Comment.Metadata>
-        <Comment.Text>{comment.content}</Comment.Text>
+        <Comment.Text className="blog-details-content">
+          {comment.content}
+        </Comment.Text>
         <Comment.Action>
           {activeUserDeleteComment === true && (
             <>
