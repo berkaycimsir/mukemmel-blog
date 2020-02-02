@@ -3,6 +3,7 @@ import { Card } from "semantic-ui-react";
 import BlogEvents from "./BlogEvents";
 import CommentEvents from "./CommentEvents";
 import UserEvents from "./UserEvents";
+import FeedEvents from "./FeedEvents";
 
 const Events: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const Events: React.FC = () => {
         <BlogEvents />
         <CommentEvents />
         <UserEvents />
+        <FeedEvents />
       </Card.Content>
     </Card>
   );

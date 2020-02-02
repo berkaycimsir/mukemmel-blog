@@ -1,7 +1,12 @@
-import { Blog, User, Comment } from "../../../types/database/DatabaseTypes";
+import {
+  Blog,
+  User,
+  Comment,
+  Feed
+} from "../../../types/database/DatabaseTypes";
 
 export type Props = {
-  totalItems: Array<Blog> | Array<Comment> | Array<User>;
+  totalItems: Array<Blog> | Array<Comment> | Array<User> | Array<Feed>;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
   currentPage: number;
   itemsPerPage: number;
