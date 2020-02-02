@@ -36,7 +36,7 @@ const FeedEvents: React.FC = () => {
       ) : (
         <Card.Content>
           <Feed>
-            <Header as="h4" content="Son yapılan feed'ler:" />
+            <Header as="h4" content="Son paylaşılan feed'ler:" />
             {currentFeeds.map((feed: FeedType) => (
               <Feed.Event key={feed.id}>
                 <Feed.Label>

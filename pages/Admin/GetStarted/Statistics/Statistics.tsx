@@ -3,6 +3,7 @@ import { Card, Feed } from "semantic-ui-react";
 import BlogStatistics from "./BlogStatistics";
 import CommentStatistics from "./CommentStatistics";
 import PageStatistics from "./PageStatistics";
+import FeedStatistics from "./FeedStatistics";
 
 const Statistics: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const Statistics: React.FC = () => {
           <BlogStatistics />
           <CommentStatistics />
           <PageStatistics />
+          <FeedStatistics />
         </Feed>
       </Card.Content>
     </Card>
