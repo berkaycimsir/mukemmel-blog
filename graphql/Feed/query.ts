@@ -69,3 +69,14 @@ export const FEED = gql`
     }
   }
 `;
+
+export const FEEDS_FOR_ONLY_LENGTH = gql`
+  query {
+    feeds {
+      id
+      replies {
+        id
+      }
+    }
+  }
+`;
