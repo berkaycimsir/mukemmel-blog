@@ -18,7 +18,7 @@ code[class*="language-"] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  border-radius: 0px 16px 0px 16px;
+  border-radius: 20px;
 }
 
 pre[class*="language-"]::selection,

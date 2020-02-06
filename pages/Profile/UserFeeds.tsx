@@ -58,7 +58,7 @@ const UserFeeds: React.FC<Props> = ({ feeds, activeUser }) => {
                 </Feed.Extra>
                 <Feed.Meta>
                   <Feed.Like>
-                    <LikeFeed id={feed.id} />
+                    <LikeFeed activeUser={activeUser} id={feed.id} />
                     <span style={{ marginLeft: "2px" }}>
                       {feed.likes} Beğeni
                     </span>

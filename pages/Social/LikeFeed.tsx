@@ -11,7 +11,7 @@ import {
 } from "../../@types/interfaces/PageInterfaces/Feed/likefeed.interfaces";
 import { FEEDS } from "../../graphql/Feed/query";
 
-const LikeFeed: React.FC<Props> = ({ id }) => {
+const LikeFeed: React.FC<Props> = ({ id, activeUser }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
 
   const [likeFeed, { loading }] = useMutation<
@@ -23,7 +23,7 @@ const LikeFeed: React.FC<Props> = ({ id }) => {
   });
 
   const onLikeFeed = (e: React.MouseEvent<SVGSVGElement>): void => {
-    if (!loading) {
+    if (!loading && activeUser) {
       e.preventDefault();
       likeFeed();
       setIsLiked(!isLiked);
@@ -34,7 +34,7 @@ const LikeFeed: React.FC<Props> = ({ id }) => {
     <Popup
       trigger={
         <Image
-          disabled={loading}
+          disabled={loading || !activeUser}
           loading={loading}
           children={
             isLiked ? (
@@ -51,7 +51,13 @@ const LikeFeed: React.FC<Props> = ({ id }) => {
           }
         />
       }
-      content={isLiked ? "Beğenmekten vazgeç!" : "Feed'i beğen!"}
+      content={
+        !activeUser
+          ? "Önce Giriş yapmalısınız"
+          : isLiked
+          ? "Beğenmekten vazgeç!"
+          : "Feed'i beğen!"
+      }
       size="small"
     />
   );

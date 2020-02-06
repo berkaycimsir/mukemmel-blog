@@ -27,7 +27,7 @@ const Footer: React.FC = () => (
             </Button>
             <Button
               as="a"
-              href="https://twitter.com/berkaycimsir"
+              href="https://twitter.com/bekodev"
               target="_blank"
               color="twitter"
             >
