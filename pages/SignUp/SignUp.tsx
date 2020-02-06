@@ -96,8 +96,8 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     }
   };
 
-  const onClick: IOnClickFunc = (
-    e: React.MouseEvent<HTMLButtonElement>
+  const onSignUp: IOnClickFunc = (
+    e: React.FormEvent<HTMLFormElement>
   ): void => {
     e.preventDefault();
     resetInputValues();
@@ -137,7 +137,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
       <Segment padded color="purple">
         <Header textAlign="center" content="Kayıt Ol" />
         <Divider />
-        <Form>
+        <Form onSubmit={(e: React.FormEvent<HTMLFormElement>) => onSignUp(e)}>
           <Input
             error={errorMessage !== null}
             type="text"
@@ -219,8 +219,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           <Button
             style={{ marginTop: "15px" }}
             content={loading ? "Yükleniyor..." : "Kayıt Ol"}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e)}
-            type="button"
+            type="submit"
             color="purple"
             inverted
             disabled={formValidate()}

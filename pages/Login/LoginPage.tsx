@@ -56,9 +56,7 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     }
   };
 
-  const onClick: IOnClickFunc = (
-    e: React.MouseEvent<HTMLButtonElement>
-  ): void => {
+  const onLogin: IOnClickFunc = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     login({
       variables: { username, password }
@@ -81,11 +79,12 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
 
   return (
     <Container centered="true" style={{ marginTop: "50px", height: "500px" }}>
-      <Segment padded color="teal">
+      <Segment padded color="blue">
         <Header textAlign="center" content="Giriş Yap" />
         <Divider />
-        <Form>
+        <Form onSubmit={(e: React.FormEvent<HTMLFormElement>) => onLogin(e)}>
           <Input
+            error={errorMessage !== null}
             style={{ marginTop: "15px" }}
             type="text"
             placeholder="kullanıcı adı (username)"
@@ -96,6 +95,7 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
             }}
           />
           <Input
+            error={errorMessage !== null}
             style={{ marginTop: "15px" }}
             type="password"
             placeholder="şifre (password)"
@@ -107,11 +107,11 @@ const LoginPage: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           />
           <Error errorMessage={errorMessage} />
           <Button
+            inverted
             style={{ marginTop: "15px" }}
             content={loading ? "Yükleniyor..." : "Giriş Yap"}
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e)}
-            type="button"
-            color="teal"
+            type="submit"
+            color="blue"
             disabled={formValidate()}
           />
         </Form>

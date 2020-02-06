@@ -2,4 +2,4 @@ import { ReturnData } from "../../../interfaces/PageInterfaces/Login/login.inter
 
 export type IParseErrorMessageFunc = (data: ReturnData | undefined) => boolean;
 
-export type IOnClickFunc = (e: React.MouseEvent<HTMLButtonElement>) => void;
+export type IOnClickFunc = (e: React.FormEvent<HTMLFormElement>) => void;

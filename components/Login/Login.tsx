@@ -48,7 +48,7 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     }
   };
 
-  const onClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  const onRegister = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     login({
       variables: { username, password }
@@ -72,8 +72,9 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     <Segment className="blog-card" padded color="purple">
       <Header textAlign="center" content="Giriş Yap" />
       <Divider />
-      <Form>
+      <Form onSubmit={(e: React.FormEvent<HTMLFormElement>) => onRegister(e)}>
         <Input
+          error={errorMessage !== null}
           style={{ marginTop: "15px" }}
           type="text"
           placeholder="kullanıcı adı (username)"
@@ -84,6 +85,7 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           }}
         />
         <Input
+          error={errorMessage !== null}
           style={{ marginTop: "15px" }}
           type="password"
           placeholder="şifre (password)"
@@ -97,10 +99,10 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
         <Button
           style={{ marginTop: "15px" }}
           content={loading ? "Yükleniyor..." : "Giriş Yap"}
-          onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e)}
-          basic
-          type="button"
+          inverted
+          type="submit"
           color="purple"
+          fluid
           disabled={formValidate()}
         />
         <Divider />
