@@ -7,7 +7,7 @@ const Error: React.FC<Props> = ({ errorMessage }) => {
     <>
       {errorMessage !== null ? (
         <Message color="red">
-          <Message.Header>Opps! There is an error here.</Message.Header>
+          <Message.Header>Opps! Burada bir hata var!</Message.Header>
           <Message.Content>
             <p>{errorMessage}</p>
           </Message.Content>

@@ -75,37 +75,61 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     }
   };
 
+  const validateEmail = (): string => {
+    const re: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (re.test(String(email).toLowerCase())) {
+      return email;
+    } else {
+      setErrorMessage("Lütfen doğru bir email giriniz");
+      setTimeout(() => setErrorMessage(null), 2000);
+      return "";
+    }
+  };
+
+  const validatePassword = (): string => {
+    if (password.length >= 8) {
+      return password;
+    } else {
+      setErrorMessage("Şifreniz 8 karakterden uzun olmalıdır.");
+      setTimeout(() => setErrorMessage(null), 2000);
+      return "";
+    }
+  };
+
   const onClick: IOnClickFunc = (
     e: React.MouseEvent<HTMLButtonElement>
   ): void => {
     e.preventDefault();
-    register({
-      variables: {
-        name,
-        surname,
-        username,
-        email,
-        password,
-        gender:
-          (menGender === true && "men") || (womenGender === true && "women")
-      }
-    }).then(({ data }) => {
-      resetInputValues();
-      const canRegister = parseErrorMessage(data);
-      setTimeout((): void => setErrorMessage(null), 2000);
-      if (canRegister === true) {
-        const getToken = (): string => {
-          if (data && data !== undefined) {
-            return data.register.token.token;
-          } else {
-            return null;
-          }
-        };
-        localStorage.setItem("token", getToken());
-        history.push("/");
-        window.location.reload();
-      }
-    });
+    resetInputValues();
+
+    if (validateEmail() !== "" && validatePassword() !== "") {
+      register({
+        variables: {
+          name,
+          surname,
+          username,
+          email: validateEmail(),
+          password: validatePassword(),
+          gender:
+            (menGender === true && "men") || (womenGender === true && "women")
+        }
+      }).then(({ data }) => {
+        const canRegister = parseErrorMessage(data);
+        setTimeout((): void => setErrorMessage(null), 2000);
+        if (canRegister === true) {
+          const getToken = (): string => {
+            if (data && data !== undefined) {
+              return data.register.token.token;
+            } else {
+              return null;
+            }
+          };
+          localStorage.setItem("token", getToken());
+          history.push("/");
+          window.location.reload();
+        }
+      });
+    }
   };
 
   return (
@@ -115,6 +139,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
         <Divider />
         <Form>
           <Input
+            error={errorMessage !== null}
             type="text"
             placeholder="ad (name)"
             value={name}
@@ -124,6 +149,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
             }}
           />
           <Input
+            error={errorMessage !== null}
             style={{ marginTop: "15px" }}
             type="text"
             placeholder="soyad (surname)"
@@ -134,6 +160,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
             }}
           />
           <Input
+            error={errorMessage !== null}
             style={{ marginTop: "15px" }}
             type="text"
             placeholder="kullanıcı adı (username)"
@@ -144,6 +171,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
             }}
           />
           <Input
+            error={errorMessage !== null}
             style={{ marginTop: "15px" }}
             type="text"
             placeholder="email"
@@ -154,6 +182,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
             }}
           />
           <Input
+            error={errorMessage !== null}
             style={{ marginTop: "15px" }}
             type="password"
             placeholder="şifre (password)"
@@ -165,6 +194,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
           />
           <div style={{ marginTop: "15px" }}>
             <Checkbox
+              error={errorMessage !== null}
               onClick={() => {
                 setMenGender(!menGender);
                 setWomenGender(false);
@@ -175,6 +205,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
             />{" "}
             &nbsp;
             <Checkbox
+              error={errorMessage !== null}
               onClick={() => {
                 setWomenGender(!womenGender);
                 setMenGender(false);
@@ -191,6 +222,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e)}
             type="button"
             color="purple"
+            inverted
             disabled={formValidate()}
           />
         </Form>
