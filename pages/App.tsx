@@ -51,7 +51,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
         <Navbar session={session} />
       )}
       <Switch>
-        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/" render={() => <Home activeUser={activeUser} />} />
         <Route exact path="/login" render={() => <LoginPage />} />
         <Route exact path="/signup" render={() => <SignUp />} />
         <Route

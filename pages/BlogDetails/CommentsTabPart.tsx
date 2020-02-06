@@ -16,7 +16,7 @@ import {
 } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
 import { UPDATE_BLOG_VIEWS } from "../../graphql/Blog/mutation";
 
-const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
+const CommentsTabPart: React.FC<Props> = ({ activeUser, isDivided }) => {
   const currentBlogId = window.location.pathname.split("/")[3];
 
   const { data, loading } = useQuery<GetCommentsReturnData>(GET_COMMENTS);
@@ -37,17 +37,17 @@ const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
   return (
     <Grid>
       <Grid.Column>
-        {!data.comments ||
-          (data.comments.length === 0 && (
-            <Message error>
-              <Message.Header>Burada Hiç Yorum Yok!</Message.Header>
-              <Message.Content>
-                Bir tane eklemek ister misin?{" "}
-                <NavLink to="/login">Giriş yap!</NavLink>
-              </Message.Content>
-            </Message>
-          ))}
         <Comment.Group>
+          {!data.comments ||
+            (data.comments.length === 0 && (
+              <Message error>
+                <Message.Header>Burada Hiç Yorum Yok!</Message.Header>
+                <Message.Content>
+                  Bir tane eklemek ister misin?{" "}
+                  <NavLink to="/login">Giriş yap!</NavLink>
+                </Message.Content>
+              </Message>
+            ))}
           {comments.map(comment => (
             <Comment key={comment.id}>
               <Comment.Avatar
@@ -79,7 +79,7 @@ const CommentsTabPart: React.FC<Props> = ({ activeUser }) => {
                   )}
                 </Comment.Text>
               </Comment.Content>
-              <Divider />
+              {isDivided !== false && <Divider />}
             </Comment>
           ))}
         </Comment.Group>

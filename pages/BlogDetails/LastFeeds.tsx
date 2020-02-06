@@ -2,7 +2,6 @@ import * as React from "react";
 import { Comment, Grid, Divider, Message, Feed } from "semantic-ui-react";
 import { useQuery, useMutation } from "react-apollo";
 import Loading from "../../components/Loading/Loading";
-import { Props } from "../../@types/interfaces/PageInterfaces/BlogDetails/allcommentstab.interfaces";
 import Moment from "react-moment";
 import { NavLink } from "react-router-dom";
 import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
@@ -10,10 +9,14 @@ import { GetFeedsReturnData } from "../../@types/interfaces/PageInterfaces/Feed/
 import { FEEDS } from "../../graphql/Feed/query";
 import LikeFeed from "../Social/LikeFeed";
 import ReplyFeed from "../Social/ReplyFeed";
-import DeleteFeed from "../Social/DeleteFeed";
-import UpdateFeed from "../Social/UpdateFeed";
+import { User } from "../../@types/types/database/DatabaseTypes";
 
-const LastFeeds: React.FC<Props> = ({ activeUser }) => {
+type Props = {
+  activeUser: User;
+  userImage?: boolean;
+};
+
+const LastFeeds: React.FC<Props> = ({ activeUser, userImage }) => {
   const currentBlogId: string = window.location.pathname.split("/")[3];
 
   const { data, loading } = useQuery<GetFeedsReturnData>(FEEDS);
@@ -41,6 +44,9 @@ const LastFeeds: React.FC<Props> = ({ activeUser }) => {
           {feeds.map(feed => (
             <>
               <Feed.Event>
+                {userImage && (
+                  <Feed.Label image={getImageUrlByGender(feed.user.gender)} />
+                )}
                 <Feed.Content>
                   <Feed.Summary className="blog-detail-content">
                     <a href={`/profile/${feed.user_id}`}>
