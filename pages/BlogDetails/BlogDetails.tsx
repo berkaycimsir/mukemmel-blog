@@ -46,7 +46,7 @@ const BlogDetails: React.FC<Props> = ({ session }) => {
           />
         </Grid.Column>
         <Grid.Column width={5}>
-          <div style={{ position: "sticky", top: 80 }}>
+          <div style={{ position: "sticky", top: 10 }}>
             {session && session.activeUser.user !== null ? (
               <IfThereIsAnActiveUser session={session} />
             ) : (
