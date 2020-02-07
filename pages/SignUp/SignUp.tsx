@@ -24,6 +24,7 @@ import {
   IOnClickFunc
 } from "../../@types/types/functions/SignUp/types";
 import OtherAuth from "../../components/Hoc/OtherAuth";
+import { MutationFunctionOptions } from "react-apollo";
 
 const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const [name, setName] = useState<string>("");
@@ -110,17 +111,19 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     e.preventDefault();
     resetInputValues();
 
+    const options: MutationFunctionOptions<ReturnData, RegisterVariables> = {
+      variables: {
+        name: makeFirstCharacterUpperCase(name),
+        surname: makeFirstCharacterUpperCase(surname),
+        username: username.toLowerCase(),
+        email: validateEmail(),
+        password: validatePassword(),
+        gender: getGenderOfNewUser()
+      }
+    };
+
     if (validateEmail() !== "" && validatePassword() !== "") {
-      register({
-        variables: {
-          name: makeFirstCharacterUpperCase(name),
-          surname: makeFirstCharacterUpperCase(surname),
-          username: username.toLowerCase(),
-          email: validateEmail(),
-          password: validatePassword(),
-          gender: getGenderOfNewUser()
-        }
-      }).then(({ data }) => {
+      register(options).then(({ data }) => {
         const canRegister = parseErrorMessage(data);
         setTimeout((): void => setErrorMessage(null), 2000);
         if (canRegister === true) {

@@ -12,7 +12,7 @@ import {
   UpdateUserReturnData,
   UpdateUserVariables
 } from "../../@types/interfaces/PageInterfaces/Profile/updateuser.interfaces";
-import { useMutation } from "react-apollo";
+import { useMutation, MutationFunctionOptions } from "react-apollo";
 import { UPDATE } from "../../graphql/User/mutations";
 import { USER } from "../../graphql/User/query";
 
@@ -34,18 +34,23 @@ const UpdateUser: React.FC<Props> = ({ id, setUpdating }) => {
     return !name && !surname && !username && !email && !gender;
   };
 
+  const options: MutationFunctionOptions<
+    UpdateUserReturnData,
+    UpdateUserVariables
+  > = {
+    variables: {
+      id,
+      name: name[0].toUpperCase() + name.slice(1),
+      surname: surname[0].toUpperCase() + surname.slice(1),
+      username,
+      email: email.toLowerCase(),
+      gender
+    }
+  };
+
   const onUpdateUser = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    update({
-      variables: {
-        id,
-        name: name[0].toUpperCase() + name.slice(1),
-        surname: surname[0].toUpperCase() + surname.slice(1),
-        username,
-        email: email.toLowerCase(),
-        gender
-      }
-    }).then(() => {
+    update(options).then(() => {
       setName("");
       setSurname("");
       setUsername("");

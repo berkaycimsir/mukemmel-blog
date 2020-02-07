@@ -42,7 +42,7 @@ const LastFeeds: React.FC<Props> = ({ activeUser, userImage }) => {
           ))}
         <Feed>
           {feeds.map(feed => (
-            <>
+            <React.Fragment key={feed.id}>
               <Feed.Event>
                 {userImage && (
                   <Feed.Label image={getImageUrlByGender(feed.user.gender)} />
@@ -90,7 +90,7 @@ const LastFeeds: React.FC<Props> = ({ activeUser, userImage }) => {
                 </Feed.Content>
               </Feed.Event>
               <Divider />
-            </>
+            </React.Fragment>
           ))}
         </Feed>
       </Grid.Column>

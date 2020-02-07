@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Feed, Image, Card, Segment, Message } from "semantic-ui-react";
+import {
+  Feed,
+  Image,
+  Card,
+  Segment,
+  Message,
+  Transition
+} from "semantic-ui-react";
 import {
   Favorite,
   FavoriteBorder,
@@ -28,6 +35,10 @@ type Props = {
 };
 
 const FeedList: React.FC<Props> = ({ activeUser }) => {
+  const [visible, setVisible] = React.useState<boolean>(false);
+
+  React.useEffect(() => setVisible(true));
+
   const { data, loading } = useQuery<GetFeedsReturnData>(FEEDS);
 
   if (loading) return <Loading size={50} />;
@@ -46,61 +57,68 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
         />
       ) : (
         feeds.map(feed => (
-          <Segment key={feed.id}>
-            <Feed size="small">
-              <Feed.Event>
-                <Feed.Label image={getImageUrlByGender(feed.user.gender)} />
-                <Feed.Content>
-                  <Feed.Summary className="blog-detail-content">
-                    <a href={`/profile/${feed.user_id}`}>
-                      {feed.user.name} {feed.user.surname}
-                    </a>{" "}
-                    <Feed.Date>
-                      <b>@{feed.user.username}</b>{" "}
-                      <Moment date={feed.createdAt} fromNow ago /> ago
-                    </Feed.Date>
-                  </Feed.Summary>
-                  <Feed.Extra className="blog-detail-content">
-                    {feed.content}
-                    {feed.blog !== null && (
-                      <NavLink to={`/blog/details/${feed.blog.id}`}>
-                        ({feed.blog.title}'dan bahsederek)
-                      </NavLink>
-                    )}
-                  </Feed.Extra>
-                  <Feed.Meta>
-                    <Feed.Like>
-                      <LikeFeed activeUser={activeUser} id={feed.id} />
-                      <span style={{ marginLeft: "2px" }}>
-                        {feed.likes} Beğeni
-                      </span>
-                    </Feed.Like>
-                    <Feed.Like>
-                      <ReplyFeed reply_id={feed.id} activeUser={activeUser} />
-                      <span style={{ marginLeft: "2px" }}>
-                        {feed.replies.length} Yanıt
-                      </span>
-                    </Feed.Like>
-                    {activeUser.id === feed.user_id && (
+          <Transition
+            key={feed.id}
+            visible={visible}
+            animation="slide down"
+            duration={500}
+          >
+            <Segment>
+              <Feed size="small">
+                <Feed.Event>
+                  <Feed.Label image={getImageUrlByGender(feed.user.gender)} />
+                  <Feed.Content>
+                    <Feed.Summary className="blog-detail-content">
+                      <a href={`/profile/${feed.user_id}`}>
+                        {feed.user.name} {feed.user.surname}
+                      </a>{" "}
+                      <Feed.Date>
+                        <b>@{feed.user.username}</b>{" "}
+                        <Moment date={feed.createdAt} fromNow ago /> ago
+                      </Feed.Date>
+                    </Feed.Summary>
+                    <Feed.Extra className="blog-detail-content">
+                      {feed.content}
+                      {feed.blog !== null && (
+                        <NavLink to={`/blog/details/${feed.blog.id}`}>
+                          ({feed.blog.title}'dan bahsederek)
+                        </NavLink>
+                      )}
+                    </Feed.Extra>
+                    <Feed.Meta>
                       <Feed.Like>
-                        <DeleteFeed id={feed.id} /> Sil
+                        <LikeFeed activeUser={activeUser} id={feed.id} />
+                        <span style={{ marginLeft: "2px" }}>
+                          {feed.likes} Beğeni
+                        </span>
                       </Feed.Like>
-                    )}
-                    {activeUser.id === feed.user_id && (
                       <Feed.Like>
-                        <UpdateFeed id={feed.id} /> Güncelle
+                        <ReplyFeed reply_id={feed.id} activeUser={activeUser} />
+                        <span style={{ marginLeft: "2px" }}>
+                          {feed.replies.length} Yanıt
+                        </span>
                       </Feed.Like>
-                    )}
-                    <Feed.Like>
-                      <a href={`/social/feed/details/${feed.id}`}>
-                        Bu konuyu göster
-                      </a>
-                    </Feed.Like>
-                  </Feed.Meta>
-                </Feed.Content>
-              </Feed.Event>
-            </Feed>
-          </Segment>
+                      {activeUser.id === feed.user_id && (
+                        <Feed.Like>
+                          <DeleteFeed id={feed.id} /> Sil
+                        </Feed.Like>
+                      )}
+                      {activeUser.id === feed.user_id && (
+                        <Feed.Like>
+                          <UpdateFeed id={feed.id} /> Güncelle
+                        </Feed.Like>
+                      )}
+                      <Feed.Like>
+                        <a href={`/social/feed/details/${feed.id}`}>
+                          Bu konuyu göster
+                        </a>
+                      </Feed.Like>
+                    </Feed.Meta>
+                  </Feed.Content>
+                </Feed.Event>
+              </Feed>
+            </Segment>
+          </Transition>
         ))
       )}
     </>

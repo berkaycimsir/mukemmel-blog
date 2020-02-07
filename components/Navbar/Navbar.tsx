@@ -25,7 +25,6 @@ const Navbar: React.FC<Props> = ({ session }) => {
   return (
     <>
       <Menu stackable className="navbar" size="small">
-        {console.log(session)}
         <Menu.Item>
           {windowWidth <= 766.9 ? (
             <>

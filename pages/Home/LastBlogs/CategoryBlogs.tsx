@@ -27,7 +27,6 @@ const CategoryBlogs: React.FC<Props> = ({ category }) => {
   }
 
   const blogs: Array<Blog> = getBlogsData.getBlogByCategory.slice(0, 8);
-  console.log(blogs);
 
   return (
     <>
