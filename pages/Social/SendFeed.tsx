@@ -23,6 +23,7 @@ const SendFeed: React.FC<Props> = ({ activeUser }) => {
   const [blogId, setBlogId] = React.useState<string>("");
   const [value, setValue] = React.useState<StrictDropdownProps["value"]>("");
   const [content, setContent] = React.useState<string>("");
+  const [success, setSuccess] = React.useState<boolean>(false);
 
   const { data, loading } = useQuery<GetBlogsReturnData>(GET_BLOGS);
 
@@ -35,6 +36,10 @@ const SendFeed: React.FC<Props> = ({ activeUser }) => {
 
   const onClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    setContent("");
+    setValue("");
+    setBlogId("");
+
     addFeed({
       variables: {
         blog_id: blogId === "" ? undefined : blogId,
@@ -42,9 +47,8 @@ const SendFeed: React.FC<Props> = ({ activeUser }) => {
         user_id: activeUser.id
       }
     }).then(() => {
-      setContent("");
-      setValue("");
-      setBlogId("");
+      setSuccess(true);
+      setTimeout(() => setSuccess(false), 1500);
     });
   };
 
@@ -87,17 +91,21 @@ const SendFeed: React.FC<Props> = ({ activeUser }) => {
             : "Feed Gönder"
         }
       />
-      <Message size="small" color={!activeUser ? "red" : null}>
-        <Message.Content>
-          {!activeUser ? (
-            <NavLink style={{ color: "#db2828" }} to="/login">
-              Giriş Yapmak İçin Tıkla
-            </NavLink>
-          ) : (
-            <div>İsterseniz bir bloğu etiketleyerek paylaşabilirsiniz!</div>
-          )}
-        </Message.Content>
-      </Message>
+      {success ? (
+        <Message color="green" content="İşlem başarılı!" />
+      ) : (
+        <Message size="small" color={!activeUser ? "red" : null}>
+          <Message.Content>
+            {!activeUser ? (
+              <NavLink style={{ color: "#db2828" }} to="/login">
+                Giriş Yapmak İçin Tıkla
+              </NavLink>
+            ) : (
+              <div>İsterseniz bir bloğu etiketleyerek paylaşabilirsiniz!</div>
+            )}
+          </Message.Content>
+        </Message>
+      )}
       <Dropdown
         placeholder={!activeUser ? "Önce giriş yapın!" : "Blog Seçiniz..."}
         loading={loading}
@@ -106,7 +114,7 @@ const SendFeed: React.FC<Props> = ({ activeUser }) => {
         selection
         scrolling
         value={value}
-        disabled={!activeUser}
+        disabled={!activeUser || success || loading}
       />
       <Form.Button
         onClick={(e: React.MouseEvent<HTMLButtonElement>) => onClick(e)}
