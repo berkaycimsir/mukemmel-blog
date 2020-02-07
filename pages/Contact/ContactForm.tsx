@@ -30,7 +30,7 @@ const ContactForm: React.FC = () => {
     setMessage("");
   };
 
-  const onSendMail = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  const onSendMail = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     sendMail({ variables: { name, email, subject, message } }).then(
       ({ data }) => {
@@ -48,7 +48,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <Form>
+    <Form onSubmit={(e: React.FormEvent<HTMLFormElement>) => onSendMail(e)}>
       <Form.Field required error={error}>
         <label>Adınız *gerekli (your name *required)</label>
         <Input
@@ -111,10 +111,9 @@ const ContactForm: React.FC = () => {
         />
       )}
       <Button
-        onClick={(e: React.MouseEvent<HTMLButtonElement>) => onSendMail(e)}
         loading={loading}
         disabled={loading || formValidate()}
-        color="purple"
+        color="blue"
         inverted
         content="Gönder (Send)"
         fluid

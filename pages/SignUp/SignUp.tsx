@@ -78,7 +78,7 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const validateEmail = (): string => {
     const re: any = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (re.test(String(email).toLowerCase())) {
-      return email;
+      return email.toLowerCase();
     } else {
       setErrorMessage("Lütfen doğru bir email giriniz");
       setTimeout(() => setErrorMessage(null), 2000);
@@ -96,6 +96,14 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     }
   };
 
+  const makeFirstCharacterUpperCase = (str: string): string => {
+    return str[0].toUpperCase() + str.slice(1);
+  };
+
+  const getGenderOfNewUser = (): string => {
+    return (menGender && "men") || (womenGender && "women");
+  };
+
   const onSignUp: IOnClickFunc = (
     e: React.FormEvent<HTMLFormElement>
   ): void => {
@@ -105,13 +113,12 @@ const SignUp: React.FC<RouteComponentProps<Props>> = ({ history }) => {
     if (validateEmail() !== "" && validatePassword() !== "") {
       register({
         variables: {
-          name,
-          surname,
-          username,
+          name: makeFirstCharacterUpperCase(name),
+          surname: makeFirstCharacterUpperCase(surname),
+          username: username.toLowerCase(),
           email: validateEmail(),
           password: validatePassword(),
-          gender:
-            (menGender === true && "men") || (womenGender === true && "women")
+          gender: getGenderOfNewUser()
         }
       }).then(({ data }) => {
         const canRegister = parseErrorMessage(data);

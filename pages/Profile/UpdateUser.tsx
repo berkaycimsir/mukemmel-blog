@@ -36,16 +36,23 @@ const UpdateUser: React.FC<Props> = ({ id, setUpdating }) => {
 
   const onUpdateUser = (e: React.MouseEvent<HTMLButtonElement>): void => {
     e.preventDefault();
-    update({ variables: { id, name, surname, username, email, gender } }).then(
-      () => {
-        setName("");
-        setSurname("");
-        setUsername("");
-        setEmail("");
-        setGender("");
-        !loading && setUpdating(false);
+    update({
+      variables: {
+        id,
+        name: name[0].toUpperCase() + name.slice(1),
+        surname: surname[0].toUpperCase() + surname.slice(1),
+        username,
+        email: email.toLowerCase(),
+        gender
       }
-    );
+    }).then(() => {
+      setName("");
+      setSurname("");
+      setUsername("");
+      setEmail("");
+      setGender("");
+      !loading && setUpdating(false);
+    });
   };
 
   return (

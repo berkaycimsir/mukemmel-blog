@@ -32,8 +32,12 @@ import LastFeedsTab from "../BlogDetails/LastFeedsTab";
 const CategoryPage: React.FC<Props> = ({ session }) => {
   const [blogsPerPage, setBlogPerPage] = useState<number>(8);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
 
-  useEffect(() => window.scrollTo(0, 0));
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+  });
 
   const category: string = isBrowser && window.location.pathname.split("/")[2];
 
@@ -66,29 +70,39 @@ const CategoryPage: React.FC<Props> = ({ session }) => {
     <Container style={{ maxWidth: "1440px" }}>
       <Grid columns={2} stackable>
         <Grid.Column width={11}>
-          <Segment color="violet" className="blog-card">
-            <Header as="h2" content={category.toUpperCase()} />
-            <Divider />
-            {!totalBlogs ||
-            totalBlogs === undefined ||
-            totalBlogs.length === 0 ? (
-              <IfNoBlog />
-            ) : (
-              <>
+          <Segment.Group>
+            <Segment
+              style={{ minHeight: windowWidth > 766 && "2092.56px" }}
+              color="violet"
+              className="blog-card"
+            >
+              <Header as="h2" content={category.toUpperCase()} />
+              <Divider />
+              {!totalBlogs ||
+              totalBlogs === undefined ||
+              totalBlogs.length === 0 ? (
+                <IfNoBlog />
+              ) : (
                 <Item.Group divided>
                   {currentBlogs.map(blog => (
                     <BlogItem key={blog.id} blog={blog} />
                   ))}
                 </Item.Group>
+              )}
+            </Segment>
+            {(!totalBlogs ||
+              totalBlogs === undefined ||
+              totalBlogs.length === 0) && (
+              <Segment>
                 <Pagination
                   totalItems={totalBlogs}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
                   itemsPerPage={blogsPerPage}
                 />
-              </>
+              </Segment>
             )}
-          </Segment>
+          </Segment.Group>
         </Grid.Column>
         <Grid.Column width={5}>
           <div style={{ position: "sticky", top: 10 }}>

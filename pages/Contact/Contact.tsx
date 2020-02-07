@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
   return (
     <Container>
       <Segment.Group>
-        <Segment color="purple">
+        <Segment color="blue">
           <Header content="İletişim (Contact)" as="h2" textAlign="center" />
           <Divider />
           <ContactForm />

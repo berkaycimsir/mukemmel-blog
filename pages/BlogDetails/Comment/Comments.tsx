@@ -76,7 +76,6 @@ const Comments: React.FC<Props & WindowSizeProps> = ({
       ) : activeUser && activeUserComment !== null ? null : (
         <Message warning>
           <Message.Header>Yorum yapmak için giriş yapınız!</Message.Header>
-          <Divider />
           <Message.Content>
             Yorum yapmak için giriş yapınız!{" "}
             <NavLink style={{ color: "#935b38" }} to="/login">
