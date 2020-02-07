@@ -41,7 +41,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
     session && session.activeUser.user !== null && session.activeUser.user;
 
   return (
-    <>
+    <div style={{ marginTop: "80px" }}>
       <Meta />
 
       {location.pathname.includes("/admin") && activeUser.admin && (
@@ -96,7 +96,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ session, location }) => {
         <Route exact path="*" render={() => <PageNotFound />} />
       </Switch>
       {!location.pathname.includes("/admin") && <Footer />}
-    </>
+    </div>
   );
 };
 
