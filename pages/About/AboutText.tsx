@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid, Header, Divider } from "semantic-ui-react";
+import { Grid, Header, Divider, Segment } from "semantic-ui-react";
 import {
   Code,
   DeveloperMode,
@@ -7,6 +7,7 @@ import {
   DeveloperBoardOutlined,
   WorkOutline
 } from "@material-ui/icons";
+import { getRandomColor } from "../../utils/functions/getRandomSemanticColor";
 
 const AboutText: React.FC = () => {
   const specifiedText: object = {
@@ -52,69 +53,85 @@ const AboutText: React.FC = () => {
       <div style={{ marginTop: "20px" }}>
         <Grid columns={2} stackable>
           <Grid.Column>
-            <Header
-              as="h3"
-              icon={
-                <DeveloperBoardOutlined
-                  fontSize="large"
-                  style={{ marginRight: "10px" }}
-                />
-              }
-              content="Web geliştirme"
-            />
-            <span>
-              Uzun zamandır Javascript ile web geliştiriyorum.{" "}
-              <span style={specifiedText}>React, Nodejs, Graphql</span> gibi
-              teknolijiler favorim. Javascript'ten vazgeçmeye de niyetim yok :)
-            </span>
+            <Segment color={getRandomColor()}>
+              <Header
+                as="h3"
+                icon={
+                  <DeveloperBoardOutlined
+                    fontSize="large"
+                    style={{ marginRight: "10px" }}
+                  />
+                }
+                content="Web geliştirme"
+              />
+              <Divider />
+              <span className="blog-detail-content">
+                Uzun zamandır Javascript ile web geliştiriyorum.{" "}
+                <span style={specifiedText}>React, Nodejs, Graphql</span> gibi
+                teknolijiler favorim. Javascript'ten vazgeçmeye de niyetim yok
+                :)
+              </span>
+            </Segment>
           </Grid.Column>
           <Grid.Column>
-            <Header
-              as="h3"
-              icon={
-                <DeveloperMode
-                  fontSize="large"
-                  style={{ marginRight: "10px" }}
-                />
-              }
-              content="Diller"
-            />
-            <span>
-              Şu an iyi bildiğim diyebileceğim diller sadece{" "}
-              <span style={specifiedText}>Javascript ve Typescript.</span> Onun
-              dışında biraz C# ve Python bilgim bulunmakta.
-            </span>
+            <Segment color={getRandomColor()}>
+              <Header
+                as="h3"
+                icon={
+                  <DeveloperMode
+                    fontSize="large"
+                    style={{ marginRight: "10px" }}
+                  />
+                }
+                content="Diller"
+              />
+              <Divider />
+              <span className="blog-detail-content">
+                Şu an iyi bildiğim diyebileceğim diller sadece{" "}
+                <span style={specifiedText}>Javascript ve Typescript.</span>{" "}
+                Onun dışında biraz C# ve Python bilgim bulunmakta.
+              </span>
+            </Segment>
           </Grid.Column>
           <Grid.Column>
-            <Header
-              as="h3"
-              icon={
-                <LibraryMusic
-                  fontSize="large"
-                  style={{ marginRight: "10px" }}
-                />
-              }
-              content="Müzik"
-            />
-            <span>
-              En çok dinlediğim müzik türü{" "}
-              <span style={specifiedText}>Türkçe rap'tir.</span> Fakat zaman
-              zaman türkü de dinlerim.
-            </span>
+            <Segment color={getRandomColor()}>
+              <Header
+                as="h3"
+                icon={
+                  <LibraryMusic
+                    fontSize="large"
+                    style={{ marginRight: "10px" }}
+                  />
+                }
+                content="Müzik"
+              />
+              <Divider />
+              <span className="blog-detail-content">
+                En çok dinlediğim müzik türü{" "}
+                <span style={specifiedText}>Türkçe rap'tir.</span> Fakat zaman
+                zaman türkü de dinlerim.
+              </span>
+            </Segment>
           </Grid.Column>
           <Grid.Column>
-            <Header
-              as="h3"
-              icon={
-                <WorkOutline fontSize="large" style={{ marginRight: "10px" }} />
-              }
-              content="İş"
-            />
-            <span>
-              Şuan da çalışacak durumda olmadığım için herhangi bir şirkette
-              çalışmıyorum fakat zaman zaman{" "}
-              <span style={specifiedText}>Freelance</span> olarak çalışıyorum.
-            </span>
+            <Segment color={getRandomColor()}>
+              <Header
+                as="h3"
+                icon={
+                  <WorkOutline
+                    fontSize="large"
+                    style={{ marginRight: "10px" }}
+                  />
+                }
+                content="İş"
+              />
+              <Divider />
+              <span className="blog-detail-content">
+                Şuan da çalışacak durumda olmadığım için herhangi bir şirkette
+                çalışmıyorum fakat zaman zaman{" "}
+                <span style={specifiedText}>Freelance</span> olarak çalışıyorum.
+              </span>
+            </Segment>
           </Grid.Column>
         </Grid>
       </div>

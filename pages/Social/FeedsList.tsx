@@ -5,7 +5,8 @@ import {
   Card,
   Segment,
   Message,
-  Transition
+  Transition,
+  Popup
 } from "semantic-ui-react";
 import {
   Favorite,
@@ -29,6 +30,7 @@ import { Redirect } from "react-router";
 import { NavLink } from "react-router-dom";
 import DeleteFeed from "./DeleteFeed";
 import UpdateFeed from "./UpdateFeed";
+import { getRandomColor } from "../../utils/functions/getRandomSemanticColor";
 
 type Props = {
   activeUser: User;
@@ -63,7 +65,7 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
             animation="slide down"
             duration={500}
           >
-            <Segment>
+            <Segment color={getRandomColor()}>
               <Feed size="small">
                 <Feed.Event>
                   <Feed.Label image={getImageUrlByGender(feed.user.gender)} />

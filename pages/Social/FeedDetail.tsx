@@ -6,7 +6,7 @@ import {
 } from "../../@types/interfaces/PageInterfaces/Feed/replyfeed.interfaces";
 import { FEED } from "../../graphql/Feed/query";
 import Loading from "../../components/Loading/Loading";
-import { Segment, Feed, Container, Header } from "semantic-ui-react";
+import { Segment, Feed, Container, Header, Divider } from "semantic-ui-react";
 import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
 import Moment from "react-moment";
 import LikeFeed from "./LikeFeed";
@@ -19,6 +19,7 @@ import {
 import { NavLink } from "react-router-dom";
 import DeleteFeed from "./DeleteFeed";
 import UpdateFeed from "./UpdateFeed";
+import { getRandomColor } from "../../utils/functions/getRandomSemanticColor";
 
 type Props = {
   session: any;
@@ -40,8 +41,8 @@ const FeedDetail: React.FC<Props> = ({ session }) => {
 
   return (
     <Container>
-      <Segment>
-        <Segment>
+      <Segment style={{ minHeight: "900px" }}>
+        <Segment color={getRandomColor()}>
           <Feed size="small">
             <Feed.Event>
               <Feed.Label image={getImageUrlByGender(feed.user.gender)} />
@@ -91,8 +92,13 @@ const FeedDetail: React.FC<Props> = ({ session }) => {
             </Feed.Event>
           </Feed>
         </Segment>
+        <Divider />
+        <Header
+          as="h3"
+          content={`${feed.user.username}'e ait feed'in yanıtları`}
+        />
         {replies.map(feed => (
-          <Segment key={feed.id}>
+          <Segment color={getRandomColor()} key={feed.id}>
             <Feed size="small">
               <Feed.Event>
                 <Feed.Label image={getImageUrlByGender(feed.user.gender)} />
