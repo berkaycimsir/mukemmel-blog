@@ -21,35 +21,28 @@ const Home: React.FC<Props> = ({ activeUser }) => (
       <TrendBlogs />
       <Divider />
       <LastBlogs />
-      <Divider />
+      <Divider style={{ marginBottom: "25px", marginTop: "30px" }} />
       <Grid columns={2} stackable>
         <Grid.Column>
-          <Segment color="violet">
-            <Header content="Javascript" as="h2" />
-            <Divider />
-            <CategoryBlogs category="javascript" />
-          </Segment>
+          <Header content="Javascript" as="h2" />
+          <Divider />
+          <CategoryBlogs category="javascript" />
         </Grid.Column>
         <Grid.Column>
-          <Segment color="blue">
-            <Header content="Teknoloji" as="h2" />
-            <Divider />
-            <CategoryBlogs category="technology" />
-          </Segment>
+          <Header content="Teknoloji" as="h2" />
+          <Divider />
+          <CategoryBlogs category="technology" />
         </Grid.Column>
       </Grid>
-      <Divider />
-      <Segment color="orange">
+      <Divider style={{ marginTop: "25px" }} />
+      <div style={{ padding: "10px" }}>
         <Header as="h3" content="Son paylaşılan feedler!" />
         <Divider />
         <LastFeeds activeUser={activeUser} userImage={true} />
-      </Segment>
-      <Divider />
-      <Segment color="green">
         <Header content="Son yapılan yorumlar!" />
         <Divider />
         <CommentsTabPart isDivided={false} activeUser={activeUser} />
-      </Segment>
+      </div>
     </div>
   </Container>
 );

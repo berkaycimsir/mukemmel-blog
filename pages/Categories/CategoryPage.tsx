@@ -6,7 +6,7 @@ import {
   Item,
   Segment,
   Header,
-  Divider
+  Divider,
 } from "semantic-ui-react";
 import IfThereIsAnActiveUser from "../../components/Login/IfThereIsAnActiveUser";
 import Login from "../../components/Login/Login";
@@ -19,7 +19,7 @@ import { GET_BLOGS_BY_CATEGORY } from "../../graphql/Blog/query";
 import {
   Props,
   GetBlogsByCategoryReturnData,
-  GetBlogsByCategoryVariables
+  GetBlogsByCategoryVariables,
 } from "../../@types/interfaces/PageInterfaces/Categories/category.interfaces";
 import Loading from "../../components/Loading/Loading";
 import BlogItem from "./BlogItem";
@@ -50,7 +50,7 @@ const CategoryPage: React.FC<Props> = ({ session }) => {
     GetBlogsByCategoryReturnData,
     GetBlogsByCategoryVariables
   >(GET_BLOGS_BY_CATEGORY, {
-    variables: { category }
+    variables: { category },
   });
 
   if (loading) return <Loading size={50} />;
@@ -72,9 +72,12 @@ const CategoryPage: React.FC<Props> = ({ session }) => {
         <Grid.Column width={11}>
           <Segment.Group>
             <Segment
-              style={{ minHeight: windowWidth > 766 && "2092.56px" }}
+              style={{
+                minHeight: windowWidth > 766 && "2092.56px",
+                boxShadow:
+                  "0 1px 5px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24) !important",
+              }}
               color="violet"
-              className="blog-card"
             >
               <Header as="h2" content={category.toUpperCase()} />
               <Divider />
@@ -84,7 +87,7 @@ const CategoryPage: React.FC<Props> = ({ session }) => {
                 <IfNoBlog />
               ) : (
                 <Item.Group divided>
-                  {currentBlogs.map(blog => (
+                  {currentBlogs.map((blog) => (
                     <BlogItem key={blog.id} blog={blog} />
                   ))}
                 </Item.Group>

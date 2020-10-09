@@ -25,7 +25,6 @@ const AboutText: React.FC = () => {
 
   return (
     <>
-      Merhaba, ben Berkay Çimşir. 17 yaşında lise 3 öğrencisiyim. Buda benim yazılım serüvenim.
       Belli bir zamana kadar bilgisayarı bir oyun oynama aracı olarak gördüm.
       Ortaokulda görmüş olduğum bilişim teknolojileri dersinde Scratch, Kodu
       Game Lab, gibi programlarda kendimce basit oyunlar geliştirmeye

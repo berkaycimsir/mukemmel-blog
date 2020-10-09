@@ -11,7 +11,13 @@ const IfThereIsAnActiveUser: React.FC<Props> = ({ session }) => {
   const { name, surname, username, createdAt } = session.activeUser.user;
 
   return (
-    <Segment color="blue" className="blog-card">
+    <Segment
+      color="blue"
+      style={{
+        boxShadow:
+          "0 1px 5px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24) !important",
+      }}
+    >
       <Card.Content>
         <Header textAlign="center" className="if-active-user-title">
           Hoşgeldin, {name} {surname}

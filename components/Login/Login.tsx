@@ -10,12 +10,12 @@ import {
   Segment,
   Header,
   Divider,
-  Message
+  Message,
 } from "semantic-ui-react";
 import {
   Props,
   ReturnData,
-  LoginVariables
+  LoginVariables,
 } from "../../@types/interfaces/PageInterfaces/Login/login.interfaces";
 import { LOGIN } from "../../graphql/User/mutations";
 
@@ -51,7 +51,7 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   const onRegister = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     login({
-      variables: { username, password }
+      variables: { username, password },
     }).then(
       async ({ data }): Promise<void> => {
         resetInputValues();
@@ -69,7 +69,14 @@ const Login: React.FC<RouteComponentProps<Props>> = ({ history }) => {
   };
 
   return (
-    <Segment className="blog-card" padded color="purple">
+    <Segment
+      style={{
+        boxShadow:
+          "0 1px 5px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24) !important",
+      }}
+      padded
+      color="purple"
+    >
       <Header textAlign="center" content="Giriş Yap" />
       <Divider />
       <Form onSubmit={(e: React.FormEvent<HTMLFormElement>) => onRegister(e)}>

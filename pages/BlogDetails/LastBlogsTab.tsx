@@ -4,8 +4,11 @@ import LastBlogs from "./LastBlogs";
 
 const LastBlogsTab: React.FC = () => (
   <Segment
-    className="blog-card"
-    style={{ marginTop: "20px" }}
+    style={{
+      marginTop: "20px",
+      boxShadow:
+        "0 1px 5px rgba(0, 0, 0, 0.12), 0 1px 8px rgba(0, 0, 0, 0.24) !important",
+    }}
     fluid
     color="teal"
   >

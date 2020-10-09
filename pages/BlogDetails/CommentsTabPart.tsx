@@ -5,14 +5,14 @@ import Loading from "../../components/Loading/Loading";
 import { GET_COMMENTS } from "../../graphql/Comment/query";
 import {
   GetCommentsReturnData,
-  Props
+  Props,
 } from "../../@types/interfaces/PageInterfaces/BlogDetails/allcommentstab.interfaces";
 import Moment from "react-moment";
 import { NavLink } from "react-router-dom";
 import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
 import {
   UpdateBlogViewsReturnData,
-  UpdateBlogViewsVariables
+  UpdateBlogViewsVariables,
 } from "../../@types/interfaces/PageInterfaces/BlogDetails/blogdetailscard.interfaces";
 import { UPDATE_BLOG_VIEWS } from "../../graphql/Blog/mutation";
 
@@ -44,11 +44,11 @@ const CommentsTabPart: React.FC<Props> = ({ activeUser, isDivided }) => {
                 <Message.Header>Burada Hiç Yorum Yok!</Message.Header>
                 <Message.Content>
                   Bir tane eklemek ister misin?{" "}
-                  <NavLink to="/login">Giriş yap!</NavLink>
+                  {!activeUser && <NavLink to="/login">Giriş yap!</NavLink>}
                 </Message.Content>
               </Message>
             ))}
-          {comments.map(comment => (
+          {comments.map((comment) => (
             <Comment key={comment.id}>
               <Comment.Avatar
                 as="a"

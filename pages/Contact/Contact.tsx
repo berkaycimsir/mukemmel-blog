@@ -7,7 +7,7 @@ import {
   Message,
   Grid,
   Button,
-  Image
+  Image,
 } from "semantic-ui-react";
 import ContactForm from "./ContactForm";
 import {
@@ -16,7 +16,7 @@ import {
   LinkedIn,
   GitHub,
   YouTube,
-  Facebook
+  Facebook,
 } from "@material-ui/icons";
 
 const Contact: React.FC = () => {
@@ -33,11 +33,11 @@ const Contact: React.FC = () => {
             content="Ayrıca bana aşağıdaki sosyal medya hesaplarımdan da ulaşabilirsiniz!"
             color="blue"
           />
-          <Grid doubling columns={6}>
+          <Grid centered doubling columns={6}>
             <Grid.Column>
               <Button
                 as="a"
-                href="https://twitter.com/bekodev"
+                href="https://twitter.com/berkaycimsir"
                 target="_blank"
                 color="twitter"
                 content="Twitter"
@@ -52,7 +52,7 @@ const Contact: React.FC = () => {
             <Grid.Column>
               <Button
                 as="a"
-                href="https://instagram.com/brky.js"
+                href="https://instagram.com/berkaycmsr"
                 color="instagram"
                 content="Instagram"
                 target="_blank"
@@ -102,21 +102,6 @@ const Contact: React.FC = () => {
                   <Image
                     style={{ marginRight: "4px" }}
                     children={<YouTube />}
-                  />
-                }
-              />
-            </Grid.Column>
-            <Grid.Column>
-              <Button
-                as="a"
-                href="https://www.facebook.com/brkyjs-1148022438710199/"
-                color="facebook"
-                content="Facebook"
-                target="_blank"
-                icon={
-                  <Image
-                    style={{ marginRight: "4px" }}
-                    children={<Facebook />}
                   />
                 }
               />

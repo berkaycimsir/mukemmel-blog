@@ -19,7 +19,7 @@ const AdminNavbar: React.FC<{} & RouteComponentProps> = ({ location }) => {
   }, [windowWidth, setWindowWidth]);
 
   return (
-    <Menu className="navbar" size="large" inverted>
+    <Menu size="large" inverted>
       {windowWidth <= 766.9 && (
         <Menu.Item onClick={() => setIsVisible(true)} icon={<MenuIcon />} />
       )}

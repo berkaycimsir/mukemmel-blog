@@ -119,7 +119,7 @@ const Navbar: React.FC<Props> = ({ session }) => {
                 </Dropdown.Menu>
               </Dropdown>
               <NavLink className="item" to="/about">
-                <span>Hakkımızda</span>
+                <span>Hakkımda</span>
               </NavLink>
               <NavLink className="item" to="/contact">
                 <span>İletişim</span>

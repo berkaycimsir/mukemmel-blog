@@ -6,13 +6,13 @@ import {
   Segment,
   Message,
   Transition,
-  Popup
+  Popup,
 } from "semantic-ui-react";
 import {
   Favorite,
   FavoriteBorder,
   CommentOutlined,
-  ChatBubbleOutline
+  ChatBubbleOutline,
 } from "@material-ui/icons";
 import { getImageUrlByGender } from "../../utils/functions/getUserImageUrl";
 import { useQuery } from "react-apollo";
@@ -24,7 +24,7 @@ import LikeFeed from "./LikeFeed";
 import ReplyFeed from "./ReplyFeed";
 import {
   User,
-  Feed as FeedType
+  Feed as FeedType,
 } from "../../@types/types/database/DatabaseTypes";
 import { Redirect } from "react-router";
 import { NavLink } from "react-router-dom";
@@ -53,12 +53,13 @@ const FeedList: React.FC<Props> = ({ activeUser }) => {
     <>
       {feeds.length === 0 ? (
         <Message
-          color="red"
+          info
+          size="small"
           header="Burada hiç feed yok!"
           content="Eğer istersen hemen giriş yaparak ya da kayıt olarak düşüncelerini paylaşabilirsin!"
         />
       ) : (
-        feeds.map(feed => (
+        feeds.map((feed) => (
           <Transition
             key={feed.id}
             visible={visible}

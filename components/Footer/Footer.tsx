@@ -7,7 +7,7 @@ import {
   List,
   Divider,
   Image,
-  Button
+  Button,
 } from "semantic-ui-react";
 
 const Footer: React.FC = () => (
@@ -52,7 +52,9 @@ const Footer: React.FC = () => (
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfISJ80aijWwPIjStqGeNBeErlpkaY9Jyo3ykYycFn4h6UkbBf&s"
       />
       <List horizontal divided link size="small">
-        <List.Item>&copy; 2019 Tüm Hakları Saklıdır</List.Item>
+        <List.Item>
+          &copy; {new Date().getFullYear()} Tüm Hakları Saklıdır
+        </List.Item>
       </List>
     </Container>
   </Segment>
