@@ -1,8 +1,15 @@
-# MUKEMMEL-BLOG
+<h1 align="center">Welcome to the "Mükemmel Blog" ⭐</h1>
 
-This project forked from [Selman Kahya](https://github.com/SelmanKahya/mukemmel-blog)
+> Winner of the Selman Kahya's blog website competition.
 
-The backend server of this project: [Backend (graphql playground)](https://mukemmel-blog-backend.herokuapp.com/graphql)\
-Github repository of backend: [Repository Of My Backend Server](https://github.com/berkaycimsir/mukemmel-blog-backend)
+## Author
 
-This project deployed to the heroku: [Frontend](https://mukemmel-blog-frontend.herokuapp.com/)
+👤 **Berkay Çimşir**
+
+* Website: https://mukemmel-blog-frontend.herokuapp.com/
+* Twitter: [@berkaycimsir](https://twitter.com/berkaycimsir)
+* Github: [@berkaycimsir](https://github.com/berkaycimsir)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
